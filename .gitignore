@@ -9,15 +9,13 @@
 .env.*.local
 /local/
 
-# Logs
-npm-debug.log
-npm-debug.log*
-
 # Node
 /node_modules/
 .lock-wscript
 .node_repl_history
 .npm
+npm-debug.log
+npm-debug.log*
 
 # OS files
 .DS_Store
@@ -28,9 +26,6 @@ Thumbs.db
 *.pid
 *.seed
 
-# Sensitive files
-*.secret.*
-
 # Temporary files
 /tmp/
 *.tmp
@@ -40,9 +35,5 @@ Thumbs.db
 .nyc_output/
 /coverage/
 lib-cov/
-
-# TypeScript compilations & typings
-/lib/
-/output/
 
 !.gitkeep

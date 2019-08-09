@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "declaration": true,
+    "emitDeclarationOnly":  true,
+    "isolatedModules": false,
+    "noEmit": false,
+    "outDir": "lib"
+  },
+  "exclude": [
+    "**/*.test.ts"
+  ],
+  "include": [
+    "src"
+  ]
+}
