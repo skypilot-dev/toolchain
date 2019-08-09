@@ -1,0 +1,48 @@
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.sw?
+
+# Local-only files
+.env.local
+.env.*.local
+/local/
+
+# Logs
+npm-debug.log
+npm-debug.log*
+
+# Node
+/node_modules/
+.lock-wscript
+.node_repl_history
+.npm
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Runtime data
+/pids/
+*.pid
+*.seed
+
+# Sensitive files
+*.secret.*
+
+# Temporary files
+/tmp/
+*.tmp
+*.tmp.*
+
+# Tests & coverage
+.nyc_output/
+/coverage/
+lib-cov/
+
+# TypeScript compilations & typings
+/lib/
+/output/
+
+!.gitkeep
