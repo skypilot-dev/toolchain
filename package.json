@@ -14,7 +14,9 @@
   },
   "files": [
     "babel.config.js",
-    "eslint.config.js"
+    "eslint.config.js",
+    "husky.config.js",
+    "lint-staged.config.js"
   ],
   "keywords": [
     "eslint",

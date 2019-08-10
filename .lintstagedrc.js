@@ -1,8 +1,1 @@
-module.exports = {
-  '*.{js,ts}': [
-    'eslint',
-  ],
-  '*.{ts}': [
-    'tsc --noEmit',
-  ],
-};
+module.exports = require('./lint-staged.config');
