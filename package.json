@@ -13,6 +13,7 @@
     "url": "https://github.com/skypilot/toolchain/issues"
   },
   "files": [
+    "babel.config.js",
     "eslint.config.js"
   ],
   "keywords": [
