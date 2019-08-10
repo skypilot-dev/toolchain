@@ -10,6 +10,14 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
   ],
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+  ],
   plugins: [
     '@typescript-eslint/eslint-plugin',
     '@typescript-eslint',
