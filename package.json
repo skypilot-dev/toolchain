@@ -15,6 +15,10 @@
   "files": [
     "babel.config.js",
     "eslint.config.js",
+    "jest.config.js",
+    "jest.config.combo.js",
+    "jest.config.integration.js",
+    "jest.config.unit.js",
     "husky.config.js",
     "lint-staged.config.js"
   ],
