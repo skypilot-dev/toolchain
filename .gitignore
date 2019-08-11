@@ -1,3 +1,6 @@
+# Compiled & transpiled files
+/lib/
+
 # Editor directories and files
 .idea
 .vscode
