@@ -48,6 +48,6 @@ module.exports = {
     'lines-between-class-members': ['warn', 'always'],
     'no-trailing-spaces': 'warn',
     'padded-blocks': 'off',
-    'quotes': ['warn', 'single'],
+    'quotes': ['warn', 'single', { avoidEscape: true }],
   },
 };
