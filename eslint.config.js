@@ -47,6 +47,8 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'lines-between-class-members': ['warn', 'always'],
     'no-trailing-spaces': 'warn',
+    'no-underscore-dangle': ['warn', { allowAfterThis: true }],
+    'object-curly-newline': ['warn', { consistent: true }],
     'padded-blocks': 'off',
     'quotes': ['warn', 'single', { avoidEscape: true }],
   },
