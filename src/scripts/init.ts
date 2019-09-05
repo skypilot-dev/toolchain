@@ -2,6 +2,8 @@
 import { copyFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 
+import { updatePackageFile } from '../updatePackageFile';
+
 const packageName = require('../../package.json').name;
 // const projectRootDir = resolve(__dirname, '../..');
 
@@ -46,14 +48,26 @@ configs.forEach((config) => {
 
 const templates = [
   { inFile: '.gitignore' },
+  { inFile: 'tsconfig.main.json', outFile: 'tsconfig.json' },
 ];
 
 const templateDir = resolve(__dirname, '../templates');
 
-templates.forEach(({ inFile }) => {
-  const outFile = inFile;
+templates.forEach(({ inFile, outFile = inFile }) => {
   copyFileSync(`${templateDir}/${inFile}`, `${projectRootDir}/${outFile}`);
   console.log(`  Created ${outFile}`);
 });
+
+
+const scripts: { key: string; value: string }[] = [
+  { key: 'check-types', value: 'tsc' },
+];
+console.log('Adding values to package.json...');
+const newScripts = scripts.reduce((newScripts: { [key: string]: string }, { key, value }) => {
+  newScripts[key] = value;
+  console.log(`  Added ${key}: '${value}'`);
+  return newScripts;
+}, {});
+updatePackageFile({ scripts: newScripts });
 
 console.log('Done.');
