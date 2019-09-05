@@ -33,17 +33,17 @@ const jestConfig = `module.exports = require('${packageName}/jest.config');
 const lintStagedConfig = `module.exports = require('${packageName}/lint-staged.config');`;
 
 const configs = [
-  { filename: '.eslintrc.js', content: eslintConfig },
-  { filename: 'babel.config.js', content: babelConfig },
-  { filename: 'husky.config.js', content: huskyConfig },
-  { filename: 'jest.config.js', content: jestConfig },
-  { filename: 'lint-staged.config.js', content: lintStagedConfig },
+  { content: eslintConfig, outFile: '.eslintrc.js' },
+  { content: babelConfig, outFile: 'babel.config.js' },
+  { content: huskyConfig, outFile: 'husky.config.js' },
+  { content: jestConfig, outFile: 'jest.config.js' },
+  { content: lintStagedConfig, outFile: 'lint-staged.config.js' },
 ];
 
 console.log('Creating configuration files...');
-configs.forEach((config) => {
-  writeFileSync(`${projectRootDir}/${config.filename}`, config.content);
-  console.log(`  Created ${config.filename}`);
+configs.forEach(({ content, outFile }) => {
+  writeFileSync(`${projectRootDir}/${outFile}`, content);
+  console.log(`  Created ${outFile}`);
 });
 
 const templates = [
