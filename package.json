@@ -38,7 +38,7 @@
     "check-types": "tsc",
     "generate-typings": "tsc --project tsconfig.generate-typings.json",
     "copy-templates": "mkdir lib && cp -a src/templates lib/",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run check-types && npm test && npm run build && npm run generate-typings",
     "test": "jest"
   },
   "dependencies": {
