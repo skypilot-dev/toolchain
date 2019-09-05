@@ -48,6 +48,7 @@ configs.forEach((config) => {
 
 const templates = [
   { inFile: '.gitignore' },
+  { inFile: 'tsconfig.generate-typings.json' },
   { inFile: 'tsconfig.main.json', outFile: 'tsconfig.json' },
 ];
 
@@ -61,6 +62,7 @@ templates.forEach(({ inFile, outFile = inFile }) => {
 
 const scripts: { key: string; value: string }[] = [
   { key: 'check-types', value: 'tsc' },
+  { key: 'generate-typings', value: 'tsc --project tsconfig.generate-typings.json' },
 ];
 console.log('Adding values to package.json...');
 const newScripts = scripts.reduce((newScripts: { [key: string]: string }, { key, value }) => {

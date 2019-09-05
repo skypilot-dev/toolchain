@@ -36,6 +36,7 @@
   "scripts": {
     "build": "rm -rf lib && npm run copy-templates && babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
     "check-types": "tsc",
+    "generate-typings": "tsc --project tsconfig.generate-typings.json",
     "copy-templates": "mkdir lib && cp -a src/templates lib/",
     "prepublishOnly": "npm run build",
     "test": "jest"
