@@ -18,6 +18,6 @@ module.exports = {
     'eslint',
   ],
   '*.{ts}': [
-    `tsc --incremental --outDir ${tmpDir} --tsBuildInfoFile ${tmpDir}/.tsBuildInfo`,
+    `tsc --esModuleInterop --incremental --outDir ${tmpDir} --tsBuildInfoFile ${tmpDir}/.tsBuildInfo`,
   ],
 };
