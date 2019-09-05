@@ -1,51 +1,15 @@
 #!/usr/bin/env node
-import { writeFileSync } from 'fs';
+import { copyFileSync, writeFileSync } from 'fs';
+import { resolve } from 'path';
 
 const packageName = require('../../package.json').name;
+// const projectRootDir = resolve(__dirname, '../..');
 
-const gitIgnore = `# Compiled & transpiled files
-/lib/
+function getProjectRootDir(): string {
+  return resolve(__dirname).split('/node_modules')[0];
+}
 
-# Editor directories and files
-.idea
-.vscode
-*.suo
-*.sw?
-
-# Local-only files
-.env.local
-.env.*.local
-/local/
-
-# Node
-/node_modules/
-.lock-wscript
-.node_repl_history
-.npm
-npm-debug.log
-npm-debug.log*
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Runtime data
-/pids/
-*.pid
-*.seed
-
-# Temporary files
-/tmp/
-*.tmp
-*.tmp.*
-
-# Tests & coverage
-.nyc_output/
-/coverage/
-lib-cov/
-
-!.gitkeep
-`;
+const projectRootDir = getProjectRootDir();
 
 const babelConfig = `module.exports = {
   extends: '${packageName}/babel.config',
@@ -68,17 +32,28 @@ const lintStagedConfig = `module.exports = require('${packageName}/lint-staged.c
 
 const configs = [
   { filename: '.eslintrc.js', content: eslintConfig },
-  { filename: '.gitignore', content: gitIgnore },
   { filename: 'babel.config.js', content: babelConfig },
   { filename: 'husky.config.js', content: huskyConfig },
   { filename: 'jest.config.js', content: jestConfig },
   { filename: 'lint-staged.config.js', content: lintStagedConfig },
 ];
 
-/* eslint-disable no-console */
 console.log('Creating configuration files...');
 configs.forEach((config) => {
-  writeFileSync(`./${config.filename}`, config.content);
+  writeFileSync(`${projectRootDir}/${config.filename}`, config.content);
   console.log(`  Created ${config.filename}`);
 });
+
+const templates = [
+  { inFile: '.gitignore' },
+];
+
+const templateDir = resolve(__dirname, '../templates');
+
+templates.forEach(({ inFile }) => {
+  const outFile = inFile;
+  copyFileSync(`${templateDir}/${inFile}`, `${projectRootDir}/${outFile}`);
+  console.log(`  Created ${outFile}`);
+});
+
 console.log('Done.');

@@ -1,6 +1,6 @@
 {
   "name": "@skypilot/toolchain",
-  "version": "0.2.1",
+  "version": "0.2.9",
   "description": "Toolchain for Node projects",
   "author": "William Thorsen",
   "license": "UNLICENSED",
@@ -34,7 +34,8 @@
   ],
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf lib && babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
+    "build": "rm -rf lib && npm run copy-templates && babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
+    "copy-templates": "mkdir lib && cp -a src/templates lib/",
     "prepublishOnly": "npm run build",
     "test": "jest"
   },

@@ -1,0 +1,42 @@
+# Compiled & transpiled files
+/lib/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.sw?
+
+# Local-only files
+.env.local
+.env.*.local
+/local/
+
+# Node
+/node_modules/
+.lock-wscript
+.node_repl_history
+.npm
+npm-debug.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Runtime data
+/pids/
+*.pid
+*.seed
+
+# Temporary files
+/tmp/
+*.tmp
+*.tmp.*
+
+# Tests & coverage
+.nyc_output/
+/coverage/
+lib-cov/
+
+!.gitkeep
