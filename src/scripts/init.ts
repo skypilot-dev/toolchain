@@ -35,9 +35,9 @@ const lintStagedConfig = `module.exports = require('${packageName}/lint-staged.c
 const configs = [
   { content: eslintConfig, outFile: '.eslintrc.js' },
   { content: babelConfig, outFile: 'babel.config.js' },
-  { content: huskyConfig, outFile: 'husky.config.js' },
+  { content: huskyConfig, outFile: '.huskyrc.js' },
   { content: jestConfig, outFile: 'jest.config.js' },
-  { content: lintStagedConfig, outFile: 'lint-staged.config.js' },
+  { content: lintStagedConfig, outFile: '.lintstagedrc.js' },
 ];
 
 console.log('Creating configuration files...');
