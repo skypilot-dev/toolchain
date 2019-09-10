@@ -20,9 +20,8 @@
     "babel.config.js",
     "eslint.config.js",
     "jest.config.js",
-    "jest.config.combo.js",
-    "jest.config.integration.js",
-    "jest.config.unit.js",
+    "jest.integration.config.js",
+    "jest.standalone.config.js",
     "husky.config.js",
     "lint-staged.config.js"
   ],
@@ -39,7 +38,7 @@
     "generate-typings": "tsc --project tsconfig.generate-typings.json",
     "copy-templates": "mkdir lib && cp -a src/templates lib/",
     "prepublishOnly": "npm run check-types && npm test && npm run build && npm run generate-typings",
-    "test": "jest"
+    "test": "jest --config jest.standalone.config.js"
   },
   "dependencies": {
     "@babel/cli": "^7.5.5",
