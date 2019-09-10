@@ -61,10 +61,10 @@ templates.forEach(({ inFile, outFile = inFile }) => {
 
 
 const scripts: { key: string; value: string }[] = [
-  { key: 'build', value: 'npm run check-types && npm test && npm run build && npm run generate-typings' },
+  { key: 'build', value: 'yarn run check-types && yarn test && yarn run build && yarn run generate-typings' },
   { key: 'check-types', value: 'tsc' },
   { key: 'generate-typings', value: 'tsc --project tsconfig.generate-typings.json' },
-  { key: 'prepublishOnly', value: 'npm run check-types && npm test && npm run build && npm run generate-typings' },
+  { key: 'prepublishOnly', value: 'yarn run check-types && yarn test && yarn run build && yarn run generate-typings' },
   { key: 'test', value: 'jest' },
 ];
 console.log('Adding values to package.json...');
