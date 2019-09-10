@@ -21,6 +21,7 @@ module.exports = {
   plugins: [
     '@typescript-eslint/eslint-plugin',
     '@typescript-eslint',
+    'import',
     'jest',
   ],
   rules: {
@@ -42,6 +43,7 @@ module.exports = {
       imports: 'always-multiline',
       objects: 'always-multiline',
     }],
+    'import/order': ['warn', { 'newlines-between': 'always-and-inside-groups' }],
     'import/prefer-default-export': 'off',
     'lines-between-class-members': ['warn', 'always'],
     'no-trailing-spaces': 'warn',
