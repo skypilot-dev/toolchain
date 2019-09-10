@@ -8,4 +8,5 @@ module.exports = {
   transform: {
     '^.+\\.ts$': 'babel-jest',
   },
+  verbose: false,
 };
