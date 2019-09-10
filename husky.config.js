@@ -51,11 +51,17 @@ const preCommitTasks = [
   checkTypes,
 ];
 
+const prePushTasks = [
+  stash,
+  'yarn run test --silent',
+  popStash,
+];
 
 
 module.exports = {
   hooks: {
     'pre-commit': stashWithRestoreOnFailure(joinTasks(preCommitTasks)),
     'post-commit': popStashAfterSuccessfulCommit,
+    'pre-push': joinTasks(prePushTasks),
   },
 };
