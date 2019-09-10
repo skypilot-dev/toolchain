@@ -19,7 +19,10 @@ const tmpDir = `${os.tmpdir()}/${cleanPackageName}-${dirNameHash}`;
 
 /* -- Command definitions -- */
 /* This command stashes all staged and unstaged (including untracked) files. */
-const stash = 'git stash --include-untracked --keep-index --quiet';
+const stash = 'git stash --include-untracked --quiet';
+
+/* This command stashes all staged and unstaged (including untracked) files. */
+const stashBeforeCommit = 'git stash --include-untracked --keep-index --quiet';
 
 /* These commands save the status code returned by the tasks, apply and delete the stash,
  * and then exit with the saved status code. */
@@ -37,7 +40,7 @@ function joinTasks(tasks) {
  * If the commit is successful, staged files will have been moved to the commit, so restore only
  * the unstaged files & partials. */
 function stashWithRestoreOnFailure(command) {
-  return '(' + joinTasks([stash, command]) + ')'
+  return '(' + joinTasks([stashBeforeCommit, command]) + ')'
     + ' || ( ' + popStash + ' )';
 }
 /* -- End of helper functions */
