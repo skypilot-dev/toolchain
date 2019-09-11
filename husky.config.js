@@ -22,14 +22,14 @@ const tmpDir = `${os.tmpdir()}/${cleanPackageName}-${dirNameHash}`;
 const stash = 'git stash --include-untracked --quiet';
 
 /* This command stashes all staged and unstaged (including untracked) files. */
-const stashBeforeCommit = 'git stash --include-untracked --keep-index --quiet';
+const stashBeforeCommit = 'touch "${TMPDIR}/.HUSKY_POP_STASH"; git stash --include-untracked --keep-index --quiet';
 
 /* These commands save the status code returned by the tasks, apply and delete the stash,
  * and then exit with the saved status code. */
-const popStash = 'status=$?; git stash pop --quiet; exit $status';
+const popStash = 'status=$?; rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git stash pop --quiet; exit $status';
 
 /* These commands restore unstaged files and patches. */
-const popStashAfterSuccessfulCommit = 'git checkout stash --quiet -- .; git stash pop --quiet; git reset --quiet';
+const popStashAfterSuccessfulCommit = 'test ! -f "${TMPDIR}/.HUSKY_POP_STASH" && echo "Skipping post-commit" && exit 0 || rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git checkout stash --quiet -- .; git stash pop --quiet; git reset --quiet';
 
 /* -- Helper functions -- */
 function joinTasks(tasks) {
