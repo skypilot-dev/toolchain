@@ -19,8 +19,8 @@ const tmpDir = `${os.tmpdir()}/${cleanPackageName}-${dirNameHash}`;
 
 /* -- Command definitions -- */
 // const isDirty = '[ -n "$(git status --porcelain)" ]'
-const stashNeeded = '{ { [ -n "$(git status --porcelain)" ] && HUSKY_RESTORE_NEEDED=1; } || { echo "Toolchain > Working tree clean, nothing to stash" && false; }; }';
-const restoreNeeded = '{ { [ -n "$HUSKY_RESTORE_NEEDED" ]; } || { echo "Toolchain > Nothing was stashed, skipping restore" && false; }; }';
+const checkNeedForStash = '{ { [ -n "$(git status --porcelain)" ] && HUSKY_RESTORE_NEEDED=1; } || { echo "Toolchain > Working tree clean, nothing to stash" && false; }; }';
+const checkNeedForRestore = '{ { [ -n "$HUSKY_RESTORE_NEEDED" ]; } || { echo "Toolchain > Nothing was stashed, skipping restore" && false; }; }';
 
 const saveExitCode = 'EXIT_CODE=$?';
 const exitWithSavedCode = 'exit $EXIT_CODE';
@@ -82,10 +82,10 @@ module.exports = {
   hooks: {
     'pre-commit': stashWithRestoreOnFailure(joinCommands(preCommitTasks)),
     'post-commit': popStashAfterSuccessfulCommit,
-    'pre-push': groupAndJoin([stashNeeded, stash])
+    'pre-push': groupAndJoin([checkNeedForStash, stash])
       + alwaysDo(runTests)
       + alwaysDo(saveExitCode)
-      + alwaysDo(groupAndJoin([restoreNeeded, popStash]))
+      + alwaysDo(groupAndJoin([checkNeedForRestore, popStash]))
       + alwaysDo(exitWithSavedCode),
   },
 };
