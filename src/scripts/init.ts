@@ -40,7 +40,7 @@ const configs = [
   { content: lintStagedConfig, outFile: '.lintstagedrc.js' },
 ];
 
-console.log('Creating configuration files...');
+console.log('Toolchain > Creating configuration files...');
 configs.forEach(({ content, outFile }) => {
   writeFileSync(`${projectRootDir}/${outFile}`, content);
   console.log(`  Created ${outFile}`);
@@ -67,7 +67,7 @@ const scripts: { key: string; value: string }[] = [
   { key: 'prepublishOnly', value: 'yarn run check-types && yarn test && yarn run build && yarn run generate-typings' },
   { key: 'test', value: 'jest' },
 ];
-console.log('Adding values to package.json...');
+console.log('Toolchain > Adding values to package.json...');
 const newScripts = scripts.reduce((newScripts: { [key: string]: string }, { key, value }) => {
   newScripts[key] = value;
   console.log(`  Added ${key}: '${value}'`);
@@ -75,4 +75,4 @@ const newScripts = scripts.reduce((newScripts: { [key: string]: string }, { key,
 }, {});
 updatePackageFile({ scripts: newScripts });
 
-console.log('Done.');
+console.log('Toolchain > Done.');

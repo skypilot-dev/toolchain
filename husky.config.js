@@ -19,24 +19,24 @@ const tmpDir = `${os.tmpdir()}/${cleanPackageName}-${dirNameHash}`;
 
 /* -- Command definitions -- */
 // const isDirty = '[ -n "$(git status --porcelain)" ]'
-const stashNeeded = '{ { [ -n "$(git status --porcelain)" ] && HUSKY_RESTORE_NEEDED=1; } || { echo "Working tree clean, nothing to stash" && false; }; }';
-const restoreNeeded = '{ { [ -n "$HUSKY_RESTORE_NEEDED" ]; } || { echo "Nothing was stashed, skipping restore" && false; }; }';
+const stashNeeded = '{ { [ -n "$(git status --porcelain)" ] && HUSKY_RESTORE_NEEDED=1; } || { echo "Toolchain > Working tree clean, nothing to stash" && false; }; }';
+const restoreNeeded = '{ { [ -n "$HUSKY_RESTORE_NEEDED" ]; } || { echo "Toolchain > Nothing was stashed, skipping restore" && false; }; }';
 
 const saveExitCode = 'EXIT_CODE=$?';
 const exitWithSavedCode = 'exit $EXIT_CODE';
 
 /* This command stashes all staged and unstaged (including untracked) files. */
-const stash = 'git stash --include-untracked --quiet';
+const stash = 'echo "Toolchain > Stashing" && git stash --include-untracked --quiet';
 
 /* This command stashes all staged and unstaged (including untracked) files. */
 const stashBeforeCommit = 'touch "${TMPDIR}/.HUSKY_POP_STASH"; git stash --include-untracked --keep-index --quiet';
 
 /* These commands save the status code returned by the tasks, apply and delete the stash,
  * and then exit with the saved status code. */
-const popStash = '{ status=$?; echo "Restoring the stash"; rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git stash pop --quiet; exit $status; }';
+const popStash = '{ status=$?; echo "Toolchain > Restoring the stash"; rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git stash pop --quiet; exit $status; }';
 
 /* These commands restore unstaged files and patches. */
-const popStashAfterSuccessfulCommit = 'test ! -f "${TMPDIR}/.HUSKY_POP_STASH" && echo "Skipping post-commit" && exit 0 || rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git checkout stash --quiet -- .; git stash pop --quiet; git reset --quiet';
+const popStashAfterSuccessfulCommit = 'test ! -f "${TMPDIR}/.HUSKY_POP_STASH" && echo "Toolchain > Skipping post-commit" && exit 0 || rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git checkout stash --quiet -- .; git stash pop --quiet; git reset --quiet';
 
 /* -- Helper functions -- */
 function alwaysDo(command) {
@@ -67,7 +67,7 @@ function stashWithRestoreOnFailure(command) {
 
 
 const checkTypes = `tsc --project tsconfig.json --incremental --outDir ${tmpDir} --tsBuildInfoFile ${tmpDir}/.tsBuildInfo`;
-const runTests = '{ { [ -e ${TMPDIR}/$(git rev-parse --verify HEAD) ] && echo "Skipping tests. This commit has already passed."; } || { yarn run test --silent && touch ${TMPDIR}/$(git rev-parse --verify HEAD); }; }';
+const runTests = '{ { [ -e ${TMPDIR}/$(git rev-parse --verify HEAD) ] && echo "Toolchain > Skipping tests. This commit has already passed."; } || { yarn run test --silent && touch ${TMPDIR}/$(git rev-parse --verify HEAD); }; }';
 
 /* The tasks to run before committing. */
 const preCommitTasks = [
