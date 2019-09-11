@@ -31,15 +31,15 @@ const stash = 'echo "Toolchain > Stashing" && git stash --include-untracked --qu
 
 /* This command saves all staged and unstaged (including untracked) files to a stash and then
  * clears unstaged files (but not staged files) from the working directory. */
-const stashBeforeCommit = 'touch "${TMPDIR}/.HUSKY_POP_STASH"; git stash --include-untracked --keep-index --quiet';
+const stashBeforeCommit = `mkdir -p ${tmpDir};  touch "${tmpDir}/.HUSKY_POP_STASH"; git stash --include-untracked --keep-index --quiet`;
 
 /* This command saves the status code returned by the tasks, removes the temporary file that
  * signifies that the stash needs to be restored, applies and deletes the stash, and then exits
  * with the saved status code. */
-const popStash = '{ status=$?; echo "Toolchain > Restoring the stash"; rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git stash pop --quiet; exit $status; }';
+const popStash = `{ status=$?; echo "Toolchain > Restoring the stash"; rm -f "${tmpDir}/.HUSKY_POP_STASH"; git stash pop --quiet; exit $status; }`;
 
 /* This command restores unstaged files and patches. */
-const popStashAfterSuccessfulCommit = 'test ! -f "${TMPDIR}/.HUSKY_POP_STASH" && echo "Toolchain > Skipping post-commit" && exit 0 || rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git checkout stash --quiet -- .; git stash pop --quiet; git reset --quiet';
+const popStashAfterSuccessfulCommit = `test ! -f "${tmpDir}/.HUSKY_POP_STASH" && echo "Toolchain > Skipping post-commit" && exit 0 || rm -f "${tmpDir}/.HUSKY_POP_STASH"; git checkout stash --quiet -- .; git stash pop --quiet; git reset --quiet`;
 
 /* -- Helper functions -- */
 function alwaysDo(command) {
@@ -70,7 +70,7 @@ function stashWithRestoreOnFailure(command) {
 
 
 const checkTypes = `tsc --project tsconfig.json --incremental --outDir ${tmpDir} --tsBuildInfoFile ${tmpDir}/.tsBuildInfo`;
-const runTests = '{ { [ -e ${TMPDIR}/$(git rev-parse --verify HEAD) ] && echo "Toolchain > Skipping tests. This commit has already passed."; } || { yarn run test --silent && touch ${TMPDIR}/$(git rev-parse --verify HEAD); }; }';
+const runTests = `{ { [ -e ${tmpDir}/$(git rev-parse --verify HEAD) ] && echo "Toolchain > Skipping tests. This commit has already passed."; } || { yarn run test --silent && touch ${tmpDir}/$(git rev-parse --verify HEAD); }; }`;
 
 /* The tasks to run before committing. */
 const preCommitTasks = [
