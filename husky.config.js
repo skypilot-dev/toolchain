@@ -67,7 +67,7 @@ function stashWithRestoreOnFailure(command) {
 
 
 const checkTypes = `tsc --project tsconfig.json --incremental --outDir ${tmpDir} --tsBuildInfoFile ${tmpDir}/.tsBuildInfo`;
-const runTests = 'yarn run test --silent';
+const runTests = '{ { [ -e ${TMPDIR}/$(git rev-parse --verify HEAD) ] && echo "Skipping tests. This commit has already passed."; } || { yarn run test --silent && touch ${TMPDIR}/$(git rev-parse --verify HEAD); }; }';
 
 /* The tasks to run before committing. */
 const preCommitTasks = [
