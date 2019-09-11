@@ -25,14 +25,17 @@ const restoreNeeded = '{ { [ -n "$HUSKY_RESTORE_NEEDED" ]; } || { echo "Toolchai
 const saveExitCode = 'EXIT_CODE=$?';
 const exitWithSavedCode = 'exit $EXIT_CODE';
 
-/* This command stashes all staged and unstaged (including untracked) files. */
+/* This command saves all staged and unstaged (including untracked) files to a stash and then
+ * clears the working directory. */
 const stash = 'echo "Toolchain > Stashing" && git stash --include-untracked --quiet';
 
-/* This command stashes all staged and unstaged (including untracked) files. */
+/* This command saves all staged and unstaged (including untracked) files to a stash and then
+ * clears unstaged files (but not staged files) from the working directory. */
 const stashBeforeCommit = 'touch "${TMPDIR}/.HUSKY_POP_STASH"; git stash --include-untracked --keep-index --quiet';
 
-/* These commands save the status code returned by the tasks, apply and delete the stash,
- * and then exit with the saved status code. */
+/* This command saves the status code returned by the tasks, removes the temporary file that
+ * signifies that the stash needs to be restored, applies and deletes the stash, and then exits
+ * with the saved status code. */
 const popStash = '{ status=$?; echo "Toolchain > Restoring the stash"; rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git stash pop --quiet; exit $status; }';
 
 /* These commands restore unstaged files and patches. */
