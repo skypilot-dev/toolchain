@@ -59,11 +59,11 @@ To run a script, use `yarn run SCRIPT_NAME`.
 These are known issues in the current version. The fixes (except the fix for #5) will be included
 in a patch release in the near future.
 
-1. The initial commit to an empty repo will fail unless `--no-verify` is passed to the `git` command.
+1\. The initial commit to an empty repo will fail unless `--no-verify` is passed to the `git` command.
 
-2. All commits will fail (unless `--no-verify` is used) until the core configuration files are added
+2\. All commits will fail (unless `--no-verify` is used) until the core configuration files are added
   to the repo, because they are needed for the commit hooks to run, and unstaged work is stashed
-   durign a commit. (A good practice is to commit the configuration files immediately after the
+   during a commit. (A good practice is to commit the configuration files immediately after the
    initial commit.) These files are:
   - `.eslintrc.js`
   - `.huskyrc.js`
@@ -73,13 +73,13 @@ in a patch release in the near future.
   - `jest.standalone.js`
   - `tsconfig.json`
 
-3. All push operations will fail (unless `--no-verify` is used) until at least one test has been
+3\. All push operations will fail (unless `--no-verify` is used) until at least one test has been
   added, because Jest throws an error if it can't find any tests.
 
-4. All commits will fail (unless `--no-verify` is used) until the project has a `src` directory
+4\. All commits will fail (unless `--no-verify` is used) until the project has a `src` directory
   that contains at least one `.ts` file, because the type-checker throws an error when it can't
   find any source files.
 
-5. The tests that run automatically in the pre-push hook are always run against the current branch.
+5\. The tests that run automatically in the pre-push hook are always run against the current branch.
   If `git push` is used to push a branch other than the current branch, the test results will not
   be reliable.

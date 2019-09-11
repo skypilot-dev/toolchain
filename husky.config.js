@@ -38,7 +38,7 @@ const stashBeforeCommit = 'touch "${TMPDIR}/.HUSKY_POP_STASH"; git stash --inclu
  * with the saved status code. */
 const popStash = '{ status=$?; echo "Toolchain > Restoring the stash"; rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git stash pop --quiet; exit $status; }';
 
-/* These commands restore unstaged files and patches. */
+/* This command restores unstaged files and patches. */
 const popStashAfterSuccessfulCommit = 'test ! -f "${TMPDIR}/.HUSKY_POP_STASH" && echo "Toolchain > Skipping post-commit" && exit 0 || rm -f "${TMPDIR}/.HUSKY_POP_STASH"; git checkout stash --quiet -- .; git stash pop --quiet; git reset --quiet';
 
 /* -- Helper functions -- */
@@ -60,8 +60,8 @@ function groupAndJoin(commands) {
 }
 
 /* Use this sequence to wrap commits. If the commit is unsuccessful, the stash is simply popped.
- * If the commit is successful, staged files will have been moved to the commit, so restore only
- * the unstaged files & partials. */
+ * If the commit is successful, staged files will have been moved to the commit; the unstaged files
+ * and partials will be restored by `popStashAfterSuccessfulCommit` in the post-commit hook. */
 function stashWithRestoreOnFailure(command) {
   return '{ ' + joinCommands([stashBeforeCommit, command]) + '; }'
     + ' || { ' + popStash + '; }';
