@@ -42,7 +42,7 @@ These run automatically when the package is published:
 - building
 - type-generation
 
-In addition, these convenience scripts are added to `package.json` by `yarn run toolchain init`:
+In addition, these convenience scripts are added to `package.json` by `yarn toolchain init`:
 
 - `build`: Builds the project for distribution as an NPM package
 - `check-types`: Checks that all types in the project are valid

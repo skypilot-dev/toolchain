@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* -- Imports -- */
-import { copyFileSync, writeFileSync } from 'fs';
-import { resolve } from 'path';
+import { copyFileSync, existsSync, mkdirSync, writeFileSync } from 'fs';
+import { join, resolve } from 'path';
 
 import { updatePackageFile } from '../updatePackageFile';
 
@@ -65,10 +65,19 @@ const scripts: { key: string; value: string }[] = [
   { key: 'test', value: 'jest' },
 ];
 
+const srcDir = join(projectRootDir, 'src');
+const entryFilePath = join(srcDir, 'index.ts');
 const templateDir = resolve(__dirname, '../templates');
 
 
 /* -- Script -- */
+if (!existsSync(srcDir)) {
+  mkdirSync(srcDir);
+}
+if (!existsSync(entryFilePath)) {
+  writeFileSync(entryFilePath, 'export {}\n', )
+}
+
 templates.forEach(({ inFile, outFile = inFile }) => {
   copyFileSync(`${templateDir}/${inFile}`, `${projectRootDir}/${outFile}`);
   console.log(`  Created ${outFile}`);
