@@ -3,7 +3,7 @@ module.exports = {
     'js',
     'ts',
   ],
-  testRegex: '((src|__tests__)/.*.test.ts$)',
+  testRegex: '__tests__/.*.test.ts$',
   /* Define preprocessors */
   transform: {
     '^.+\\.ts$': 'babel-jest',
