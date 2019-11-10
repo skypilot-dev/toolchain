@@ -3,7 +3,7 @@
 import { copyFileSync, existsSync, mkdirSync, writeFileSync } from 'fs';
 import { join, resolve } from 'path';
 
-import { updatePackageFile } from '../updatePackageFile';
+import { updatePackageFile } from '../utils/updatePackageFile';
 
 const packageName = require('../../package.json').name;
 // const projectRootDir = resolve(__dirname, '../..');
