@@ -31,7 +31,7 @@ module.exports = {
 
     // Best practices
     '@typescript-eslint/explicit-function-return-type': ['warn', { allowExpressions: true }],
-    'no-unused-vars': ['error', { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true }],
+    '@typescript-eslint/no-unused-vars': ['error', { args: 'all', argsIgnorePattern: '^_', ignoreRestSiblings: true }],
 
     // Stylistic
     '@typescript-eslint/indent': ['warn', 2],
