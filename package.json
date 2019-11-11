@@ -31,8 +31,9 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rm -rf lib && yarn run copy-templates && babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
+    "build": "rm -rf lib && yarn run copy-templates && yarn run compile-ts",
     "check-types": "tsc",
+    "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
     "generate-typings": "tsc --project tsconfig.generate-typings.json",
     "copy-templates": "mkdir lib && cp -a src/templates lib/",
     "prepublishOnly": "yarn run check-types && yarn run test && yarn run build && yarn run generate-typings",
