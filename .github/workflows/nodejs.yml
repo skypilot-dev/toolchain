@@ -25,7 +25,7 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn run check-types
-          yarn test
           yarn run build
+          yarn test
         env:
           CI: true
