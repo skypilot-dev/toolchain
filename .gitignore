@@ -7,6 +7,9 @@
 *.suo
 *.sw?
 
+# ESLint
+.eslintcache
+
 # Local-only files
 .env.local
 .env.*.local

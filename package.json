@@ -20,8 +20,7 @@
     "/lib",
     "jest.config.js",
     "jest.integration.config.js",
-    "jest.standalone.config.js",
-    "lint-staged.config.js"
+    "jest.standalone.config.js"
   ],
   "keywords": [
     "eslint",
