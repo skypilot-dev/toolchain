@@ -28,7 +28,8 @@
     "jest",
     "typescript"
   ],
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rm -rf lib && yarn run copy-templates && babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
     "check-types": "tsc",
