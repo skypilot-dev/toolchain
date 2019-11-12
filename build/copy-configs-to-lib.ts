@@ -51,16 +51,17 @@ function insertPackageNameAndCopy(): void {
 
 /* Copy these files after replacing `./config` (the path in this package) with `<PATH-TO-PACKAGE>`,
  * which will be replaced, when `toolchain init` is run, with the path to the same file in the
- * consuming project. */
+ * consuming project.
+ * The files are marked with a `-template` suffix to indicate that they are not ready to use. */
 function insertPathVarAndCopy(): void {
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
-  const files = makeSourcesAndTargetsArray([
+  const files = [
     'babel.config.js',
     '.eslintrc.js',
     'tsconfig.generate-typings.json',
     'tsconfig.json',
-  ]);
+  ].map((sourceFile) => ({ sourceFile, targetFile: `${sourceFile}-template`}));
   const transformFn = makeReplaceFn([
     { searchFor: './configs/', replaceWith: '<PATH-TO-PACKAGE>/configs/' },
   ]);
