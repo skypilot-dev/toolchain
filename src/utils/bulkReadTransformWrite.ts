@@ -48,8 +48,8 @@ export function bulkReadTransformWrite(options: BulkRtwOptions): void {
     fs.mkdirSync(targetFileDir, { recursive: true }); // `recursive` requires Node v10+
 
     readTransformWrite(sourcePath, targetPath, transformFn);
-
     if (verbose) {
+      /* eslint-disable-next-line no-console */
       console.log(`  Created ${targetFile}`)
     }
   });
