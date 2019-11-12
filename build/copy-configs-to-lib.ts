@@ -6,6 +6,7 @@ import path from 'path';
 import { name as packageName } from '../package.json';
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from '../src/utils/bulkReadTransformWrite';
 import { makeReplaceFn } from '../src/utils/makeReplaceFn';
+import { CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from '../src/utils/constants';
 
 
 /* -- Helper functions -- */
@@ -21,16 +22,7 @@ function resolvePath(relativePath = ''): string {
 function copyFiles(): void {
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
-  const files = makeSourcesAndTargetsArray([
-    '.editorconfig',
-    '.eslintignore',
-    '.gitignore',
-    'jest.config.js',
-    'jest.integration.config.js',
-    'jest.standalone.config.js',
-    'configs/tsconfig.generate-typings.json',
-    'configs/tsconfig.main.json',
-  ]);
+  const files = makeSourcesAndTargetsArray(CONFIGS);
   bulkReadTransformWrite({ sourceDir, targetDir, files })
 }
 
@@ -38,10 +30,7 @@ function copyFiles(): void {
 function insertPackageNameAndCopy(): void {
   const sourceDir = resolvePath('templates');
   const targetDir = resolvePath('lib');
-  const files = [
-    '.huskyrc.js',
-    '.lintstagedrc.js',
-  ].map((file) => ({ sourceFile: file }));
+  const files = CONFIGURATOR_CONFIGS.map((file) => ({ sourceFile: file }));
   const replacements = [
     { searchFor: '<PACKAGE-NAME>', replaceWith: packageName },
   ];
@@ -56,12 +45,7 @@ function insertPackageNameAndCopy(): void {
 function insertPathVarAndCopy(): void {
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
-  const files = [
-    'babel.config.js',
-    '.eslintrc.js',
-    'tsconfig.generate-typings.json',
-    'tsconfig.json',
-  ].map((sourceFile) => ({ sourceFile, targetFile: `${sourceFile}-template`}));
+  const files = CONFIG_TEMPLATES.map((sourceFile) => ({ sourceFile, targetFile: `${sourceFile}-template`}));
   const transformFn = makeReplaceFn([
     { searchFor: './configs/', replaceWith: '<PATH-TO-PACKAGE>/configs/' },
   ]);
