@@ -13,6 +13,7 @@ export interface BulkRtwOptions {
   targetDir: string;
   sourcesAndTargets: SourceAndTarget[];
   transformFn?: TransformFn;
+  verbose?: boolean;
 }
 
 export interface SourceAndTarget {
@@ -30,7 +31,7 @@ export function makeSourcesAndTargetsArray(sourceFiles: string[]): SourceAndTarg
 
 /* Copy files from sourcePath to destination, optionally applying a transform function */
 export function bulkReadTransformWrite(options: BulkRtwOptions): void {
-  const { sourceDir, targetDir, sourcesAndTargets, transformFn } = options;
+  const { sourceDir, targetDir, sourcesAndTargets, transformFn, verbose } = options;
 
   if (sourcesAndTargets.length < 1) {
     return;
@@ -47,5 +48,9 @@ export function bulkReadTransformWrite(options: BulkRtwOptions): void {
     fs.mkdirSync(targetFileDir, { recursive: true }); // `recursive` requires Node v10+
 
     readTransformWrite(sourcePath, targetPath, transformFn);
+
+    if (verbose) {
+      console.log(`  Created ${targetFile}`)
+    }
   });
 }
