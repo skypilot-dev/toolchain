@@ -25,6 +25,7 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn run check-types
+          yarn run lint
           yarn run build
           yarn test
         env:

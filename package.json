@@ -36,7 +36,8 @@
     "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
     "copy-configs-to-lib": "babel-node --extensions .ts build/copy-configs-to-lib.ts",
     "generate-typings": "tsc --project tsconfig.generate-typings.json",
-    "prepublishOnly": "yarn run check-types && yarn run test && yarn run build && yarn run generate-typings",
+    "lint": "eslint --quiet *.js **/*.ts",
+    "prepublishOnly": "yarn run lint && yarn run check-types && yarn run test && yarn run build && yarn run generate-typings",
     "test": "jest --config jest.standalone.config.js"
   },
   "dependencies": {
