@@ -18,16 +18,16 @@ function resolvePath(relativePath = ''): string {
 }
 
 /* -- Main functions -- */
-/* Copy these files to the distribution bundle. */
-function copyFiles(): void {
+/* Copy these files from this project to `lib/` (the distribution bundle). */
+function copyToLib(): void {
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
   const files = makeSourcesAndTargetsArray(CONFIGS);
   bulkReadTransformWrite({ sourceDir, targetDir, files })
 }
 
-/* Copy these files after replacing `<PACKAGE-NAME>` with the name of this package. */
-function insertPackageNameAndCopy(): void {
+/* Copy these files to `lib/` after replacing `<PACKAGE-NAME>` with the name of this package. */
+function insertPackageNameAndCopyToLib(): void {
   const sourceDir = resolvePath('templates');
   const targetDir = resolvePath('lib');
   const files = CONFIGURATOR_CONFIGS.map((file) => ({ sourceFile: file }));
@@ -38,11 +38,11 @@ function insertPackageNameAndCopy(): void {
   bulkReadTransformWrite({ sourceDir, targetDir, files, transformFn })
 }
 
-/* Copy these files after replacing `./config` (the path in this package) with `<PATH-TO-PACKAGE>`,
- * which will be replaced, when `toolchain init` is run, with the path to the same file in the
- * consuming project.
- * The files are marked with a `-template` suffix to indicate that they are not ready to use. */
-function insertPathVarAndCopy(): void {
+/* Copy these files to `lib/` after replacing `./configs/` (the path in this package) with
+   `<PATH-TO-PACKAGE>/configs/`. When `toolchain init` is run, that string will be replaced with
+   the appropriate path to this package (under `node_modules/`) in the consuming project.
+   The files are marked with a `-template` suffix to indicate that they are not ready to use. */
+function insertPathVarAndCopyToLib(): void {
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
   const files = CONFIG_TEMPLATES.map((sourceFile) => ({ sourceFile, targetFile: `${sourceFile}-template`}));
@@ -52,6 +52,6 @@ function insertPathVarAndCopy(): void {
   bulkReadTransformWrite({ sourceDir, targetDir, files, transformFn })
 }
 
-copyFiles();
-insertPackageNameAndCopy();
-insertPathVarAndCopy();
+copyToLib();
+insertPackageNameAndCopyToLib();
+insertPathVarAndCopyToLib();
