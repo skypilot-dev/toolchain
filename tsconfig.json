@@ -1,4 +1,3 @@
-// Adapted from https://github.com/typescript-eslint/typescript-eslint/blob/master/tsconfig.base.json
 {
   "extends": "./configs/tsconfig.main.json",
   "include": [

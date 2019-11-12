@@ -6,17 +6,17 @@ Toolchain for Node projects:
 - TypeScript
 - Lint-Staged (using Husky)
 
-With precommit hooks to enforce linting, type-checking, and testing.
+With a pre-commit hook to enforce linting on commit.
 
 ### What does it do?
 Toolchain installs all dependencies & configurations needed to start creating Node projects
-using TypeScript. Linting and testing are pre-configured.
+using TypeScript. Compilation, typing, linting, and testing are pre-configured.
 
 
 ### How to install 
 ```
 $ yarn add @skypilot/toolchain
-$ yarn run toolchain init
+$ yarn toolchain init
 $ node node_modules/husky/husky.js install
 ```
 
@@ -46,6 +46,7 @@ In addition, these convenience scripts are added to `package.json` by `yarn tool
 
 - `build`: Builds the project for distribution as an NPM package
 - `check-types`: Checks that all types in the project are valid
+- `generate-typings`: Generates typings for the distribution
 - `test`: An alias for `test:standalone`
 - `test:all`: Run all tests using Jest
 - `test:integration`: Run all integration tests (tests that rely on external services) using Jest
@@ -73,13 +74,6 @@ in a patch release in the near future.
   - `jest.standalone.js`
   - `tsconfig.json`
 
-3\. All push operations will fail (unless `--no-verify` is used) until at least one test has been
-  added, because Jest throws an error if it can't find any tests.
-
-4\. All commits will fail (unless `--no-verify` is used) until the project has a `src` directory
+3\. All commits will fail (unless `--no-verify` is used) until the project has a `src` directory
   that contains at least one `.ts` file, because the type-checker throws an error when it can't
   find any source files.
-
-5\. The tests that run automatically in the pre-push hook are always run against the current branch.
-  If `git push` is used to push a branch other than the current branch, the test results will not
-  be reliable.

@@ -1,4 +1,4 @@
-import { LintStagedConfig, lintStagedConfigurator } from '../configurators/lintStagedConfigurator';
+import { LintStagedConfig, lintStagedConfigurator } from '../lintStagedConfigurator';
 
 /* -- Constants -- */
 export const defaultConfig = {

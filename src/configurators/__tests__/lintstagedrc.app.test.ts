@@ -1,8 +1,8 @@
 /* Import the actual config used by this project. */
-import config from '../../.lintstagedrc';
+import config from '../../../.lintstagedrc';
 
 /* Import the default config created by this project as part of the distributable toolchain. */
-import { defaultConfig } from './createLintStagedConfig.unit.test';
+import { defaultConfig } from './lintStagedConfigurator.unit.test';
 
 /* TODO: Test whether the compiled code exists at `lib/lint-staged-config.js` */
 describe('The Lint Staged config for this project', () => {

@@ -1,5 +1,5 @@
 /* -- Imports -- */
-import { HuskyConfig, huskyConfigurator } from '../configurators/huskyConfigurator';
+import { HuskyConfig, huskyConfigurator } from '../huskyConfigurator';
 
 
 /* -- Constants -- */
