@@ -6,7 +6,7 @@ import path from 'path';
 import { name as packageName } from '../package.json';
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from '../src/utils/bulkReadTransformWrite';
 import { makeReplaceFn } from '../src/utils/makeReplaceFn';
-import { CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from '../src/utils/constants';
+import { COPIED_CONFIGS, REFERENCED_CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from '../src/utils/constants';
 
 
 /* -- Helper functions -- */
@@ -22,7 +22,7 @@ function resolvePath(relativePath = ''): string {
 function copyToLib(): void {
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
-  const sourcesAndTargets = makeSourcesAndTargetsArray(CONFIGS);
+  const sourcesAndTargets = makeSourcesAndTargetsArray([...COPIED_CONFIGS, ...REFERENCED_CONFIGS]);
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets })
 }
 

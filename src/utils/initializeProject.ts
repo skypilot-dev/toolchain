@@ -4,7 +4,7 @@
 import path from 'path';
 
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from './bulkReadTransformWrite';
-import { CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from './constants';
+import { COPIED_CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from './constants';
 import { makeReplaceFn } from './makeReplaceFn';
 import { parsePathToPackage } from './parsePathToPackage';
 import { updatePackageFile } from './updatePackageFile';
@@ -60,7 +60,7 @@ function addScripts(): void {
 export function copyToProject({
   sourceDir = packageDir,
   targetDir = projectDir,
-  files = [...CONFIGS, ...CONFIGURATOR_CONFIGS],
+  files = [...COPIED_CONFIGS, ...CONFIGURATOR_CONFIGS],
 }): void {
   const sourcesAndTargets = makeSourcesAndTargetsArray(files);
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, verbose });

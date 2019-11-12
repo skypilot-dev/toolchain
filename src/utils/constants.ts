@@ -1,11 +1,16 @@
 /* These configs are direct copies of the configs used in Toolchain itself. */
-export const CONFIGS: string[] = [
+export const COPIED_CONFIGS: string[] = [
   '.editorconfig',
   '.eslintignore',
   '.gitignore',
   'jest.config.js',
   'jest.integration.config.js',
   'jest.standalone.config.js',
+];
+
+/* These configs are stored in the package (`node_modules/ORG/PACKAGE/lib`) and referenced by
+   other configs. */
+export const REFERENCED_CONFIGS: string[] = [
   'configs/babel.js',
   'configs/eslint.js',
   'configs/tsconfig.generate-typings.json',
