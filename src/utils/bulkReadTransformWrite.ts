@@ -11,7 +11,7 @@ type TransformFn = (rawTemplate: string) => string;
 export interface BulkRtwOptions {
   sourceDir: string;
   targetDir: string;
-  files: SourceAndTarget[];
+  sourcesAndTargets: SourceAndTarget[];
   transformFn?: TransformFn;
 }
 
@@ -30,14 +30,14 @@ export function makeSourcesAndTargetsArray(sourceFiles: string[]): SourceAndTarg
 
 /* Copy files from sourcePath to destination, optionally applying a transform function */
 export function bulkReadTransformWrite(options: BulkRtwOptions): void {
-  const { sourceDir, targetDir, files, transformFn } = options;
+  const { sourceDir, targetDir, sourcesAndTargets, transformFn } = options;
 
-  if (files.length < 1) {
+  if (sourcesAndTargets.length < 1) {
     return;
   }
 
   /* Copy each template */
-  files.forEach(({ sourceFile, targetFile = sourceFile }) => {
+  sourcesAndTargets.forEach(({ sourceFile, targetFile = sourceFile }) => {
     const sourcePath = path.join(sourceDir, sourceFile);
     const targetPath = path.join(targetDir, targetFile);
 

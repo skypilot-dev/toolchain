@@ -22,20 +22,20 @@ function resolvePath(relativePath = ''): string {
 function copyToLib(): void {
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
-  const files = makeSourcesAndTargetsArray(CONFIGS);
-  bulkReadTransformWrite({ sourceDir, targetDir, files })
+  const sourcesAndTargets = makeSourcesAndTargetsArray(CONFIGS);
+  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets })
 }
 
 /* Copy these files to `lib/` after replacing `<PACKAGE-NAME>` with the name of this package. */
 function insertPackageNameAndCopyToLib(): void {
   const sourceDir = resolvePath('templates');
   const targetDir = resolvePath('lib');
-  const files = CONFIGURATOR_CONFIGS.map((file) => ({ sourceFile: file }));
+  const sourcesAndTargets = CONFIGURATOR_CONFIGS.map((file) => ({ sourceFile: file }));
   const replacements = [
     { searchFor: '<PACKAGE-NAME>', replaceWith: packageName },
   ];
   const transformFn = makeReplaceFn(replacements);
-  bulkReadTransformWrite({ sourceDir, targetDir, files, transformFn })
+  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, transformFn })
 }
 
 /* Copy these files to `lib/` after replacing `./configs/` (the path in this package) with
@@ -45,11 +45,11 @@ function insertPackageNameAndCopyToLib(): void {
 function insertPathVarAndCopyToLib(): void {
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
-  const files = CONFIG_TEMPLATES.map((sourceFile) => ({ sourceFile, targetFile: `${sourceFile}-template`}));
+  const sourcesAndTargets = CONFIG_TEMPLATES.map((sourceFile) => ({ sourceFile, targetFile: `${sourceFile}-template`}));
   const transformFn = makeReplaceFn([
     { searchFor: './configs/', replaceWith: '<PATH-TO-PACKAGE>/configs/' },
   ]);
-  bulkReadTransformWrite({ sourceDir, targetDir, files, transformFn })
+  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, transformFn })
 }
 
 copyToLib();

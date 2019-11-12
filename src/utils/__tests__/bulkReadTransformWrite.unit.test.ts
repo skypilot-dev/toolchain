@@ -19,7 +19,7 @@ describe('readTransformWriteTemplate()', () => {
     const bulkRtwOptions: BulkRtwOptions = {
       sourceDir,
       targetDir,
-      files: [
+      sourcesAndTargets: [
         { sourceFile: 'bulkRtw-source1.js', targetFile: 'bulkRtw-target1.js' },
         { sourceFile: 'bulkRtw-source-and-target.js' },
       ],
@@ -27,7 +27,7 @@ describe('readTransformWriteTemplate()', () => {
     };
 
     /* Create the source files. */
-    bulkRtwOptions.files.forEach(({ sourceFile }) => {
+    bulkRtwOptions.sourcesAndTargets.forEach(({ sourceFile }) => {
       const content = 'Package: <PACKAGE-NAME>';
       const sourcePath = path.join(sourceDir, sourceFile);
       writeFileSync(sourcePath, content);
@@ -35,7 +35,7 @@ describe('readTransformWriteTemplate()', () => {
 
     bulkReadTransformWrite(bulkRtwOptions);
     it('should write transformed content to the target files', () => {
-      bulkRtwOptions.files.forEach(({ sourceFile, targetFile = sourceFile }) => {
+      bulkRtwOptions.sourcesAndTargets.forEach(({ sourceFile, targetFile = sourceFile }) => {
         const targetPath = path.join(targetDir, targetFile);
         const content = readFileSync(targetPath, 'utf-8');
         expect(content).toBe('Package: @org/package');
@@ -43,21 +43,21 @@ describe('readTransformWriteTemplate()', () => {
     });
 
     it('when a targetFile is specified, should use it as the target name', () => {
-      const renamedTemplateDef = bulkRtwOptions.files[0];
+      const renamedTemplateDef = bulkRtwOptions.sourcesAndTargets[0];
       const targetPath = path.join(targetDir, renamedTemplateDef.targetFile as string);
       const targetExists = existsSync(targetPath);
       expect(targetExists).toBe(true);
     });
 
     it('when no targetFile is specified, should use the sourceFile as the target name', () => {
-      const sameNameTemplateDef = bulkRtwOptions.files[1];
+      const sameNameTemplateDef = bulkRtwOptions.sourcesAndTargets[1];
       const targetPath = path.join(targetDir, sameNameTemplateDef.sourceFile);
       const targetExists = existsSync(targetPath);
       expect(targetExists).toBe(true);
     });
 
     it('when no targetFile is specified, should use the sourceFile as the target name', () => {
-      const sameNameTemplateDef = bulkRtwOptions.files[1];
+      const sameNameTemplateDef = bulkRtwOptions.sourcesAndTargets[1];
       const targetPath = path.join(targetDir, sameNameTemplateDef.sourceFile);
       const targetExists = existsSync(targetPath);
       expect(targetExists).toBe(true);
@@ -68,7 +68,7 @@ describe('readTransformWriteTemplate()', () => {
     const bulkRtwOptions: BulkRtwOptions = {
       sourceDir,
       targetDir,
-      files: [
+      sourcesAndTargets: [
         { sourceFile: 'bulkRtw-source2.js', targetFile: 'bulkRtw-target2.js' },
         { sourceFile: 'bulkRtw-source-and-target2.js' },
       ],
@@ -76,14 +76,14 @@ describe('readTransformWriteTemplate()', () => {
     const staticContent = 'Static content';
 
     /* Create the source files. */
-    bulkRtwOptions.files.forEach(({ sourceFile }) => {
+    bulkRtwOptions.sourcesAndTargets.forEach(({ sourceFile }) => {
       const sourcePath = path.join(sourceDir, sourceFile);
       writeFileSync(sourcePath, staticContent);
     });
 
     bulkReadTransformWrite(bulkRtwOptions);
     it('should copy each file without changing it', () => {
-      bulkRtwOptions.files.forEach(({ sourceFile, targetFile = sourceFile }) => {
+      bulkRtwOptions.sourcesAndTargets.forEach(({ sourceFile, targetFile = sourceFile }) => {
         const targetPath = path.join(targetDir, targetFile);
         const content = readFileSync(targetPath, 'utf-8');
         expect(content).toBe(staticContent);
