@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+import fs from 'fs';
 /* -- Imports -- */
 import path from 'path';
 
@@ -24,6 +25,28 @@ interface InitializeProjectOptions {
 /* -- Helper functions -- */
 export function getProjectRootDir(): string {
   return path.resolve(__dirname).split('/node_modules')[0];
+}
+
+function isTsFileName(name: string): boolean {
+  return name.slice(-3) === '.ts';
+}
+
+export function dirHasTsFile(dir: string): boolean {
+  /* Get all entries in the directory. */
+  const directoryEntries = fs.readdirSync(dir, { withFileTypes: true }); // requires Node v10+
+  if (directoryEntries.some((dirent) => dirent.isFile() && isTsFileName(dirent.name))) {
+    return true
+  }
+
+  const subdirs = directoryEntries.filter((dirent) => dirent.isDirectory());
+  for (let i = 0; i < subdirs.length; i += 1) {
+    const dirent = subdirs[i];
+    const subDir = path.resolve(dir, dirent.name);
+    if (dirHasTsFile(subDir)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /* -- Constants -- */

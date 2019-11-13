@@ -3,7 +3,7 @@ import path from 'path';
 
 import { TMP_DIR } from '../../../test/config';
 import { COPIED_CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from '../constants';
-import { copyToProject, injectPathAndCopyToProject } from '../initializeProject';
+import { copyToProject, dirHasTsFile, injectPathAndCopyToProject } from '../initializeProject';
 
 
 /* -- Helper functions -- */
@@ -25,7 +25,7 @@ function recreateDir(dir: string): void {
   if(fs.existsSync(dir)) {
     rmdirSyncRecursive(dir);
   }
-  fs.mkdirSync(dir);
+  fs.mkdirSync(dir, { recursive: true });
 }
 
 const libDir = path.resolve(__dirname, '../../../lib');
@@ -48,6 +48,49 @@ describe('copyToProject()', () => {
       const filePath = path.resolve(targetDir, file);
       expect(fs.existsSync(filePath)).toBe(true);
     });
+  });
+});
+
+describe('dirHasTsFile(:dir)', () => {
+  it('should return false if the dir contains no files with the `.ts` extension', () => {
+    const targetDir = path.join(TMP_DIR, 'dirHasTsFile-test');
+    recreateDir(targetDir);
+
+    const hasTsFile = dirHasTsFile(targetDir);
+    expect(hasTsFile).toBe(false);
+  });
+
+  it('should return true if the dir contains a file with the `.ts` extension', () => {
+    const targetDir = path.join(TMP_DIR, 'dirHasTsFile-test');
+    recreateDir(targetDir);
+
+    /* Create a `.ts` file in the directory. */
+    const tsFile = path.join(targetDir, 'file.ts');
+    fs.writeFileSync(tsFile, 'export {}', { encoding: 'utf8'});
+
+    const hasTsFile = dirHasTsFile(targetDir);
+    expect(hasTsFile).toBe(true);
+  });
+
+  it('should return true if a subdir contains a file with the `.ts` extension', () => {
+    /* Create a directory for the test. */
+    const targetDir = path.join(TMP_DIR, 'dirHasTsFile-test');
+    recreateDir(targetDir);
+
+    /* Create a sub-sub-directory. */
+    const subDir = path.join(targetDir, 'subdir', 'subsubdir');
+    fs.mkdirSync(subDir, { recursive: true });
+
+    /* Create a non `.ts` file in the sub-sub-directory. */
+    const nonTsFile = path.join(subDir, 'file.js');
+    fs.writeFileSync(nonTsFile, 'export {}', { encoding: 'utf8'});
+
+    /* Create a `.ts` file in the sub-sub-directory. */
+    const tsFile = path.join(subDir, 'file.ts');
+    fs.writeFileSync(tsFile, 'export {}', { encoding: 'utf8'});
+
+    const hasTsFile = dirHasTsFile(targetDir);
+    expect(hasTsFile).toBe(true);
   });
 });
 
