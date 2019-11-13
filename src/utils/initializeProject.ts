@@ -30,7 +30,7 @@ export function getProjectRootDir(): string {
 
 /* -- Constants -- */
 const scripts: { key: string; value: string }[] = [
-  { key: 'build', value: 'rm -rf lib && yarn run copy-templates && yarn run compile-ts && yarn run generate-typings' },
+  { key: 'build', value: 'rm -rf lib && yarn run compile-ts && yarn run generate-typings' },
   { key: 'check-types', value: 'tsc' },
   { key: 'compile-ts', value: 'babel ./src --out-dir ./lib --extensions .ts --ignore \'**/*.test.ts\''},
   { key: 'generate-typings', value: 'tsc --project tsconfig.generate-typings.json' },
