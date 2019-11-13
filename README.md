@@ -29,12 +29,8 @@ post-install script. A friendlier situation is in the works.
 
 ### How to use
 
-These run automatically on each commit:
-- type-checking
-- linting
-
-These run automatically when a commit is pushed to a remote:
-- testing
+The linter runs automatically on each commit. Branches beginning with `wip-` or ending with `-wip`
+are not linted.
 
 These run automatically when the package is published:
 - type-checking
@@ -55,25 +51,6 @@ on external services) using Jest
 
 To run a script, use `yarn run SCRIPT_NAME`.
 
-### Known issues
+### Coming soon
 
-These are known issues in the current version. The fixes (except the fix for #5) will be included
-in a patch release in the near future.
-
-1\. The initial commit to an empty repo will fail unless `--no-verify` is passed to the `git` command.
-
-2\. All commits will fail (unless `--no-verify` is used) until the core configuration files are added
-  to the repo, because they are needed for the commit hooks to run, and unstaged work is stashed
-   during a commit. (A good practice is to commit the configuration files immediately after the
-   initial commit.) These files are:
-  - `.eslintrc.js`
-  - `.huskyrc.js`
-  - `.lintstagedrc.js`
-  - `babel.config.js`
-  - `jest.config.js`
-  - `jest.standalone.js`
-  - `tsconfig.json`
-
-3\. All commits will fail (unless `--no-verify` is used) until the project has a `src` directory
-  that contains at least one `.ts` file, because the type-checker throws an error when it can't
-  find any source files.
+- Toolchain will auto-configure a project to support a CI workflow using GitHub actions
