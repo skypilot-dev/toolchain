@@ -69,7 +69,7 @@ export function copyToProject({
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, verbose });
 }
 
-/* If the project doesn't create a TypeScript file, create one at `src/index.ts` to allow
+/* If the project doesn't contain a TypeScript file, create one at `src/index.ts` to allow
    type-checking to pass. */
 export function ensureTsFileExists({
   targetDir = path.join(projectDir, 'src'),
@@ -89,6 +89,43 @@ export function ensureTsFileExists({
   fs.writeFileSync(target, minimalTsModule, { encoding: 'utf8' });
   if (verbose) {
     console.log(`  Created a TypeScript file at 'src/${targetFile}' to prevent type-checking from failing`);
+  }
+}
+
+
+/* If the project doesn't contain a test, create one at `src/__tests__/index.app.test.ts` to allow
+   testing to pass. */
+export function ensureTestExists({
+  targetDir = path.join(projectDir, 'src'),
+  targetFile = 'index.app.test.ts',
+  verbose = false,
+}): void {
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync((targetDir));
+  } else {
+    /* FIXME: The check here does not mirror the matching pattern used by Jest, which looks for
+       *.test.ts files looks only in `__tests__` directories. */
+    if (dirHasMatchingFile(targetDir, /\.test\.[jt]s$/)) {
+      return;
+    }
+  }
+  const testDir = path.join(targetDir, '__tests__');
+  if (!fs.existsSync(testDir)) {
+    fs.mkdirSync((testDir));
+  }
+
+  const target = path.join(testDir, targetFile);
+  const minimalTest = `import * as module from '../index';
+
+describe('index.ts', () => {
+  it('should export a module', () => {
+    expect(typeof module).toBe('object');
+  });
+});
+`;
+  fs.writeFileSync(target, minimalTest, { encoding: 'utf8' });
+  if (verbose) {
+    console.log(`  Created a test at 'src/__tests__/${targetFile}' in order to have at least one passing test`);
   }
 }
 
@@ -126,6 +163,9 @@ export function initializeProject(options: InitializeProjectOptions = {}): void 
 
   console.log('Toolchain > Looking for source files...');
   ensureTsFileExists({ verbose: true });
+
+  console.log('Toolchain > Looking for tests...');
+  ensureTestExists({ verbose: true });
 
   console.log('Toolchain > Adding values to package.json...');
   addScripts(verbose);
