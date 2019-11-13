@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+import fs from 'fs';
 /* -- Imports -- */
 import path from 'path';
 
@@ -24,6 +25,28 @@ interface InitializeProjectOptions {
 /* -- Helper functions -- */
 export function getProjectRootDir(): string {
   return path.resolve(__dirname).split('/node_modules')[0];
+}
+
+function isTsFileName(name: string): boolean {
+  return name.slice(-3) === '.ts';
+}
+
+export function dirHasTsFile(dir: string): boolean {
+  /* Get all entries in the directory. */
+  const directoryEntries = fs.readdirSync(dir, { withFileTypes: true }); // requires Node v10+
+  if (directoryEntries.some((dirent) => dirent.isFile() && isTsFileName(dirent.name))) {
+    return true
+  }
+
+  const subdirs = directoryEntries.filter((dirent) => dirent.isDirectory());
+  for (let i = 0; i < subdirs.length; i += 1) {
+    const dirent = subdirs[i];
+    const subDir = path.resolve(dir, dirent.name);
+    if (dirHasTsFile(subDir)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /* -- Constants -- */
@@ -67,6 +90,30 @@ export function copyToProject({
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, verbose });
 }
 
+/* If the project doesn't create a TypeScript file, create one at `src/index.ts` to allow
+   type-checking to pass. */
+export function ensureTsFileExists({
+  targetDir = path.join(projectDir, 'src'),
+  targetFile = 'index.ts',
+  verbose = false,
+}): void {
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync((targetDir));
+  } else {
+    if (dirHasTsFile(targetDir)) {
+      return;
+    }
+  }
+  const target = path.join(targetDir, targetFile);
+  /* This is the minimal content needed to create a valid module in TypeScript. */
+  const minimalTsModule = 'export {}\n';
+  fs.writeFileSync(target, minimalTsModule, { encoding: 'utf8' });
+  if (verbose) {
+    console.log(`  Created a TypeScript file at 'src/${targetFile}' to prevent type-checking from failing`);
+  }
+}
+
+
 /* Remove the `-template` suffix from these files, replace `<PATH-TO-PACKAGE>` with the path to
    this package (under `node_modules/`), then copy them to the project. */
 export function injectPathAndCopyToProject({
@@ -97,6 +144,9 @@ export function initializeProject(options: InitializeProjectOptions = {}): void 
   console.log('Toolchain > Creating configuration files...');
   copyToProject({ sourceDir, targetDir, verbose });
   injectPathAndCopyToProject({ sourceDir, targetDir, verbose });
+
+  console.log('Toolchain > Looking for source files...');
+  ensureTsFileExists({ verbose: true });
 
   console.log('Toolchain > Adding values to package.json...');
   addScripts(verbose);
