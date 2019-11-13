@@ -1,16 +1,16 @@
 {
   "name": "@skypilot/toolchain",
-  "version": "0.4.11-alpha",
+  "version": "0.4.12-alpha",
   "description": "Toolchain for Node projects",
   "author": "William Thorsen",
   "license": "UNLICENSED",
-  "homepage": "https://github.com/skypilot/toolchain#readme",
+  "homepage": "https://github.com/skypilotcc/toolchain#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skypilot/toolchain.git"
+    "url": "git+https://github.com/skypilotcc/toolchain.git"
   },
   "bugs": {
-    "url": "https://github.com/skypilot/toolchain/issues"
+    "url": "https://github.com/skypilotcc/toolchain/issues"
   },
   "bin": {
     "toolchain": "./lib/scripts/init.js"
