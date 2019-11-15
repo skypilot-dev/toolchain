@@ -10,6 +10,9 @@ jobs:
   build:
     name: Build, lint & test
 
+    env:
+      CI: true
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,12 +27,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: yarn install, build, and test
-        run: |
-          yarn install --frozen-lockfile
-          yarn run check-types
-          yarn run lint
-          yarn run build
-          yarn test
-        env:
-          CI: true
+      - name: Install
+        run: yarn install --frozen-lockfile --production=false
+      - name: Check types
+        run: yarn run check-types
+      - name: Lint
+        run: yarn run lint
+      - name: Build
+        run: yarn run build
+      - name: Test
+        run: yarn test
