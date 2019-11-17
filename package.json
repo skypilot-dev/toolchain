@@ -31,13 +31,14 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "all-ci-checks": "yarn run check-types && yarn run lint --quiet && yarn run build && yarn test",
     "build": "rm -rf lib && yarn run copy-configs-to-lib && yarn run compile-ts",
     "check-types": "tsc",
     "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
     "copy-configs-to-lib": "babel-node --extensions .ts build/copy-configs-to-lib.ts",
     "generate-typings": "tsc --project tsconfig.generate-typings.json",
     "lint": "eslint --cache '**/*.{js,ts}'",
-    "prepublishOnly": "yarn run lint && yarn run check-types && yarn run test && yarn run build && yarn run generate-typings",
+    "prepublishOnly": "yarn run check-types && yarn run lint --quiet && yarn run build && yarn test && yarn run generate-typings",
     "test": "jest --config jest.standalone.config.js"
   },
   "dependencies": {
