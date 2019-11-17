@@ -40,9 +40,12 @@ These run automatically when the package is published:
 
 In addition, these convenience scripts are added to `package.json` by `yarn toolchain init`:
 
+- `all-ci-checks`: Locally run the status checks that are run by the continuous-integration workflow
 - `build`: Builds the project for distribution as an NPM package
 - `check-types`: Checks that all types in the project are valid
 - `generate-typings`: Generates typings for the distribution
+- `lint`: Run the linter
+- `prepublishOnly`: Run all checks and build steps in preparation for publication to NPM
 - `test`: An alias for `test:standalone`
 - `test:all`: Run all tests using Jest
 - `test:integration`: Run all integration tests (tests that rely on external services) using Jest
