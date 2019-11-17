@@ -34,6 +34,7 @@ const scripts: { key: string; value: string }[] = [
   { key: 'check-types', value: 'tsc' },
   { key: 'compile-ts', value: 'babel ./src --out-dir ./lib --extensions .ts --ignore \'**/*.test.ts\''},
   { key: 'generate-typings', value: 'tsc --project tsconfig.generate-typings.json' },
+  { key: 'lint', value: "eslint --cache '**/*.{js,ts}'" },
   { key: 'prepublishOnly', value: 'yarn run check-types && yarn test && yarn run build' },
   { key: 'test', value: 'jest' },
 ];
