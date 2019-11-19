@@ -1,6 +1,6 @@
 {
   "name": "@skypilot/toolchain",
-  "version": "0.4.16-alpha",
+  "version": "0.4.17-alpha",
   "description": "Toolchain for Node projects",
   "author": "William Thorsen",
   "license": "ISC",
