@@ -1,3 +1,13 @@
+## <small>0.4.19 (2019-11-21)</small>
+
+* task: Tweak commit message used for releases ([8f5db52](https://github.com/skypilotcc/toolchain/commit/8f5db52))
+* Add author's email to package file ([5c58fb4](https://github.com/skypilotcc/toolchain/commit/5c58fb4))
+* Add convenience scripts for code-quality and CI checks ([f543f31](https://github.com/skypilotcc/toolchain/commit/f543f31))
+* fix: Package-file entries made during init are created under "key" key ([70e94e6](https://github.com/skypilotcc/toolchain/commit/70e94e6))
+* feat: New 'all-cq-checks' convenience script runs code-quality checks ([1a80aac](https://github.com/skypilotcc/toolchain/commit/1a80aac))
+
+
+
 ## <small>0.4.18 (2019-11-21)</small>
 
 * task: Add ISC license ([c1d0e79](https://github.com/skypilotcc/toolchain/commit/c1d0e79))

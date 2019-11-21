@@ -2,14 +2,14 @@
   "name": "@skypilot/toolchain",
   "description": "Toolchain for Node projects",
   "homepage": "https://github.com/skypilotcc/toolchain#readme",
-  "version": "0.4.18",
+  "version": "0.4.19",
   "main": "lib/index.js",
   "bin": {
     "toolchain": "./lib/scripts/init.js"
   },
   "author": {
-    "name": "William Thorsen",
-    "email": "wthorsen@skypilot.dev"
+    "email": "wthorsen@skypilot.dev",
+    "name": "William Thorsen"
   },
   "repository": {
     "type": "git",
@@ -70,9 +70,9 @@
     "build": "rm -rf lib && yarn run copy-configs-to-lib && yarn run compile-ts",
     "check-types": "tsc",
     "ci": "yarn run all-ci-checks",
-    "cq": "yarn run all-cq-checks",
     "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
     "copy-configs-to-lib": "babel-node --extensions .ts build/copy-configs-to-lib.ts",
+    "cq": "yarn run all-cq-checks",
     "generate-typings": "tsc --project tsconfig.generate-typings.json",
     "lint": "eslint --cache '**/*.{js,ts}'",
     "prepublishOnly": "yarn run check-types && yarn run lint --quiet && yarn run build && yarn test && yarn run generate-typings",
