@@ -59,9 +59,10 @@ const relativePathToPackage = parsePathToPackage(packageDir);
 
 /* Add package-file entries (other than scripts) */
 function addPackageFileEntries(verbose = false): void {
+  /* Create a <key>:<value> object and pass it with `options` to the update function */
   packageFileEntries.forEach((packageFileEntry) => {
     const { key, value, options = {} } = packageFileEntry;
-    const data: JsonObject = { key, value };
+    const data: JsonObject = { [key]: value };
     updatePackageFile(data, options);
     if (verbose) {
       console.log(`  Added "${key}": ${JSON.stringify(value)} }`);
