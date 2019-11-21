@@ -8,7 +8,8 @@
     "toolchain": "./lib/scripts/init.js"
   },
   "author": {
-    "name": "William Thorsen"
+    "name": "William Thorsen",
+    "email": "wthorsen@skypilot.dev"
   },
   "repository": {
     "type": "git",
