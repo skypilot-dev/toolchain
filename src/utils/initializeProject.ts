@@ -39,7 +39,8 @@ const packageFileEntries: PackageFileEntry[] = [
 ];
 
 const scripts: ScriptEntry[] = [
-  { key: 'all-ci-checks', value: 'yarn run check-types && yarn run lint --quiet && yarn test && yarn run build' },
+  { key: 'all-ci-checks', value: 'yarn run all-cq-checks && yarn run build' },
+  { key: 'all-cq-checks', value: 'yarn run check-types && yarn run lint --quiet && yarn test' },
   { key: 'build', value: 'rm -rf lib && yarn run compile-ts' },
   { key: 'check-types', value: 'tsc' },
   { key: 'compile-ts', value: 'babel ./src --out-dir ./lib --extensions .ts --ignore \'**/*.test.ts\''},
