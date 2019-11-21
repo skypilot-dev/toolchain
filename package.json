@@ -1,10 +1,15 @@
 {
   "name": "@skypilot/toolchain",
-  "version": "0.4.17-alpha",
   "description": "Toolchain for Node projects",
-  "author": "William Thorsen",
-  "license": "ISC",
   "homepage": "https://github.com/skypilotcc/toolchain#readme",
+  "version": "0.4.17-alpha",
+  "main": "lib/index.js",
+  "bin": {
+    "toolchain": "./lib/scripts/init.js"
+  },
+  "author": {
+    "name": "William Thorsen"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skypilotcc/toolchain.git"
@@ -12,35 +17,12 @@
   "bugs": {
     "url": "https://github.com/skypilotcc/toolchain/issues"
   },
-  "bin": {
-    "toolchain": "./lib/scripts/init.js"
-  },
-  "files": [
-    "/configs",
-    "/lib",
-    "jest.config.js",
-    "jest.integration.config.js",
-    "jest.standalone.config.js"
-  ],
   "keywords": [
     "eslint",
     "eslintconfig",
     "jest",
     "typescript"
   ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "scripts": {
-    "all-ci-checks": "yarn run check-types && yarn run lint --quiet && yarn run build && yarn test",
-    "build": "rm -rf lib && yarn run copy-configs-to-lib && yarn run compile-ts",
-    "check-types": "tsc",
-    "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
-    "copy-configs-to-lib": "babel-node --extensions .ts build/copy-configs-to-lib.ts",
-    "generate-typings": "tsc --project tsconfig.generate-typings.json",
-    "lint": "eslint --cache '**/*.{js,ts}'",
-    "prepublishOnly": "yarn run check-types && yarn run lint --quiet && yarn run build && yarn test && yarn run generate-typings",
-    "test": "jest --config jest.standalone.config.js"
-  },
   "dependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
@@ -68,7 +50,32 @@
   },
   "devDependencies": {
     "@types/tmp": "^0.1.0",
+    "bumped": "0.12.0",
+    "bumped-changelog": "^0.3.12",
+    "bumped-finepack": "^0.3.0",
+    "bumped-terminal": "^0.7.8",
     "tmp": "^0.1.0"
   },
-  "peerDependencies": {}
+  "files": [
+    "/configs",
+    "/lib",
+    "jest.config.js",
+    "jest.integration.config.js",
+    "jest.standalone.config.js"
+  ],
+  "scripts": {
+    "all-ci-checks": "yarn run check-types && yarn run lint --quiet && yarn run build && yarn test",
+    "all-cq-checks": "yarn run check-types && yarn run lint --quiet && yarn test",
+    "build": "rm -rf lib && yarn run copy-configs-to-lib && yarn run compile-ts",
+    "check-types": "tsc",
+    "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
+    "copy-configs-to-lib": "babel-node --extensions .ts build/copy-configs-to-lib.ts",
+    "generate-typings": "tsc --project tsconfig.generate-typings.json",
+    "lint": "eslint --cache '**/*.{js,ts}'",
+    "prepublishOnly": "yarn run check-types && yarn run lint --quiet && yarn run build && yarn test && yarn run generate-typings",
+    "test": "jest --config jest.standalone.config.js"
+  },
+  "license": "ISC",
+  "peerDependencies": {},
+  "types": "lib/index.d.ts"
 }
