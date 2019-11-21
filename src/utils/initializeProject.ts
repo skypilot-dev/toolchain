@@ -4,17 +4,17 @@
 import fs from 'fs';
 import path from 'path';
 
-import { JsonValue } from '../common/types';
+import { JsonObject, JsonValue } from '../common/types';
 
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from './bulkReadTransformWrite';
 import { COPIED_CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from './constants';
 import { dirHasMatchingFile } from './dirHasMatchingFile';
 import { makeReplaceFn } from './makeReplaceFn';
 import { parsePathToPackage } from './parsePathToPackage';
-import { updatePackageFile } from './updatePackageFile';
+import { updatePackageFile, UpdatePackageFileOptions, UpdateStrategy } from './updatePackageFile';
 
 /* -- Typings -- */
-type PackageFileEntry = { [key: string]: JsonValue }
+type PackageFileEntry = { key: string; value: JsonValue; options: UpdatePackageFileOptions };
 
 type ScriptEntry = { [key: string]: string };
 
@@ -35,7 +35,7 @@ export function getProjectRootDir(): string {
 
 /* -- Constants -- */
 const packageFileEntries: PackageFileEntry[] = [
-  { key: 'files', value: ['/lib'] },
+  { key: 'files', value: ['/lib'], options: { updateStrategy: UpdateStrategy.create }},
 ];
 
 const scripts: ScriptEntry[] = [
@@ -59,9 +59,10 @@ const relativePathToPackage = parsePathToPackage(packageDir);
 /* Add package-file entries (other than scripts) */
 function addPackageFileEntries(verbose = false): void {
   packageFileEntries.forEach((packageFileEntry) => {
-    updatePackageFile(packageFileEntry);
+    const { key, value, options = {} } = packageFileEntry;
+    const data: JsonObject = { key, value };
+    updatePackageFile(data, options);
     if (verbose) {
-      const { key, value } = packageFileEntry;
       console.log(`  Added "${key}": ${JSON.stringify(value)} }`);
     }
   });
