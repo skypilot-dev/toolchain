@@ -9,13 +9,13 @@ plugins:
       plugin: bumped-changelog
     Committing new version:
       plugin: bumped-terminal
-      command: 'git add CHANGELOG.md package.json && git commit -m "Release $newVersion"'
+      command: 'printenv && git add CHANGELOG.md package.json && git commit -m "Release $newVersion"'
     Detecting problems before publish:
       plugin: bumped-terminal
-      command: 'git-dirty && npm test'
+      command: 'test -z "$(git status --porcelain)" && yarn run all-ci-checks'
     Publishing tag to GitHub:
       plugin: bumped-terminal
-      command: 'git tag $newVersion && git push && git push --tags'
+      command: echo 'git tag $newVersion && git push && git push --tags'
     Publishing to NPM:
       plugin: bumped-terminal
-      command: npm publish
+      command: echo 'yarn publish --access public --new-version $newVersion'
