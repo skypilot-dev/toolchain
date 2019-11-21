@@ -2,6 +2,9 @@ files:
   - package.json
 plugins:
   prerelease:
+    Checking that branch is clean and releasable:
+      plugin: bumped-terminal
+      command:  test -z "$(git status --porcelain)" && git-branch-is develop && yarn run all-cq-checks
     Linting config files:
       plugin: bumped-finepack
   postrelease:
@@ -9,13 +12,10 @@ plugins:
       plugin: bumped-changelog
     Committing new version:
       plugin: bumped-terminal
-      command: 'printenv && git add CHANGELOG.md package.json && git commit -m "Release $newVersion"'
-    Detecting problems before publish:
-      plugin: bumped-terminal
-      command: 'test -z "$(git status --porcelain)" && yarn run all-ci-checks'
+      command: git add CHANGELOG.md package.json && git commit -m "Release $newVersion"
     Publishing tag to GitHub:
       plugin: bumped-terminal
-      command: echo 'git tag $newVersion && git push && git push --tags'
+      command: git tag $newVersion && git push && git push --tags
     Publishing to NPM:
       plugin: bumped-terminal
-      command: echo 'yarn publish --access public --new-version $newVersion'
+      command: yarn publish --access public --new-version $newVersion
