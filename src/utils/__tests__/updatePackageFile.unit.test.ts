@@ -7,6 +7,9 @@ import { readPackageFile, updatePackageFile } from '../updatePackageFile';
 const packageFileContent = `
 {
   "version": "1.0.0",
+  "files": [
+    "/lib"
+  ], 
   "scripts": {
     "existingScript": "do something"
   }
@@ -31,6 +34,36 @@ describe('updatePackageFile()', () => {
           existingScript: 'do something',
           newScript: 'do something new',
         },
+      });
+    });
+  });
+
+  describe('given a key with an array value', () => {
+    it("should create the array if it doesn't exist", () => {
+      const packageFileEntry = { keywords: ['test', 'array', ['nested item']] };
+      updatePackageFile(packageFileEntry, { pathToFile });
+
+      const packageContent = readPackageFile(pathToFile);
+      expect(packageContent).toMatchObject({
+        version: '1.0.0',
+        keywords: [
+          'test',
+          'array',
+          ['nested item'],
+        ],
+      });
+    });
+    it('should add the value to an existing array', () => {
+      const packageFileEntry = { files: ['anotherDir'] };
+      updatePackageFile(packageFileEntry, { pathToFile });
+
+      const packageContent = readPackageFile(pathToFile);
+      expect(packageContent).toMatchObject({
+        version: '1.0.0',
+        files: [
+          '/lib',
+          'anotherDir',
+        ],
       });
     });
   });

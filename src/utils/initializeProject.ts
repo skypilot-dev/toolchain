@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
 
-import fs from 'fs';
 /* -- Imports -- */
+import fs from 'fs';
 import path from 'path';
+
+import { JsonValue } from '../common/types';
 
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from './bulkReadTransformWrite';
 import { COPIED_CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from './constants';
@@ -12,6 +14,9 @@ import { parsePathToPackage } from './parsePathToPackage';
 import { updatePackageFile } from './updatePackageFile';
 
 /* -- Typings -- */
+type PackageFileEntry = { [key: string]: JsonValue }
+
+type ScriptEntry = { [key: string]: string };
 
 /* These options are used in testing. */
 interface InitializeProjectOptions {
@@ -29,7 +34,11 @@ export function getProjectRootDir(): string {
 
 
 /* -- Constants -- */
-const scripts: { key: string; value: string }[] = [
+const packageFileEntries: PackageFileEntry[] = [
+  { key: 'files', value: ['/lib'] },
+];
+
+const scripts: ScriptEntry[] = [
   { key: 'all-ci-checks', value: 'yarn run check-types && yarn run lint --quiet && yarn test && yarn run build' },
   { key: 'build', value: 'rm -rf lib && yarn run compile-ts' },
   { key: 'check-types', value: 'tsc' },
@@ -46,6 +55,17 @@ const relativePathToPackage = parsePathToPackage(packageDir);
 
 
 /* -- Main subfunctions -- */
+
+/* Add package-file entries (other than scripts) */
+function addPackageFileEntries(verbose = false): void {
+  packageFileEntries.forEach((packageFileEntry) => {
+    updatePackageFile(packageFileEntry);
+    if (verbose) {
+      const { key, value } = packageFileEntry;
+      console.log(`  Added "${key}": ${JSON.stringify(value)} }`);
+    }
+  });
+}
 
 /* Add scripts to the package file. */
 function addScripts(verbose = false): void {
@@ -170,6 +190,7 @@ export function initializeProject(options: InitializeProjectOptions = {}): void 
   ensureTestExists({ verbose: true });
 
   console.log('Toolchain > Adding values to package.json...');
+  addPackageFileEntries(verbose);
   addScripts(verbose);
 
   console.log('Toolchain > Done.');
