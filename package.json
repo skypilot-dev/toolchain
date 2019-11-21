@@ -69,6 +69,8 @@
     "all-cq-checks": "yarn run check-types && yarn run lint --quiet && yarn test",
     "build": "rm -rf lib && yarn run copy-configs-to-lib && yarn run compile-ts",
     "check-types": "tsc",
+    "ci": "yarn run all-ci-checks",
+    "cq": "yarn run all-cq-checks",
     "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
     "copy-configs-to-lib": "babel-node --extensions .ts build/copy-configs-to-lib.ts",
     "generate-typings": "tsc --project tsconfig.generate-typings.json",
