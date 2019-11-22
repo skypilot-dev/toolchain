@@ -9,19 +9,39 @@ import deepmerge from 'deepmerge';
 import { pickDifference } from '../common/object/pickDifference';
 import { JsonObject } from '../common/types';
 
-
 /* -- Typings -- */
 export enum UpdateStrategy {
   create,
   merge,
-  /* TODO: Allow replacements as an update strategy. */
-  // replace,
+  replace,
 }
 
 export interface UpdatePackageFileOptions {
   pathToFile?: string;
   updateStrategy?: UpdateStrategy;
 }
+
+
+const mergeFns = {
+  /* Create only those entries whose keys don't exist in the existing object. */
+  [UpdateStrategy.create]: (initialPkg: JsonObject, update: JsonObject): JsonObject => {
+    const filteredPkgContent = pickDifference(update, initialPkg);
+    if (Object.keys(filteredPkgContent).length === 0) {
+      /* None of the entries have new keys, so simply return the initial pkg without alteration. */
+      return initialPkg;
+    }
+    /* Merge the filtered keys into the existing content */
+    return deepmerge(initialPkg, filteredPkgContent);
+  },
+  [UpdateStrategy.merge]: (initialPkg: JsonObject, update: JsonObject): JsonObject =>
+    deepmerge(initialPkg, update),
+
+  /* Add all new entries into the existing content, replacing any existing keys. */
+  [UpdateStrategy.replace]: (pkgContent: JsonObject, update: JsonObject): JsonObject => ({
+    ...pkgContent,
+    ...update,
+  }),
+};
 
 
 /* -- Helper functions -- */
@@ -42,18 +62,11 @@ export function updatePackageFile(data: JsonObject, options: UpdatePackageFileOp
 
   const pkgContent = readPackageFile(pathToFile);
 
-  let updatedPkgContent;
-  if (updateStrategy === UpdateStrategy.merge) {
-    updatedPkgContent = deepmerge(pkgContent, data);
-  } else {
-    /* Get only the keys that don't exist in the existing package content */
-    const filteredPkgContent = pickDifference(data, pkgContent);
-    if (Object.keys(filteredPkgContent).length === 0) {
-      return;
-    }
-    updatedPkgContent = deepmerge(pkgContent, filteredPkgContent);
-  }
+  const mergeFn = mergeFns[updateStrategy];
+  const updatedPkgContent = mergeFn(pkgContent, data);
 
   /* Save the merged data to the file */
-  writeFileSync(pathToFile, JSON.stringify(updatedPkgContent, undefined, 2));
+  if (updatedPkgContent) {
+    writeFileSync(pathToFile, JSON.stringify(updatedPkgContent, undefined, 2));
+  }
 }

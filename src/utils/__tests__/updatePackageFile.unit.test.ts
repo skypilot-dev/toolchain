@@ -169,4 +169,67 @@ describe('updatePackageFile()', () => {
       });
     });
   });
+
+  describe('when updateStrategy = REPLACE', () => {
+    const initialPkg = {
+      array: ['item'],
+      object: { nestedString: 'nested string' },
+      string: 'string',
+    };
+    const updateStrategy = UpdateStrategy.replace;
+
+    describe("given two entries whose keys don't exist", () => {
+      const pathToFile = createTmpPkgFile(initialPkg, 'replace-0');
+
+      it('should add both keys', () => {
+        const update = {
+          newArray: ['new item'],
+          newObject: { newNestedNumber: 1 },
+        };
+
+        updatePackageFile(update, { pathToFile, updateStrategy });
+
+        const updatedPkg = readPackageFile(pathToFile);
+        expect(updatedPkg).toEqual({
+          array: ['item'],
+          newArray: ['new item'],
+          newObject: { newNestedNumber: 1 },
+          object: { nestedString: 'nested string' },
+          string: 'string',
+        });
+      });
+    });
+
+    describe('given two keys, one of which already exists', () => {
+      const pathToFile = createTmpPkgFile(initialPkg, 'replace-1');
+      const update = {
+        array: ['replacement item'],
+        newObject: { newNestedString: 'new nested string' },
+      };
+
+      updatePackageFile(update, { pathToFile, updateStrategy });
+
+      it('should add the new key and replace the old key', () => {
+        const updatedPkg = readPackageFile(pathToFile);
+        expect(updatedPkg).toMatchObject({
+          array: ['replacement item'],
+          object: { nestedString: 'nested string' },
+          newObject: { newNestedString: 'new nested string' },
+          string: 'string',
+        });
+      });
+    });
+
+    describe('given an empty object', () => {
+      const pathToFile = createTmpPkgFile(initialPkg, 'empty');
+      const update = {};
+
+      updatePackageFile(update, { pathToFile, updateStrategy });
+
+      it('should do nothing', () => {
+        const updatedPkg = readPackageFile(pathToFile);
+        expect(updatedPkg).toEqual(initialPkg);
+      });
+    });
+  });
 });
