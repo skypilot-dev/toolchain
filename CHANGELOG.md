@@ -1,3 +1,10 @@
+## <small>0.4.21 (2019-11-22)</small>
+
+* feat: Package-file entries can be sorted numerically or alphabetically ([a457dec](https://github.com/skypilotcc/toolchain/commit/a457dec))
+* feat: Package-file scripts are sorted when updated ([0ae86f3](https://github.com/skypilotcc/toolchain/commit/0ae86f3))
+
+
+
 ## <small>0.4.20 (2019-11-22)</small>
 
 * feat: Entrypoints for pkg publication are are created during init ([c1a2cec](https://github.com/skypilotcc/toolchain/commit/c1a2cec))
