@@ -7,6 +7,7 @@ import deepmerge from 'deepmerge';
 
 /* Project imports */
 import { pickDifference } from '../common/object/pickDifference';
+import { sortObjectEntries } from '../common/object/sortObjectEntries';
 import { JsonObject } from '../common/types';
 
 /* -- Typings -- */
@@ -17,6 +18,7 @@ export enum UpdateStrategy {
 }
 
 export interface UpdatePackageFileOptions {
+  keysToSort?: string[];
   pathToFile?: string;
   updateStrategy?: UpdateStrategy;
 }
@@ -37,8 +39,8 @@ const mergeFns = {
     deepmerge(initialPkg, update),
 
   /* Add all new entries into the existing content, replacing any existing keys. */
-  [UpdateStrategy.replace]: (pkgContent: JsonObject, update: JsonObject): JsonObject => ({
-    ...pkgContent,
+  [UpdateStrategy.replace]: (initialPkg: JsonObject, update: JsonObject): JsonObject => ({
+    ...initialPkg,
     ...update,
   }),
 };
@@ -56,17 +58,19 @@ export function readPackageFile(pathToFile: string): JsonObject {
 export function updatePackageFile(data: JsonObject, options: UpdatePackageFileOptions = {}): void {
   /* Define defaults */
   const {
+    keysToSort = [],
     pathToFile = './package.json',
     updateStrategy = UpdateStrategy.merge,
   } = options;
 
-  const pkgContent = readPackageFile(pathToFile);
+  const initialPkg = readPackageFile(pathToFile);
 
   const mergeFn = mergeFns[updateStrategy];
-  const updatedPkgContent = mergeFn(pkgContent, data);
+  const updatedPkg = mergeFn(initialPkg, data);
+  const sortedPkg = sortObjectEntries(updatedPkg, keysToSort);
 
   /* Save the merged data to the file */
-  if (updatedPkgContent) {
-    writeFileSync(pathToFile, JSON.stringify(updatedPkgContent, undefined, 2));
+  if (updatedPkg) {
+    writeFileSync(pathToFile, JSON.stringify(sortedPkg, undefined, 2));
   }
 }

@@ -82,7 +82,7 @@ function addScripts(verbose = false): void {
     }
     return newScripts;
   }, {});
-  updatePackageFile({ scripts: newScripts });
+  updatePackageFile({ scripts: newScripts }, { keysToSort: ['scripts'] });
 }
 
 /* Copy these files from `.lib/` to the project. */
