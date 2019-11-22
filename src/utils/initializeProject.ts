@@ -36,6 +36,8 @@ export function getProjectRootDir(): string {
 /* -- Constants -- */
 const packageFileEntries: PackageFileEntry[] = [
   { key: 'files', value: ['/lib'], options: { updateStrategy: UpdateStrategy.create }},
+  { key: 'main', value: 'lib/index.js', options: { updateStrategy: UpdateStrategy.replace }},
+  { key: 'types', value: 'lib/index.d.ts', options: { updateStrategy: UpdateStrategy.replace }},
 ];
 
 const scripts: ScriptEntry[] = [
