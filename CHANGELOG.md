@@ -1,3 +1,11 @@
+## <small>0.4.20 (2019-11-22)</small>
+
+* feat: Entrypoints for pkg publication are are created during init ([c1a2cec](https://github.com/skypilotcc/toolchain/commit/c1a2cec))
+* feat: Package file can be updated using "replace" strategy ([e23880c](https://github.com/skypilotcc/toolchain/commit/e23880c))
+* refactor: Make 'updatePackageFile' tests more readable & flexible ([06f1cde](https://github.com/skypilotcc/toolchain/commit/06f1cde))
+
+
+
 ## <small>0.4.19 (2019-11-21)</small>
 
 * task: Tweak commit message used for releases ([8f5db52](https://github.com/skypilotcc/toolchain/commit/8f5db52))
