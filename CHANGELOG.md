@@ -1,3 +1,10 @@
+## 1.0.0 (2019-11-23)
+
+* Remove exclusion of test files from type-checking ([de9343a](https://github.com/skypilotcc/toolchain/commit/de9343a))
+* Update ISC license ([2e21a4e](https://github.com/skypilotcc/toolchain/commit/2e21a4e))
+
+
+
 ## <small>0.4.21 (2019-11-22)</small>
 
 * feat: Package-file entries can be sorted numerically or alphabetically ([a457dec](https://github.com/skypilotcc/toolchain/commit/a457dec))
