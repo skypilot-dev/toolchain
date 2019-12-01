@@ -1,3 +1,9 @@
+## <small>1.0.1 (2019-12-01)</small>
+
+* Update all dependencies ([ec25a13](https://github.com/skypilotcc/toolchain/commit/ec25a13))
+
+
+
 ## 1.0.0 (2019-11-23)
 
 * Remove exclusion of test files from type-checking ([de9343a](https://github.com/skypilotcc/toolchain/commit/de9343a))
