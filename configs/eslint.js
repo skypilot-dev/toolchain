@@ -18,6 +18,13 @@ module.exports = {
         '@typescript-eslint/no-var-requires': 'off',
       },
     },
+    {
+      files: ['**/*.test.[jt]s'],
+      rules: {
+        'import/no-extraneous-dependencies': ['warn', { devDependencies: true }],
+        'no-console': 'off',
+      },
+    },
   ],
   plugins: [
     '@typescript-eslint/eslint-plugin',
