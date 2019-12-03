@@ -1,3 +1,11 @@
+## 1.1.0 (2019-12-03)
+
+* Update all dependencies ([a7377e1](https://github.com/skypilotcc/toolchain/commit/a7377e1))
+* add: Add linting rule to warn about missing member delimiter ([47f526e](https://github.com/skypilotcc/toolchain/commit/47f526e))
+* add: Ignore certain linting rules in test files ([5680815](https://github.com/skypilotcc/toolchain/commit/5680815))
+
+
+
 ## <small>1.0.1 (2019-12-01)</small>
 
 * Update all dependencies ([ec25a13](https://github.com/skypilotcc/toolchain/commit/ec25a13))
