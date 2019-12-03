@@ -42,6 +42,7 @@ module.exports = {
 
     // Stylistic
     '@typescript-eslint/indent': ['warn', 2],
+    '@typescript-eslint/member-delimiter-style': 'warn',
     'arrow-body-style': ['warn', 'as-needed'],
     'arrow-parens': ['warn', 'always'],
     'comma-dangle': ['warn', {
