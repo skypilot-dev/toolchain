@@ -2,7 +2,7 @@
   "name": "@skypilot/toolchain",
   "description": "Toolchain for Node projects",
   "homepage": "https://github.com/skypilotcc/toolchain#readme",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "lib/index.js",
   "bin": {
     "toolchain": "./lib/scripts/init.js"

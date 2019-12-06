@@ -1,3 +1,9 @@
+## <small>1.1.1 (2019-12-06)</small>
+
+* Update all dependencies ([9930a4e](https://github.com/skypilotcc/toolchain/commit/9930a4e))
+
+
+
 ## 1.1.0 (2019-12-03)
 
 * Update all dependencies ([a7377e1](https://github.com/skypilotcc/toolchain/commit/a7377e1))
