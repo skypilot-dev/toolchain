@@ -1,3 +1,9 @@
+## <small>1.1.3 (2019-12-07)</small>
+
+* Add shorthand scripts to package file ([7f11abd](https://github.com/skypilotcc/toolchain/commit/7f11abd))
+
+
+
 ## <small>1.1.2 (2019-12-07)</small>
 
 * Exclude Yarn logs from repo ([f70547f](https://github.com/skypilotcc/toolchain/commit/f70547f))
