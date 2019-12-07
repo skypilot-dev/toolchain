@@ -14,7 +14,7 @@ import { parsePathToPackage } from './parsePathToPackage';
 import { updatePackageFile, UpdatePackageFileOptions, UpdateStrategy } from './updatePackageFile';
 
 /* -- Typings -- */
-type PackageFileEntry = { key: string; value: JsonValue; options: UpdatePackageFileOptions };
+type PackageFileEntry = { key: string; value: JsonValue; options?: UpdatePackageFileOptions };
 
 type ScriptEntry = { [key: string]: string };
 
@@ -35,6 +35,12 @@ export function getProjectRootDir(): string {
 
 /* -- Constants -- */
 const packageFileEntries: PackageFileEntry[] = [
+  /* TODO: Allow public projects to be created. */
+  {
+    key: 'publishConfig',
+    value: { access: 'restricted' },
+    options: { updateStrategy: UpdateStrategy.create },
+  },
   { key: 'files', value: ['/lib'], options: { updateStrategy: UpdateStrategy.create }},
   { key: 'main', value: 'lib/index.js', options: { updateStrategy: UpdateStrategy.replace }},
   { key: 'types', value: 'lib/index.d.ts', options: { updateStrategy: UpdateStrategy.replace }},
@@ -50,6 +56,7 @@ const scripts: ScriptEntry[] = [
   { key: 'generate-typings', value: 'tsc --project tsconfig.generate-typings.json' },
   { key: 'lint', value: "eslint --cache '**/*.{js,ts}'" },
   { key: 'prepublishOnly', value: 'yarn run typecheck && yarn run lint --quiet && yarn test && yarn run build && yarn run generate-typings' },
+  { key: 'publish:default', value: 'yarn publish --non-interactive' },
   { key: 'tc', value: 'yarn run typecheck' },
   { key: 'test', value: 'jest' },
   { key: 'typecheck', value: 'tsc' },

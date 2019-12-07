@@ -4,7 +4,7 @@ plugins:
   prerelease:
     Checking that branch is clean and releasable:
       plugin: bumped-terminal
-      command:  test -z "$(git status --porcelain)" && git-branch-is develop && yarn run all-cq-checks
+      command:  test -z "$(git status --porcelain)" && git-branch-is -r "^develop|edge$" && yarn run all-cq-checks
     Linting config files:
       plugin: bumped-finepack
   postrelease:
@@ -16,6 +16,7 @@ plugins:
     Publishing tag to GitHub:
       plugin: bumped-terminal
       command: git tag $newVersion && git push && git push --tags
-    Publishing to NPM:
+    Publishing to NPM if non-stable:
       plugin: bumped-terminal
-      command: yarn publish --access public --new-version $newVersion
+      command: |
+        (git-branch-is --quiet develop && exit 0) || yarn run publish:default --new-version $newVersion
