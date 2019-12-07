@@ -1,3 +1,9 @@
+## <small>1.1.5 (2019-12-07)</small>
+
+* fix: Use new script names in CI workflow ([1134b27](https://github.com/skypilotcc/toolchain/commit/1134b27))
+
+
+
 ## <small>1.1.4 (2019-12-07)</small>
 
 * fix: Use new names in package-file scripts ([15003bc](https://github.com/skypilotcc/toolchain/commit/15003bc))
