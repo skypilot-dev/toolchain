@@ -1,3 +1,9 @@
+## <small>1.1.4 (2019-12-07)</small>
+
+* fix: Use new names in package-file scripts ([15003bc](https://github.com/skypilotcc/toolchain/commit/15003bc))
+
+
+
 ## <small>1.1.3 (2019-12-07)</small>
 
 * Add shorthand scripts to package file ([7f11abd](https://github.com/skypilotcc/toolchain/commit/7f11abd))
