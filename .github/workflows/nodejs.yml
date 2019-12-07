@@ -30,7 +30,7 @@ jobs:
       - name: Install
         run: yarn install --frozen-lockfile --production=false
       - name: Check types
-        run: yarn run check-types
+        run: yarn run typecheck
       - name: Lint
         run: yarn run lint --no-cache --quiet
       - name: Build
