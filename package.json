@@ -65,18 +65,19 @@
     "jest.standalone.config.js"
   ],
   "scripts": {
-    "all-ci-checks": "yarn run check-types && yarn run lint --quiet && yarn run build && yarn test",
-    "all-cq-checks": "yarn run check-types && yarn run lint --quiet && yarn test",
+    "all-ci-checks": "yarn run typecheck && yarn run lint --quiet && yarn run build && yarn test",
+    "all-cq-checks": "yarn run typecheck && yarn run lint --quiet && yarn test",
     "build": "rm -rf lib && yarn run copy-configs-to-lib && yarn run compile-ts",
-    "check-types": "tsc",
     "ci": "yarn run all-ci-checks",
     "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/*.test.ts'",
     "copy-configs-to-lib": "babel-node --extensions .ts build/copy-configs-to-lib.ts",
     "cq": "yarn run all-cq-checks",
     "generate-typings": "tsc --project tsconfig.generate-typings.json",
     "lint": "eslint --cache '**/*.{js,ts}'",
-    "prepublishOnly": "yarn run check-types && yarn run lint --quiet && yarn run build && yarn test && yarn run generate-typings",
-    "test": "jest --config jest.standalone.config.js"
+    "prepublishOnly": "yarn run typecheck && yarn run lint --quiet && yarn run build && yarn test && yarn run generate-typings",
+    "tc": "yarn run typecheck",
+    "test": "jest --config jest.standalone.config.js",
+    "typecheck": "tsc"
   },
   "license": "ISC",
   "peerDependencies": {},
