@@ -1,3 +1,9 @@
+## 1.2.0 (2019-12-07)
+
+* add: Automatically publish master & edge releases ([5856c8b](https://github.com/skypilotcc/toolchain/commit/5856c8b))
+
+
+
 ## <small>1.1.5 (2019-12-07)</small>
 
 * fix: Use new script names in CI workflow ([1134b27](https://github.com/skypilotcc/toolchain/commit/1134b27))
