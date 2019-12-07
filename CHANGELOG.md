@@ -1,3 +1,9 @@
+## <small>1.1.2 (2019-12-07)</small>
+
+* Exclude Yarn logs from repo ([f70547f](https://github.com/skypilotcc/toolchain/commit/f70547f))
+
+
+
 ## <small>1.1.1 (2019-12-06)</small>
 
 * Update all dependencies ([9930a4e](https://github.com/skypilotcc/toolchain/commit/9930a4e))
