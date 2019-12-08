@@ -19,4 +19,4 @@ plugins:
     Publishing to NPM if non-stable:
       plugin: bumped-terminal
       command: |
-        (git-branch-is --quiet develop && exit 0) || yarn run publish:default --new-version $newVersion
+        (git-branch-is --quiet develop && echo "An NPM package will be published when this release is pushed to master.") || yarn run publish:default --new-version $newVersion
