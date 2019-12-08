@@ -1,3 +1,12 @@
+## 1.3.0 (2019-12-08)
+
+* Improve handling of typings in build process ([03d3af0](https://github.com/skypilotcc/toolchain/commit/03d3af0))
+* Rename workflow files to clarify their purpose ([bd298d0](https://github.com/skypilotcc/toolchain/commit/bd298d0))
+* ft: Notify that stable release will be published on push to master ([a41ee93](https://github.com/skypilotcc/toolchain/commit/a41ee93))
+* add: CI workflows can install private packages ([993d334](https://github.com/skypilotcc/toolchain/commit/993d334))
+
+
+
 ## 1.2.0 (2019-12-07)
 
 * add: Automatically publish master & edge releases ([5856c8b](https://github.com/skypilotcc/toolchain/commit/5856c8b))
