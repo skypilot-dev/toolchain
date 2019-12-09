@@ -1,5 +1,8 @@
+require('@babel/register')({
+  extensions: ['.js', '.ts'],
+});
 try {
-  const { huskyConfigurator } = require('./lib/configurators/huskyConfigurator');
+  const { huskyConfigurator } = require('./src/configurators');
   module.exports = huskyConfigurator();
 } catch (error) {
   console.log('Husky configurator not found, falling back to default pre-commit hook.');
