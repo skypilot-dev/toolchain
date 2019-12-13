@@ -1,5 +1,6 @@
 /* These configs are direct copies of the configs used in Toolchain itself. */
 export const COPIED_CONFIGS: string[] = [
+  '.github/workflows/npm-ci.yml',
   '.github/workflows/npm-publish.yml',
   '.bumpedrc',
   '.editorconfig',
@@ -32,4 +33,3 @@ export const CONFIGURATOR_CONFIGS: string[] = [
   '.huskyrc.js',
   '.lintstagedrc.js',
 ];
-
