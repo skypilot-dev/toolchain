@@ -1,4 +1,4 @@
-name: Publish NPM package
+name: Build & publish Node package
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Build & test NPM package
+name: Check & build Node package
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Build, lint & test
+    name: Typecheck, lint, test & build
 
     env:
       CI: true
