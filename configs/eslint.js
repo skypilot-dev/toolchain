@@ -16,6 +16,7 @@ module.exports = {
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-var-requires': 'off',
+        'no-dupe-class-members': 'error',
       },
     },
     {
@@ -55,6 +56,7 @@ module.exports = {
     'import/order': ['warn', { 'newlines-between': 'always-and-inside-groups' }],
     'import/prefer-default-export': 'off',
     'lines-between-class-members': ['warn', 'always'],
+    'no-dupe-class-members': 'off',
     'no-trailing-spaces': 'warn',
     'no-underscore-dangle': ['warn', { allowAfterThis: true }],
     'object-curly-newline': ['warn', { consistent: true }],
