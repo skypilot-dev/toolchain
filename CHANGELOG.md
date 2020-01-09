@@ -1,3 +1,14 @@
+## <small>1.4.1 (2020-01-09)</small>
+
+* End dependency on lib directory ([d96dafb](https://github.com/skypilotcc/toolchain/commit/d96dafb))
+* Test for existence & content of configs ([64d7f02](https://github.com/skypilotcc/toolchain/commit/64d7f02))
+* Upgrade all dependencies ([0612def](https://github.com/skypilotcc/toolchain/commit/0612def))
+* Upgrade Node to latest LTS (v12.14.1) ([bd5d15a](https://github.com/skypilotcc/toolchain/commit/bd5d15a))
+* add: Flag duplicate class members in JS files but not TS files ([23f2554](https://github.com/skypilotcc/toolchain/commit/23f2554))
+* fix: Trailing spaces are trimmed in Markdown files ([f2f347e](https://github.com/skypilotcc/toolchain/commit/f2f347e))
+
+
+
 ## 1.3.0 (2019-12-08)
 
 * Improve handling of typings in build process ([03d3af0](https://github.com/skypilotcc/toolchain/commit/03d3af0))
