@@ -1,3 +1,10 @@
+## <small>1.4.3 (2020-01-09)</small>
+
+* Require braces for `if` statements; require imports to be grouped ([c9e5f92](https://github.com/skypilotcc/toolchain/commit/c9e5f92))
+* Use more flexible pattern to exclude tests from compilatio ([683e6e4](https://github.com/skypilotcc/toolchain/commit/683e6e4))
+
+
+
 ## <small>1.4.1 (2020-01-09)</small>
 
 * End dependency on lib directory ([d96dafb](https://github.com/skypilotcc/toolchain/commit/d96dafb))
