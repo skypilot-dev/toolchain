@@ -1,3 +1,9 @@
+## <small>1.4.5 (2020-01-10)</small>
+
+* Add parent imports to import-order linting rule ([023a5e4](https://github.com/skypilotcc/toolchain/commit/023a5e4))
+
+
+
 ## <small>1.4.4 (2020-01-10)</small>
 
 * fix: Typo in generated `compile-ts` script ([2584923](https://github.com/skypilotcc/toolchain/commit/2584923))
