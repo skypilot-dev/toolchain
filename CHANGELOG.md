@@ -1,3 +1,9 @@
+## <small>1.4.4 (2020-01-10)</small>
+
+* fix: Typo in generated `compile-ts` script ([2584923](https://github.com/skypilotcc/toolchain/commit/2584923))
+
+
+
 ## <small>1.4.3 (2020-01-09)</small>
 
 * Require braces for `if` statements; require imports to be grouped ([c9e5f92](https://github.com/skypilotcc/toolchain/commit/c9e5f92))
