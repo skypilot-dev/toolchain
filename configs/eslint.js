@@ -56,7 +56,7 @@ module.exports = {
     'curly': 'error',
     'import/order': ['warn',
       {
-        'groups': ['builtin', 'external', 'internal', 'sibling'],
+        'groups': ['builtin', 'external', 'internal', 'parent', 'sibling'],
         'newlines-between': 'always-and-inside-groups',
       },
     ],
