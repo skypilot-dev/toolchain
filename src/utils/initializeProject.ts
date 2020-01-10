@@ -51,7 +51,7 @@ const scripts: ScriptEntry[] = [
   { key: 'all-cq-checks', value: 'yarn run typecheck && yarn run lint --quiet && yarn test' },
   { key: 'build', value: 'rm -rf lib && yarn run compile-ts' },
   { key: 'ci', value: 'yarn run all-ci-checks' },
-  { key: 'compile-ts', value: "babel ./src --out-dir ./lib --extensions .ts --ignore '**/__test__/*' --ignore '**/*.d.ts' && yarn run generate-typings"},
+  { key: 'compile-ts', value: "babel ./src --out-dir ./lib --extensions .ts --ignore '**/__tests__/*' --ignore '**/*.d.ts' && yarn run generate-typings"},
   { key: 'cq', value: 'yarn run all-cq-checks' },
   { key: 'generate-typings', value: 'tsc --project tsconfig.generate-typings.json' },
   { key: 'lint', value: "eslint --cache '**/*.{js,ts}'" },
