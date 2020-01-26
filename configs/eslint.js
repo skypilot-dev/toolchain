@@ -55,10 +55,7 @@ module.exports = {
     }],
     'curly': 'error',
     'import/order': ['warn',
-      {
-        'groups': ['builtin', 'external', 'internal', 'parent', 'sibling'],
-        'newlines-between': 'always-and-inside-groups',
-      },
+      { 'groups': ['builtin', 'external', 'internal', 'parent', 'sibling'] },
     ],
     'import/prefer-default-export': 'off',
     'lines-between-class-members': ['warn', 'always'],
