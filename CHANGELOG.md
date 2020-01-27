@@ -1,3 +1,9 @@
+## <small>1.5.1 (2020-01-27)</small>
+
+* refactor: Upgrade all dependencies ([53aadaa](https://github.com/skypilotcc/toolchain/commit/53aadaa))
+
+
+
 ## 1.5.0 (2020-01-27)
 
 * feat: Can retrieve values from the package file ([5b8607d](https://github.com/skypilotcc/toolchain/commit/5b8607d))
