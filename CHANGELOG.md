@@ -1,3 +1,12 @@
+## 1.5.0 (2020-01-27)
+
+* feat: Can retrieve values from the package file ([5b8607d](https://github.com/skypilotcc/toolchain/commit/5b8607d))
+* Add utility types & constants ([46bee90](https://github.com/skypilotcc/toolchain/commit/46bee90))
+* Install pkginfo ([a477341](https://github.com/skypilotcc/toolchain/commit/a477341))
+* style: Remove lint rule requiring blank line between import groups ([d4fae98](https://github.com/skypilotcc/toolchain/commit/d4fae98))
+
+
+
 ## <small>1.4.5 (2020-01-10)</small>
 
 * Add parent imports to import-order linting rule ([023a5e4](https://github.com/skypilotcc/toolchain/commit/023a5e4))
