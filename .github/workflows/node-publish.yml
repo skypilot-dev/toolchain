@@ -1,15 +1,15 @@
-name: Build & test NPM package
+name: Build & publish Node package
 
 on:
   push:
-    branches-ignore:
-      - 'wip-**'
-      - '**-wip'
+    branches:
       - 'master'
+    paths:
+      - 'CHANGELOG.md'
 
 jobs:
-  build:
-    name: Build, lint & test
+  publish:
+    name: Build & publish
 
     env:
       CI: true
@@ -19,7 +19,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     timeout-minutes: 10
 
@@ -33,11 +33,7 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
           yarn install --frozen-lockfile --production=false
-      - name: Check types
-        run: yarn run typecheck
-      - name: Lint
-        run: yarn run lint --no-cache --quiet
-      - name: Test
-        run: yarn test
-      - name: Build
-        run: yarn run build
+      - name: Publish
+        run: |
+          yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
+          yarn run publish:default
