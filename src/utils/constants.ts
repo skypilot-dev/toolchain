@@ -1,7 +1,7 @@
 /* These configs are direct copies of the configs used in Toolchain itself. */
 export const COPIED_CONFIGS: string[] = [
-  '.github/workflows/npm-ci.yml',
-  '.github/workflows/npm-publish.yml',
+  '.github/workflows/node-ci.yml',
+  '.github/workflows/node-publish.yml',
   '.bumpedrc',
   '.editorconfig',
   '.eslintignore',
