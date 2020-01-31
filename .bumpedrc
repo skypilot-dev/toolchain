@@ -4,7 +4,7 @@ plugins:
   prerelease:
     Checking that branch is clean and releasable:
       plugin: bumped-terminal
-      command:  test -z "$(git status --porcelain)" && git-branch-is -r "^develop|edge$" && yarn run all-cq-checks
+      command:  test -z "$(git status --porcelain)" && git-branch-is -r "^alpha|beta|develop|next$" && yarn run all-cq-checks
     Linting config files:
       plugin: bumped-finepack
   postrelease:
@@ -12,11 +12,11 @@ plugins:
       plugin: bumped-changelog
     Committing new version:
       plugin: bumped-terminal
-      command: git add CHANGELOG.md package.json && git commit -m "Release v$newVersion"
+      command: git-branch-is --quiet develop && (git add CHANGELOG.md package.json && git commit -m "Release $newVersion") || echo 'Prerelease - Not adding files to repo.'
     Publishing tag to GitHub:
       plugin: bumped-terminal
-      command: git tag $newVersion && git push 2>/dev/null && git push --tags 2>/dev/null
+      command: git tag v$newVersion && git push --tags && (git-branch-is --quiet develop && git push || exit 0)
     Publishing to NPM if non-stable:
       plugin: bumped-terminal
       command: |
-        (git-branch-is --quiet develop && echo "An NPM package will be published when this release is pushed to master.") || yarn run publish:default --new-version $newVersion
+        (git-branch-is --quiet develop && echo "An NPM package will be published when this release is pushed to master.") || yarn run publish:default --newVersion $newVersion --tag $(git symbolic-ref --short HEAD) && git reset --hard HEAD

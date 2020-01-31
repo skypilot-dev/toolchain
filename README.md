@@ -64,7 +64,7 @@ To run a script, use `yarn run SCRIPT_NAME`.
 Toolchain automates the process of creating and releasing NPM packages. Two different types of
 automated releases are supported:
 - **Stable release**: Has an ordinary semver version number, such as `1.1.2`
-- **Non-stable release**: Has a version number with a version-tag suffix, such as `1.0.0-beta`
+- **Prerelease**: Has a version number with a version-tag suffix, such as `1.0.0-beta`
 
 Toolchain performs the following steps when a release is created. If any step fails, the release is
 halted.
@@ -80,7 +80,7 @@ Publication to NPM is also automatic, but the timing depends on the type of rele
 
 - **Stable release**: Published when the release commit is pushed to the `master` branch of the
 upstream remote*
-- **Non-stable release**: Published immediately
+- **Prerelease**: Published immediately
 
 * _This step will be automated in a future release of Toolchain_
 
@@ -88,13 +88,24 @@ upstream remote*
 
 1. Check out the `develop` branch at the commit you want to publish (if there are any changes in
 the working tree, stash them)
+
 2. Run `yarn bumped release <VERSION>`,  
   where `VERSION` is one of the following: `patch` | `minor` | `major` | `<VERSION_NUMBER>`  
   (Example: `$ yarn bumped release minor`)
+3. Merge the branch into `master` and push to the upstream remote. The remote will publish the
+  package.
 
-#### To release a non-stable version of your package
+#### To release a prerelease version of your package
 
-1. Check out the `edge` branch at the commit you want to publish (if there any changes in the
-working tree, stash them)
-2. Run `yarn bumped release <VERSION_NUMBER>-<VERSION_STAGE>`  
-  (Example: `$ yarn bumped release 1.0.0-beta`)
+Prerelease branches: `alpha`, `beta`, `next`
+
+1. Check out any of the prerelease branches (`alpha`, `beta`, or `next`) at the commit you want to
+publish (if there any changes in the working tree, stash them)
+2. Run `yarn bumped release <VERSION_NUMBER>`  
+  (Example: `$ yarn bumped release 1.0.0`)
+
+The package will be published with a suffix and tag that are the same as the branch name. E.g.,
+if version 1.0.0 is released from the `beta` branch,
+- the version number will be `1.0.0-beta`
+- the package will have the tag `beta`
+
