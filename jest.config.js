@@ -1,7 +1,8 @@
 module.exports = {
   moduleFileExtensions: [
-    'js',
     'ts',
+    'js',
+    'json',
   ],
   testRegex: '__tests__/.*.test.ts$',
   /* Define preprocessors */
