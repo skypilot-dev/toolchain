@@ -19,4 +19,4 @@ plugins:
     Publishing to NPM if non-stable:
       plugin: bumped-terminal
       command: |
-        (git-branch-is --quiet develop && echo "An NPM package will be published when this release is pushed to master.") || yarn run publish:default --newVersion $newVersion --tag $(git symbolic-ref --short HEAD) && git reset --hard HEAD
+        (git-branch-is --quiet develop && echo "An NPM package will be published when this release is pushed to master.") || yarn run publish:default --newVersion $newVersion --tag $(git symbolic-ref --short HEAD) && git checkout -- . ; git clean CHANGELOG.md
