@@ -4,7 +4,8 @@ import tmp from 'tmp';
 
 import { JsonObject } from '../../common/types';
 
-import { readPackageFile, updatePackageFile, UpdateStrategy } from '../updatePackageFile';
+import { readPackageFile } from '../readPackageFile';
+import { updatePackageFile, UpdateStrategy } from '../updatePackageFile';
 
 function createTmpPkgFile(data: JsonObject, suffix: string): string {
   const pathToFile = `${tmp.fileSync().name}-${suffix}`;

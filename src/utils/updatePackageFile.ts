@@ -1,6 +1,6 @@
 /* -- Imports -- */
 /* Built-in imports */
-import { readFileSync, writeFileSync } from 'fs';
+import { writeFileSync } from 'fs';
 
 /* Third-party imports */
 import deepmerge from 'deepmerge';
@@ -9,6 +9,7 @@ import deepmerge from 'deepmerge';
 import { pickDifference } from '../common/object/pickDifference';
 import { sortObjectEntries } from '../common/object/sortObjectEntries';
 import { JsonObject } from '../common/types';
+import { readPackageFile } from './readPackageFile';
 
 /* -- Typings -- */
 export enum UpdateStrategy {
@@ -44,13 +45,6 @@ const mergeFns = {
     ...update,
   }),
 };
-
-
-/* -- Helper functions -- */
-export function readPackageFile(pathToFile: string): JsonObject {
-  const pkgJson = readFileSync(pathToFile, 'utf-8');
-  return JSON.parse(pkgJson);
-}
 
 
 /* -- Main function -- */
