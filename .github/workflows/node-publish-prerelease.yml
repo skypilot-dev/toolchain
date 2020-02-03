@@ -30,6 +30,7 @@ jobs:
         run: |
           git fetch --prune --unshallow
           git fetch origin 'master:master'
+          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
