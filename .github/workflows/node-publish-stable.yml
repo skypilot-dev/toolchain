@@ -1,11 +1,9 @@
-name: Build & publish Node package
+name: Build & publish stable Node package
 
 on:
   push:
     branches:
       - 'master'
-    paths:
-      - 'CHANGELOG.md'
 
 jobs:
   publish:
@@ -40,6 +38,8 @@ jobs:
           yarn install --frozen-lockfile --production=false
       - name: Publish
         run: |
-          bumped release $(yarn --silent get-next-version)
+          git config --global user.email "actions@github.com"
+          git config --global user.name ${GITHUB_ACTOR}
+          yarn bumped release $(yarn --silent get-next-version)
           yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
           yarn run publish:default
