@@ -50,6 +50,10 @@ jobs:
         run: |
           yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
           yarn run publish:default --tag $(git symbolic-ref --short HEAD)
+      - name: Tag
+        if: success()
+        run: |
+          git tag -a v$(yarn --silent get-current-version) -m "Prerelease $(yarn --silent get-current-version)"
       - name: Push tag
         if: success()
         run: git push --tags
