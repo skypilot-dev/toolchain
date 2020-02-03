@@ -40,5 +40,6 @@ jobs:
           yarn install --frozen-lockfile --production=false
       - name: Publish
         run: |
+          bumped release $(yarn --silent get-next-version)
           yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
           yarn run publish:default
