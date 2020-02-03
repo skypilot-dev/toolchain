@@ -65,6 +65,7 @@ export function updatePackageFile(data: JsonObject, options: UpdatePackageFileOp
 
   /* Save the merged data to the file */
   if (updatedPkg) {
-    writeFileSync(pathToFile, JSON.stringify(sortedPkg, undefined, 2));
+    const stringifiedData = JSON.stringify(sortedPkg, undefined, 2);
+    writeFileSync(pathToFile, `${stringifiedData}\n`);
   }
 }
