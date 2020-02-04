@@ -6,6 +6,8 @@ on:
       - 'alpha'
       - 'beta'
       - 'next'
+    paths-ignore:
+      - 'README.md'
 
 jobs:
   publish:
