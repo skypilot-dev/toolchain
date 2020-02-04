@@ -1,6 +1,6 @@
 /* -- Imports -- */
 /* Built-in imports */
-import { readFileSync, writeFileSync } from 'fs';
+import { writeFileSync } from 'fs';
 
 /* Third-party imports */
 import deepmerge from 'deepmerge';
@@ -9,6 +9,7 @@ import deepmerge from 'deepmerge';
 import { pickDifference } from '../common/object/pickDifference';
 import { sortObjectEntries } from '../common/object/sortObjectEntries';
 import { JsonObject } from '../common/types';
+import { readPackageFile } from './readPackageFile';
 
 /* -- Typings -- */
 export enum UpdateStrategy {
@@ -46,13 +47,6 @@ const mergeFns = {
 };
 
 
-/* -- Helper functions -- */
-export function readPackageFile(pathToFile: string): JsonObject {
-  const pkgJson = readFileSync(pathToFile, 'utf-8');
-  return JSON.parse(pkgJson);
-}
-
-
 /* -- Main function -- */
 /* Given a JSON object, merge the object into `package.json`. */
 export function updatePackageFile(data: JsonObject, options: UpdatePackageFileOptions = {}): void {
@@ -71,6 +65,7 @@ export function updatePackageFile(data: JsonObject, options: UpdatePackageFileOp
 
   /* Save the merged data to the file */
   if (updatedPkg) {
-    writeFileSync(pathToFile, JSON.stringify(sortedPkg, undefined, 2));
+    const stringifiedData = JSON.stringify(sortedPkg, undefined, 2);
+    writeFileSync(pathToFile, `${stringifiedData}\n`);
   }
 }

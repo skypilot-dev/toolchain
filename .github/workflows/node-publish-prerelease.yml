@@ -1,0 +1,59 @@
+name: Build & publish prerelease Node package
+
+on:
+  push:
+    branches:
+      - 'alpha'
+      - 'beta'
+      - 'next'
+
+jobs:
+  publish:
+    name: Build & publish
+
+    env:
+      CI: true
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Fetch
+        run: |
+          git fetch --prune --unshallow
+          git fetch origin 'master:master'
+          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install
+        run: |
+          echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
+          yarn install --frozen-lockfile --production=false
+      - name: Bump version
+        if: success()
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name ${GITHUB_ACTOR}
+          yarn bumped release $(yarn --silent get-next-version)
+      - name: Publish
+        if: success()
+        run: |
+          yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
+          yarn run publish:default --tag $(git symbolic-ref --short HEAD)
+      - name: Tag
+        if: success()
+        run: |
+          git tag -a v$(yarn --silent get-current-version) -m "Prerelease $(yarn --silent get-current-version)"
+      - name: Push tag
+        if: success()
+        run: git push --tags

@@ -1,4 +1,4 @@
-name: Build & test NPM package
+name: Check & build Node package
 
 on:
   push:
@@ -6,14 +6,18 @@ on:
       - 'wip-**'
       - '**-wip'
       - 'master'
+      - 'alpha'
+      - 'beta'
+      - 'next'
 
 jobs:
   build:
-    name: Build, lint & test
+    name: Typecheck, lint, test & build
 
     env:
       CI: true
       NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      CI_NEEDS_GIT_HISTORY: ${{ secrets.CI_NEEDS_GIT_HISTORY }}
 
     runs-on: ubuntu-latest
 
@@ -24,7 +28,11 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Fetch
+        run: |
+          test -z "${CI_NEEDS_GIT_HISTORY}" || (git fetch --prune --unshallow && git fetch origin 'master:master')
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:

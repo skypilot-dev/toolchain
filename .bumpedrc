@@ -2,21 +2,8 @@ files:
   - package.json
 plugins:
   prerelease:
-    Checking that branch is clean and releasable:
-      plugin: bumped-terminal
-      command:  test -z "$(git status --porcelain)" && git-branch-is -r "^develop|edge$" && yarn run all-cq-checks
     Linting config files:
       plugin: bumped-finepack
   postrelease:
     Generating CHANGELOG file:
       plugin: bumped-changelog
-    Committing new version:
-      plugin: bumped-terminal
-      command: git add CHANGELOG.md package.json && git commit -m "Release v$newVersion"
-    Publishing tag to GitHub:
-      plugin: bumped-terminal
-      command: git tag $newVersion && git push && git push --tags
-    Publishing to NPM if non-stable:
-      plugin: bumped-terminal
-      command: |
-        (git-branch-is --quiet develop && echo "An NPM package will be published when this release is pushed to master.") || yarn run publish:default --new-version $newVersion
