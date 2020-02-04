@@ -1,4 +1,9 @@
 # @skypilot/toolchain
+
+[![build](https://img.shields.io/github/workflow/status/skypilotcc/toolchain/Build%20&%20publish%20stable%20Node%20package?label=build)]()&nbsp;
+[![npm](https://img.shields.io/npm/v/@skypilot/toolchain?label=npm)](https://www.npmjs.com/package/@skypilot/toolchain)&nbsp;
+[![license: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)  
+
 Toolchain for Node projects:
 - Babel
 - ESLint
@@ -37,6 +42,38 @@ Once Toolchain is installed and initialized:
 
 - ESLint, Jest, and TypeScript will automatically use the configurations created by Toolchain
 
+GitHub Actions workflows will
+- run code-quality checks on every push to GitHub (except `wip-` and `-wip` branches)
+- publish an NPM package on every push to GitHub on the stable or prerelease branches
+
+### How to publish releases
+
+Toolchain creates GitHub Actions workflows that automate the process of creating and releasing
+NPM packages. Two different types of automated releases are supported:
+
+- **Stable release**: Has an ordinary semver version number, such as `1.1.2`
+- **Prerelease**: Has a version number with a version-tag suffix and iteration number, such as
+`1.0.0-beta.0`
+
+The workflows are configured to automatically
+- publish a stable release on every push to `master`
+- publish a prerelease on every push to `alpha`, `beta`, or `next` branch
+
+Toolchain performs the following steps when a release is created. If any step fails, the release is
+halted.
+
+- Runs all automated checks (typechecking, linting, and testing)
+- Builds the package and generates types
+- Determines the next version number (based on commit messages)
+- Creates a version tag
+- Publishes the package to NPM
+
+For stable releases, the workflow also:
+
+- Bumps the version number in `package.json`
+- Updates `CHANGELOG.md`
+- Commits these changes to the current branch
+
 ### Convenience scripts
 
 These convenience scripts are added to `package.json` by `yarn toolchain init`:
@@ -58,54 +95,3 @@ These convenience scripts are added to `package.json` by `yarn toolchain init`:
 on external services) using Jest
 
 To run a script, use `yarn run SCRIPT_NAME`.
-
-### How to create and publish releases
-
-Toolchain automates the process of creating and releasing NPM packages. Two different types of
-automated releases are supported:
-- **Stable release**: Has an ordinary semver version number, such as `1.1.2`
-- **Prerelease**: Has a version number with a version-tag suffix, such as `1.0.0-beta`
-
-Toolchain performs the following steps when a release is created. If any step fails, the release is
-halted.
-
-- Runs all automated checks (typechecking, linting, and testing)
-- Builds the package and generates types
-- Bumps the version number in `package.json` and creates a `CHANGELOG.md` file
-- Commits these changes to the current branch
-- Creates a version tag
-- Pushes the commit and tag to the same branch of the upstream remote, if one has been set
-
-Publication to NPM is also automatic, but the timing depends on the type of release:
-
-- **Stable release**: Published when the release commit is pushed to the `master` branch of the
-upstream remote*
-- **Prerelease**: Published immediately
-
-* _This step will be automated in a future release of Toolchain_
-
-#### To release a stable version of your package
-
-1. Check out the `develop` branch at the commit you want to publish (if there are any changes in
-the working tree, stash them)
-
-2. Run `yarn bumped release <VERSION>`,  
-  where `VERSION` is one of the following: `patch` | `minor` | `major` | `<VERSION_NUMBER>`  
-  (Example: `$ yarn bumped release minor`)
-3. Merge the branch into `master` and push to the upstream remote. The remote will publish the
-  package.
-
-#### To release a prerelease version of your package
-
-Prerelease branches: `alpha`, `beta`, `next`
-
-1. Check out any of the prerelease branches (`alpha`, `beta`, or `next`) at the commit you want to
-publish (if there any changes in the working tree, stash them)
-2. Run `yarn bumped release <VERSION_NUMBER>`  
-  (Example: `$ yarn bumped release 1.0.0`)
-
-The package will be published with a suffix and tag that are the same as the branch name. E.g.,
-if version 1.0.0 is released from the `beta` branch,
-- the version number will be `1.0.0-beta`
-- the package will have the tag `beta`
-
