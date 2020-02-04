@@ -1,3 +1,9 @@
+## 1.11.0 (2020-02-04)
+
+* fix: master branch can't be fetched into master branch ([3f7c9b4](https://github.com/skypilotcc/toolchain/commit/3f7c9b4))
+
+
+
 ## <small>1.5.1 (2020-01-27)</small>
 
 * refactor: Upgrade all dependencies ([53aadaa](https://github.com/skypilotcc/toolchain/commit/53aadaa))
