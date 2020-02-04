@@ -3,7 +3,6 @@ export const COPIED_CONFIGS: string[] = [
   '.github/workflows/node-ci.yml',
   '.github/workflows/node-publish-prerelease.yml',
   '.github/workflows/node-publish-stable.yml',
-  '.bumpedrc',
   '.editorconfig',
   '.eslintignore',
   '.gitignore',
