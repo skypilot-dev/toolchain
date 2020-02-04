@@ -1315,6 +1315,11 @@
   resolved "https://registry.yarnpkg.com/@skypilot/versioner/-/versioner-0.1.0-alpha.3.tgz#4d669a3dc6457015034be6dd70def57e98e8aa04"
   integrity sha512-CEV35qIFmN5X+EWnMsnyTMkFoRja8yMI0Ivzl5pURElVuLcoo8c8J+EkTSG7bTC+wZpaToDgr/289gArvaWL2w==
 
+"@skypilot/versioner@^0.1.0-alpha.4":
+  version "0.1.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@skypilot/versioner/-/versioner-0.1.0-alpha.4.tgz#3d0916a5cd11bedb2c0b629e2be6bab8fb91e86d"
+  integrity sha512-4lSh8C3cuidWgqK4i6ljSSm3t88+r14PbOfMpLRUPiAOvyg0HUIHDkUmoI7BiPVm+ZvGLMv9CEeqh+Q2YWAhtg==
+
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@szmarczak/http-timer/-/http-timer-1.1.2.tgz#b1665e2c461a2cd92f4c1bbf50d5454de0d4b421"
