@@ -1295,10 +1295,10 @@
   dependencies:
     type-detect "4.0.8"
 
-"@skypilot/bump-version@^0.1.0-alpha.13":
-  version "0.1.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-0.1.0-alpha.13.tgz#398c7f21e36236104ac5a0a35206502eb333bd60"
-  integrity sha512-WridIaOHpd13CYz8F8EA9T/biK3mJNDeBb5nECYeBZ8NPJOMKxUpuaq9v0H2/KzTL0A0udcKUYNTMw9dFP7i4g==
+"@skypilot/bump-version@^0.1.0-alpha.14":
+  version "0.1.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-0.1.0-alpha.14.tgz#5acde8dba9e0084d4bf90ecc074d023077557c21"
+  integrity sha512-692uSybJyfFW9czhCYobGw5dW7p/SFrsfBrYN7isj8Tz7kRZYaGkE+EKRMfx7yJWH/wLy1G7bosFJOxbG8LWkQ==
   dependencies:
     "@skypilot/nodegit-tools" "^0.1.5-alpha.3"
     "@skypilot/versioner" "^0.1.0-alpha.10"
