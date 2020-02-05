@@ -5,6 +5,8 @@ on:
     branches:
       - 'master'
     paths-ignore:
+      - 'CHANGELOG.md'
+      - 'package.json'
       - 'README.md'
 
 jobs:
@@ -26,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       - name: Fetch
         run: |
           git fetch --prune --unshallow
@@ -38,12 +42,19 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
           yarn install --frozen-lockfile --production=false
+      - name: Lint config files
+        run: yarn --silent finepack
+      - name: Gather published versions
+        run: |
+          mkdir -p local
+          yarn info --silent . versions > local/published-versions.txt
       - name: Bump version
         if: success()
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name ${GITHUB_ACTOR}
-          yarn bumped release $(yarn --silent get-next-version)
+          yarn --silent bump-version
+          yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
       - name: Publish
         if: success()
         run: |
