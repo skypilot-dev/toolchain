@@ -53,8 +53,7 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name ${GITHUB_ACTOR}
-          yarn --silent bump-version
-          yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
+          yarn --silent bump-version && yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
       - name: Publish
         if: success()
         run: |
