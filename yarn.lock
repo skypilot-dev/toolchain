@@ -1295,13 +1295,13 @@
   dependencies:
     type-detect "4.0.8"
 
-"@skypilot/bump-version@^0.1.0-alpha.8":
-  version "0.1.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-0.1.0-alpha.8.tgz#34853e4656dc9f832ee09644dfbb226a493f0227"
-  integrity sha512-EWR4yaKypXPWxQfEOti3e2dnrCUrepZqCbnJ+7h1q7CtTTMZSTvOAxqRM39A5eelIYJMITK9S7vXYXOx4FRXiQ==
+"@skypilot/bump-version@^0.1.0-alpha.12":
+  version "0.1.0-alpha.12"
+  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-0.1.0-alpha.12.tgz#95138f45fb5e8abf8a1289fff44be0c81d847289"
+  integrity sha512-1y2mV4IYS2u/wa5H5ebL+uIGkDKurF4Qp9KbZMyLcaHF4KppGl8lH6VgGt2C9TFhk2j2HxQkGi54wB89V4LHDA==
   dependencies:
     "@skypilot/nodegit-tools" "^0.1.5-alpha.3"
-    "@skypilot/versioner" "^0.1.0-alpha.3"
+    "@skypilot/versioner" "^0.1.0-alpha.8"
 
 "@skypilot/nodegit-tools@^0.1.5-alpha.3":
   version "0.1.5-alpha.3"
@@ -1310,15 +1310,15 @@
   dependencies:
     nodegit "^0.26.4"
 
-"@skypilot/versioner@^0.1.0-alpha.3":
-  version "0.1.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@skypilot/versioner/-/versioner-0.1.0-alpha.3.tgz#4d669a3dc6457015034be6dd70def57e98e8aa04"
-  integrity sha512-CEV35qIFmN5X+EWnMsnyTMkFoRja8yMI0Ivzl5pURElVuLcoo8c8J+EkTSG7bTC+wZpaToDgr/289gArvaWL2w==
-
 "@skypilot/versioner@^0.1.0-alpha.4":
   version "0.1.0-alpha.4"
   resolved "https://registry.yarnpkg.com/@skypilot/versioner/-/versioner-0.1.0-alpha.4.tgz#3d0916a5cd11bedb2c0b629e2be6bab8fb91e86d"
   integrity sha512-4lSh8C3cuidWgqK4i6ljSSm3t88+r14PbOfMpLRUPiAOvyg0HUIHDkUmoI7BiPVm+ZvGLMv9CEeqh+Q2YWAhtg==
+
+"@skypilot/versioner@^0.1.0-alpha.8":
+  version "0.1.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/@skypilot/versioner/-/versioner-0.1.0-alpha.8.tgz#e7adb19347a353b6cf8d17b079f601c5c06a005d"
+  integrity sha512-KGP9o+d1/X9nx00K+1ynfTgLm02w9hZqN0ZMY6c0WAsRHIvBKqZXbpMs3VCmqScc7VAUnQiaFcU342PF1c7RoQ==
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
