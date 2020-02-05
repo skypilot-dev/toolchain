@@ -1,8 +1,8 @@
 /* These configs are direct copies of the configs used in Toolchain itself. */
 export const COPIED_CONFIGS: string[] = [
-  '.github/workflows/node-ci.yml',
-  '.github/workflows/node-publish-prerelease.yml',
-  '.github/workflows/node-publish-stable.yml',
+  '.github/workflows/node-check-code.yml',
+  '.github/workflows/node-prerelease.yml',
+  '.github/workflows/node-stable-release.yml',
   '.editorconfig',
   '.eslintignore',
   '.gitignore',
