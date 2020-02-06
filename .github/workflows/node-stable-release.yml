@@ -44,6 +44,7 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
           yarn install --frozen-lockfile --production=false
+          yarn add @skypilot/bump-version
       - name: Lint config files
         run: yarn --silent finepack
       - name: Gather published versions
@@ -68,7 +69,8 @@ jobs:
       - name: Commit files
         if: success()
         run: |
-          git commit --all --message "Release $(yarn --silent get-current-version)"
+          git add package.json CHANGELOG.md
+          git commit --message "Release $(yarn --silent get-current-version)"
       - name: Tag
         if: success()
         run: |
