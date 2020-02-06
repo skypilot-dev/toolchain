@@ -1295,18 +1295,18 @@
   dependencies:
     type-detect "4.0.8"
 
-"@skypilot/bump-version@^1.0.0-next.0":
-  version "1.0.0-next.0"
-  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-1.0.0-next.0.tgz#da526861aae7da37746b41bb2d4c1e34e0124b59"
-  integrity sha512-OnU3daR1DBdzwqJ9ugZWNirylA8TfD7IYGaT0xHu0hI6+8WlmfjON0mVodTuFFjd0GEoLZWMnAEeDKpDmrLcmQ==
+"@skypilot/bump-version@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-1.0.2.tgz#71fc99089fcf016e77e47e4e26e5039b8ef07cc8"
+  integrity sha512-i8UmGLM9VCuSv3vwn2o4gF9x/lf5ndhz7i/04t3DGgTMj8y7igbHPNS9Ps96PljOuBTDTkeVV+SyDv97s24N8w==
   dependencies:
-    "@skypilot/nodegit-tools" "^1.0.2"
+    "@skypilot/nodegit-tools" "^1.0.4"
     "@skypilot/versioner" "^1.0.1"
 
-"@skypilot/nodegit-tools@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@skypilot/nodegit-tools/-/nodegit-tools-1.0.2.tgz#5f461d80fbb86ee1d61c9583685ead85be0f78f0"
-  integrity sha512-qB4X6B+0qmPLEbgsEflnnId+T4OW8H62e/Ryyi+R6Zb1tn82ps6KT6UfGOmkGHlaG2Fivaw90G1+mp6E8yR2Hg==
+"@skypilot/nodegit-tools@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@skypilot/nodegit-tools/-/nodegit-tools-1.0.4.tgz#12a7cc29c43247595b9a0dcb9bcee405a8ecc707"
+  integrity sha512-IF4ybX+ApPIZ/R+lzmeHCMOHvJLnpmvBzTBS1IE515E4m3bsoGsMyO0p80CCulZIu3y37mp76IwFG3YzlP6kmw==
   dependencies:
     nodegit "^0.26.4"
 
