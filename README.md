@@ -4,19 +4,24 @@
 [![npm](https://img.shields.io/npm/v/@skypilot/toolchain?label=npm)](https://www.npmjs.com/package/@skypilot/toolchain)&nbsp;
 [![license: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)  
 
-Toolchain for Node projects:
+An opinionated toolchain for developing Node packages.
+
+Toolchain comes configured with:
+
 - Babel
 - ESLint
 - Jest
 - TypeScript
 - Lint-Staged (using Husky)
-- Bumped (version release system)
+- GitHub Actions versioning & publication workflows
 
 With a pre-commit hook to enforce linting on commit.
 
+
 ## What does it do?
 Toolchain installs all dependencies & configurations needed to start creating Node projects
-using TypeScript. Compilation, typing, linting, testing, and release system are pre-configured.
+using TypeScript. Compilation, typing, linting, release versioning, and publication are
+pre-configured.
 
 
 ## How to install
@@ -25,6 +30,14 @@ $ yarn add @skypilot/toolchain
 $ yarn toolchain init
 $ node node_modules/husky/husky.js install
 ```
+
+(If the last command fails, use [this workaround](https://github.com/typicode/husky/issues/640#issuecomment-578893362):
+```
+INIT_CWD="$PWD" npm_config_user_agent=$(yarn config get user-agent) \
+  node node_modules/husky/husky.js install
+```
+)
+
 
 The `toolchain init` command creates a set of configuration files that include scripts & configs
 for distributing the project as a package. A planned change is to have `toolchain init` create only
