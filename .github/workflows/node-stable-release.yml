@@ -30,7 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Fetch
         run: |
           git fetch --prune --unshallow
