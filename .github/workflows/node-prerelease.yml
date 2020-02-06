@@ -8,7 +8,7 @@ on:
       - 'next'
     paths-ignore:
       - 'docs/**'
-      - '**.md'
+      - '**/*.md'
       - 'LICENSE'
       - 'package.json'
 
