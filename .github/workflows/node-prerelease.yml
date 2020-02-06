@@ -46,7 +46,7 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
           yarn install --frozen-lockfile --production=false
-          yarn add @skypilot/bump-version
+          yarn add @skypilot/bump-version conventional-changelog-cli@2
       - name: Bump version
         if: success()
         run: |
