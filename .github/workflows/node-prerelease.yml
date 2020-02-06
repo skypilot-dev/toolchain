@@ -50,8 +50,12 @@ jobs:
       - name: Publish
         if: success()
         run: |
-          yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
-          yarn run publish:default --tag $(git symbolic-ref --short HEAD)
+          if test -n "$NPM_AUTH_TOKEN" ; then
+            yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
+            yarn run publish:default --tag $(git symbolic-ref --short HEAD)
+          else
+            echo "No NPM_AUTH_TOKEN found. Skipping publication"
+          fi
       - name: Tag
         if: success()
         run: |
