@@ -5,9 +5,10 @@ on:
     branches:
       - 'master'
     paths-ignore:
-      - 'CHANGELOG.md'
+      - 'docs/**'
+      - '**.md'
+      - 'LICENSE'
       - 'package.json'
-      - 'README.md'
 
 jobs:
   stable-release:
