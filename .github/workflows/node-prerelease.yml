@@ -7,8 +7,9 @@ on:
       - 'beta'
       - 'next'
     paths-ignore:
-      - 'docs/**'
       - '**/*.md'
+      - 'docs/**'
+      - '*.md'
       - 'LICENSE'
       - 'package.json'
 
