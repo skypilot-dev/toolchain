@@ -1,4 +1,4 @@
-name: Build & publish prerelease Node package
+name: Prerelease
 
 on:
   push:
@@ -10,8 +10,8 @@ on:
       - 'README.md'
 
 jobs:
-  publish:
-    name: Build & publish
+  prerelease:
+    name: Create prerelease
 
     env:
       CI: true
@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Fetch
         run: |
           git fetch --prune --unshallow
@@ -50,8 +52,12 @@ jobs:
       - name: Publish
         if: success()
         run: |
-          yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
-          yarn run publish:default --tag $(git symbolic-ref --short HEAD)
+          if test -n "$NPM_AUTH_TOKEN" ; then
+            yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
+            yarn run publish:default --tag $(git symbolic-ref --short HEAD)
+          else
+            echo "No NPM_AUTH_TOKEN found. Skipping publication"
+          fi
       - name: Tag
         if: success()
         run: |

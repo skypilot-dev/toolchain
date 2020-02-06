@@ -1,4 +1,4 @@
-name: Build & publish stable Node package
+name: Stable release
 
 on:
   push:
@@ -10,12 +10,13 @@ on:
       - 'README.md'
 
 jobs:
-  publish:
-    name: Build & publish
+  stable-release:
+    name: Create stable release
 
     env:
       CI: true
       NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
     runs-on: ubuntu-latest
 
@@ -29,7 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Fetch
         run: |
           git fetch --prune --unshallow
@@ -57,8 +58,12 @@ jobs:
       - name: Publish
         if: success()
         run: |
-          yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
-          yarn run publish:default
+          if test -n "$NPM_AUTH_TOKEN" ; then
+            yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
+            yarn run publish:default
+          else
+            echo "No NPM_AUTH_TOKEN found. Skipping publication"
+          fi
       - name: Commit files
         if: success()
         run: |
