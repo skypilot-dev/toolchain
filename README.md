@@ -1,8 +1,8 @@
 # @skypilot/toolchain
 
 [![build](https://img.shields.io/github/workflow/status/skypilotcc/toolchain/Stable%20release?label=build)]()&nbsp;
-[![npm stable](https://img.shields.io/npm/v/@skypilot/toolchain?label=npm)](https://www.npmjs.com/package/@skypilot/toolchain)&nbsp;
-[![npm next](https://img.shields.io/npm/v/@skypilot/toolchain/next)](https://www.npmjs.com/package/@skypilot/toolchain)&nbsp;
+[![npm stable](https://img.shields.io/npm/v/@skypilot/toolchain?label=stable)](https://www.npmjs.com/package/@skypilot/toolchain)&nbsp;
+[![npm next](https://img.shields.io/npm/v/@skypilot/toolchain/next?label=next)](https://www.npmjs.com/package/@skypilot/toolchain)&nbsp;
 [![license: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)  
 
 An opinionated toolchain for developing Node packages.
