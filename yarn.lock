@@ -1295,25 +1295,25 @@
   dependencies:
     type-detect "4.0.8"
 
-"@skypilot/bump-version@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-1.0.0.tgz#3536bd7b783a9024412502fd418fa04a80772ab7"
-  integrity sha512-e+qL+so0L2IIs5gOB76jcyz66lyTnlOE9/YOOGmbAtXn0SldVxv79mFO5rAZq1tlsf1JaZ6pWurgU4GA4wtJCQ==
+"@skypilot/bump-version@^1.0.0-next.0":
+  version "1.0.0-next.0"
+  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-1.0.0-next.0.tgz#da526861aae7da37746b41bb2d4c1e34e0124b59"
+  integrity sha512-OnU3daR1DBdzwqJ9ugZWNirylA8TfD7IYGaT0xHu0hI6+8WlmfjON0mVodTuFFjd0GEoLZWMnAEeDKpDmrLcmQ==
   dependencies:
-    "@skypilot/nodegit-tools" "^1.0.1"
-    "@skypilot/versioner" "^1.0.0"
+    "@skypilot/nodegit-tools" "^1.0.2"
+    "@skypilot/versioner" "^1.0.1"
 
-"@skypilot/nodegit-tools@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@skypilot/nodegit-tools/-/nodegit-tools-1.0.1.tgz#1f8f727f8d3eb5474ab448d2fb7cb24292d2360a"
-  integrity sha512-vJSzS8wrgSD7D6yPY3VkqOSRcc16YreZY2zaZMzwjwa2Y6xnAZwjvHj/gXvj/BsiPT5kZ5Nf86wgOR1lRLT6rQ==
+"@skypilot/nodegit-tools@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@skypilot/nodegit-tools/-/nodegit-tools-1.0.2.tgz#5f461d80fbb86ee1d61c9583685ead85be0f78f0"
+  integrity sha512-qB4X6B+0qmPLEbgsEflnnId+T4OW8H62e/Ryyi+R6Zb1tn82ps6KT6UfGOmkGHlaG2Fivaw90G1+mp6E8yR2Hg==
   dependencies:
     nodegit "^0.26.4"
 
-"@skypilot/versioner@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@skypilot/versioner/-/versioner-1.0.0.tgz#887c38c7ff8868fe016ea6bb36456c034b10eea8"
-  integrity sha512-BeuPJBRLkM4u68Pua/BRPKfoGBh4GYqxBi5mhKTz6ObMqhz4jklDTm0IHVxbR+uQIYON82Lu/s1+gfhPM8NZRA==
+"@skypilot/versioner@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@skypilot/versioner/-/versioner-1.0.1.tgz#d458f1bd654138a1c3ea7d2cd56082b029db2044"
+  integrity sha512-tCABJ8Gheq+g/qRq/emEFyK/Dq6Urc/5Pkb1nZWgLYdwwp8Sb+3mHCq55PjO1Epy72aS/CQl0nhNg/yTesUk0w==
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
