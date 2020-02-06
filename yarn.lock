@@ -1295,25 +1295,25 @@
   dependencies:
     type-detect "4.0.8"
 
-"@skypilot/bump-version@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-1.0.2.tgz#71fc99089fcf016e77e47e4e26e5039b8ef07cc8"
-  integrity sha512-i8UmGLM9VCuSv3vwn2o4gF9x/lf5ndhz7i/04t3DGgTMj8y7igbHPNS9Ps96PljOuBTDTkeVV+SyDv97s24N8w==
+"@skypilot/bump-version@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@skypilot/bump-version/-/bump-version-1.0.3.tgz#05b2a16a6a2989c06b38fd54055498868fe580ad"
+  integrity sha512-B0l24oTlUnAcHvGJQnkdPOviVSxLbkS+BcTp9RCapY5Ud4gnajfMY3cJMwHjgvixLAy6P9Cx/wxZgu8u4VJwqg==
   dependencies:
-    "@skypilot/nodegit-tools" "^1.0.4"
-    "@skypilot/versioner" "^1.0.1"
+    "@skypilot/nodegit-tools" "^1.0.5"
+    "@skypilot/versioner" "^1.1.2"
 
-"@skypilot/nodegit-tools@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@skypilot/nodegit-tools/-/nodegit-tools-1.0.4.tgz#12a7cc29c43247595b9a0dcb9bcee405a8ecc707"
-  integrity sha512-IF4ybX+ApPIZ/R+lzmeHCMOHvJLnpmvBzTBS1IE515E4m3bsoGsMyO0p80CCulZIu3y37mp76IwFG3YzlP6kmw==
+"@skypilot/nodegit-tools@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@skypilot/nodegit-tools/-/nodegit-tools-1.0.5.tgz#6dd47b1f4f8d0836ead790353febfd4b48881125"
+  integrity sha512-JswSgjl49C0DRNOKxVYNTBsqCwQ75vE0jc7Bm9384nkJiTKyb0oxXSQAjl/m/R7REN2XM1dpvo7yVNDxV7wYLA==
   dependencies:
     nodegit "^0.26.4"
 
-"@skypilot/versioner@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@skypilot/versioner/-/versioner-1.0.1.tgz#d458f1bd654138a1c3ea7d2cd56082b029db2044"
-  integrity sha512-tCABJ8Gheq+g/qRq/emEFyK/Dq6Urc/5Pkb1nZWgLYdwwp8Sb+3mHCq55PjO1Epy72aS/CQl0nhNg/yTesUk0w==
+"@skypilot/versioner@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@skypilot/versioner/-/versioner-1.1.2.tgz#f30e104bce526dca6d97abcf70b63cf3e832f858"
+  integrity sha512-BjmhZd8/qnyeR0VknDo3etcSDDn+Ed3yZlXGWdux0OenXQRAd3nbLoCKLgrjGZPuI2JHMBBPgWxf5hlfyGef1g==
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
