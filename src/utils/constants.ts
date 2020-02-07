@@ -6,6 +6,7 @@ export const COPIED_CONFIGS: string[] = [
   '.editorconfig',
   '.eslintignore',
   '.gitignore',
+  '.nvmrc',
   'jest.config.js',
   'jest.integration.config.js',
   'jest.standalone.config.js',
