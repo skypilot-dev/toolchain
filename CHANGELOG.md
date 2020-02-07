@@ -1,13 +1,13 @@
-## [2.1.3](https://github.com/skypilotcc/toolchain/compare/v2.1.2...v2.1.3) (2020-02-06)
+## [2.1.4](https://github.com/skypilotcc/toolchain/compare/v2.1.3-next.0...v2.1.4) (2020-02-07)
 
 
-### Bug Fixes
+### Features
 
-* Globbing patterns don't cover both project root & subdirs ([1a32a8b](https://github.com/skypilotcc/toolchain/commit/1a32a8b68b454c73191c064ce303b9ffee09b7e2))
+* Enable commit signing in CI workflow ([1b67024](https://github.com/skypilotcc/toolchain/commit/1b670249f577d3cc0c7f07acb67d24298bbf1d1c))
 
 
 
-## 2.1.2 (2020-02-06)
+## [2.1.3-next.0](https://github.com/skypilotcc/toolchain/compare/v2.1.3...v2.1.3-next.0) (2020-02-06)
 
 
 
