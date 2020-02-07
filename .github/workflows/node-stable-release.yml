@@ -16,7 +16,11 @@ jobs:
     name: Create stable release
 
     env:
+      BOT_EMAIL: ${{ secrets.SP_BOT_EMAIL || 'repo-bot@users.noreply.github.com' }}
+      BOT_NAME: ${{ secrets.SP_BOT_NAME || 'repo-bot' }}
       CI: true
+      GPG_KEY: ${{ secrets.SP_BOT_GPG_KEY }}
+      GPG_KEY_ID: ${{ secrets.SP_BOT_GPG_KEY_ID }}
       NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
       SP_RELEASE_TOKEN: ${{ secrets.SP_RELEASE_TOKEN }}
 
@@ -56,8 +60,6 @@ jobs:
       - name: Bump version
         if: success()
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name ${GITHUB_ACTOR}
           yarn --silent bump-version && yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
       - name: Publish
         if: success()
@@ -67,6 +69,19 @@ jobs:
             yarn run publish:default
           else
             echo "No NPM_AUTH_TOKEN found. Skipping publication"
+          fi
+      - name: Configure identity
+        if: success()
+        run: |
+          git config --global user.email $BOT_EMAIL
+          git config --global user.name $BOT_NAME
+          if test -n "$GPG_KEY" && test -n "$GPG_KEY_ID"; then
+            echo "$GPG_KEY" | base64 -d > private.key
+            gpg --import ./private.key
+            rm ./private.key
+            git config --global commit.gpgsign true
+            git config --global tag.gpgsign true
+            git config --global user.signingkey $GPG_KEY_ID
           fi
       - name: Commit files
         if: success()
