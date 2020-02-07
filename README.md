@@ -29,16 +29,8 @@ pre-configured.
 ```
 $ yarn add @skypilot/toolchain
 $ yarn toolchain init
-$ node node_modules/husky/husky.js install
+$ yarn toolchain-install-husky
 ```
-
-(If the last command fails, use [this workaround](https://github.com/typicode/husky/issues/640#issuecomment-578893362):
-```
-INIT_CWD="$PWD" npm_config_user_agent=$(yarn config get user-agent) \
-  node node_modules/husky/husky.js install
-```
-)
-
 
 The `toolchain init` command creates a set of configuration files that include scripts & configs
 for distributing the project as a package. A planned change is to have `toolchain init` create only
