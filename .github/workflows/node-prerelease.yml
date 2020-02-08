@@ -23,7 +23,8 @@ jobs:
       CI: true
       GPG_KEY: ${{ secrets.SPQR_BOT_GPG_KEY }}
       GPG_KEY_ID: ${{ secrets.SPQR_BOT_GPG_KEY_ID }}
-      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      NPM_READ_TOKEN: ${{ secrets.NPM_READ_AND_PUBLISH_TOKEN || secrets.NPM_READ_TOKEN }}
+      NPM_READ_AND_PUBLISH_TOKEN: ${{ secrets.NPM_READ_AND_PUBLISH_TOKEN }}
 
     runs-on: ubuntu-latest
 
@@ -49,7 +50,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_READ_TOKEN" > .npmrc
           yarn install --frozen-lockfile --production=false
           yarn add @skypilot/bump-version conventional-changelog-cli@2 finepack@2
           git checkout -- .
@@ -59,11 +60,11 @@ jobs:
       - name: Publish
         if: success()
         run: |
-          if test -n "$NPM_AUTH_TOKEN" ; then
-            yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
+          if test -n "$NPM_READ_AND_PUBLISH_TOKEN" ; then
+            yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
             yarn run publish:default --tag $(git symbolic-ref --short HEAD)
           else
-            echo "No NPM_AUTH_TOKEN found. Skipping publication"
+            echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
           fi
       - name: Configure identity
         if: success()
