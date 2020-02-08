@@ -16,13 +16,13 @@ jobs:
     name: Create stable release
 
     env:
-      BOT_EMAIL: ${{ secrets.SP_BOT_EMAIL || 'repo-bot@users.noreply.github.com' }}
-      BOT_NAME: ${{ secrets.SP_BOT_NAME || 'repo-bot' }}
+      BOT_EMAIL: ${{ secrets.SPQR_BOT_EMAIL || 'spqr-bot@users.noreply.github.com' }}
+      BOT_NAME: ${{ secrets.SPQR_BOT_NAME || 'SkyPilot Quick-Release Bot' }}
       CI: true
-      GPG_KEY: ${{ secrets.SP_BOT_GPG_KEY }}
-      GPG_KEY_ID: ${{ secrets.SP_BOT_GPG_KEY_ID }}
-      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      SP_RELEASE_TOKEN: ${{ secrets.SP_RELEASE_TOKEN }}
+      GPG_KEY: ${{ secrets.SPQR_BOT_GPG_KEY }}
+      GPG_KEY_ID: ${{ secrets.SPQR_BOT_GPG_KEY_ID }}
+      NPM_READ_TOKEN: ${{ secrets.NPM_READ_AND_PUBLISH_TOKEN || secrets.NPM_READ_TOKEN }}
+      NPM_READ_AND_PUBLISH_TOKEN: ${{ secrets.NPM_READ_AND_PUBLISH_TOKEN }}
 
     runs-on: ubuntu-latest
 
@@ -36,7 +36,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.SP_RELEASE_TOKEN || secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SPQR_GITHUB_PERSONAL_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Fetch
         run: |
           git fetch --prune --unshallow
@@ -48,7 +48,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install
         run: |
-          echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_READ_TOKEN" > .npmrc
           yarn install --frozen-lockfile --production=false
           yarn add @skypilot/bump-version conventional-changelog-cli@2 finepack@2
           git checkout -- .
@@ -60,16 +60,15 @@ jobs:
           yarn info --silent . versions > local/published-versions.txt
       - name: Bump version
         if: success()
-        run: |
-          yarn --silent bump-version && yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
+        run: yarn --silent bump-version && yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
       - name: Publish
         if: success()
         run: |
-          if test -n "$NPM_AUTH_TOKEN" ; then
-            yarn config set //registry.yarnpkg.com/:_authToken=$NPM_AUTH_TOKEN
+          if test -n "$NPM_READ_AND_PUBLISH_TOKEN" ; then
+            yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
             yarn run publish:default
           else
-            echo "No NPM_AUTH_TOKEN found. Skipping publication"
+            echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
           fi
       - name: Configure identity
         if: success()
@@ -83,6 +82,8 @@ jobs:
             git config --global commit.gpgsign true
             git config --global tag.gpgsign true
             git config --global user.signingkey $GPG_KEY_ID
+          else
+            echo "GPG_KEY and/or GPG_KEY_ID is undefined in GitHub Secrets. The commit will not be signed."
           fi
       - name: Commit files
         if: success()
