@@ -17,7 +17,6 @@ jobs:
     env:
       CI: true
       NPM_READ_TOKEN: ${{ secrets.NPM_READ_AND_PUBLISH_TOKEN || secrets.NPM_READ_TOKEN }}
-      CI_NEEDS_GIT_HISTORY: ${{ secrets.CI_NEEDS_GIT_HISTORY }}
 
     runs-on: ubuntu-latest
 
@@ -31,10 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Fetch
-        run: |
-          if test -n "$CI_NEEDS_GIT_HISTORY"; then
-            git fetch --prune --unshallow && git fetch origin 'master:master'
-          fi
+        run: git fetch --prune --unshallow && git fetch origin 'master:master'
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
