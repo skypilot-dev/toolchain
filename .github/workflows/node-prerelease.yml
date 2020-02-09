@@ -52,6 +52,10 @@ jobs:
           yarn install --frozen-lockfile --production=false
           yarn add @skypilot/quick-release@alpha conventional-changelog-cli@2 finepack@2
           git checkout -- .
+      - name: Gather published versions
+        run: |
+          mkdir -p local
+          yarn info --silent . versions > local/published-versions.txt
       - name: Bump version
         if: success()
         run: yarn --silent bump-version
@@ -66,7 +70,8 @@ jobs:
               yarn publish --access $(yarn --silent spqr-option prerelease.access) --non-interactive --tag $(git symbolic-ref --short HEAD)
             fi
           else
-            echo "prerelease.publish = false. Skipping publication"
+            echo "prerelease.publish = false. Skipping publication."
+            echo "To publish, set \`prerelease.publish: true\` in .skypilot/quick-release.yml."
           fi
       - name: Configure identity
         if: success()

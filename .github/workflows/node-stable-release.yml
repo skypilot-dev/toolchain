@@ -16,8 +16,6 @@ jobs:
     name: Create stable release
 
     env:
-      BOT_EMAIL: ${{ secrets.SPQR_BOT_EMAIL || 'spqr-bot@users.noreply.github.com' }}
-      BOT_NAME: ${{ secrets.SPQR_BOT_NAME || 'SkyPilot Quick-Release Bot' }}
       CI: true
       GPG_KEY: ${{ secrets.SPQR_BOT_GPG_KEY }}
       GPG_KEY_ID: ${{ secrets.SPQR_BOT_GPG_KEY_ID }}
@@ -49,7 +47,7 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_READ_TOKEN" > .npmrc
           yarn install --frozen-lockfile --production=false
-          yarn add @skypilot/bump-version conventional-changelog-cli@2 finepack@2
+          yarn add @skypilot/bump-version@alpha conventional-changelog-cli@2 finepack@2
           git checkout -- .
       - name: Lint config files
         run: yarn --silent finepack
@@ -63,17 +61,22 @@ jobs:
       - name: Publish
         if: success()
         run: |
-          if test -n "$NPM_READ_AND_PUBLISH_TOKEN" ; then
-            yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
-            yarn run publish:default
+          if [[ $(yarn --silent spqr-option release.publish) == 'true' ]] ; then
+            if test -z "$NPM_READ_AND_PUBLISH_TOKEN" ; then
+              echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
+            else
+              yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
+              yarn publish --access $(yarn --silent spqr-option release.access) --non-interactive
+            fi
           else
-            echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
+            echo "release.publish = false. Skipping publication."
+            echo "To publish, set \`release.publish: true\` in .skypilot/quick-release.yml."
           fi
       - name: Configure identity
         if: success()
         run: |
-          git config --global user.email $BOT_EMAIL
-          git config --global user.name $BOT_NAME
+          git config --global user.email "$(yarn --silent spqr-option bot.email)"
+          git config --global user.name "$(yarn --silent spqr-option bot.name)"
           if test -n "$GPG_KEY" && test -n "$GPG_KEY_ID"; then
             echo "$GPG_KEY" | base64 -d > private.key
             gpg --import ./private.key
@@ -82,7 +85,7 @@ jobs:
             git config --global tag.gpgsign true
             git config --global user.signingkey $GPG_KEY_ID
           else
-            echo "GPG_KEY and/or GPG_KEY_ID is undefined in GitHub Secrets. The commit will not be signed."
+            echo "GPG_KEY and/or GPG_KEY_ID is undefined in GitHub Secrets. The commit & tag will not be signed."
           fi
       - name: Commit files
         if: success()
