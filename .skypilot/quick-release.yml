@@ -1,0 +1,10 @@
+version: 2
+bot:
+  name: 'SkyPilot Bot'
+  email: 'bot@skypilot.dev'
+release:
+  access: 'public'
+  publish: true
+prerelease:
+  access: 'public'
+  publish: true
