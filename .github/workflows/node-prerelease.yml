@@ -39,9 +39,9 @@ jobs:
           token: ${{ secrets.SPQR_GITHUB_PERSONAL_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Fetch
         run: |
-          git fetch --prune --unshallow
-          git fetch origin 'master:master'
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+          git fetch origin 'master:master'
+          git fetch --prune --unshallow
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
