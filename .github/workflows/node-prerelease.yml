@@ -59,7 +59,7 @@ jobs:
         if: success()
         run: |
           if [[ $(yarn --silent spqr-option prerelease.publish) == 'true' ]] ; then
-            if test -n "$NPM_READ_AND_PUBLISH_TOKEN"; then
+            if test -z "$NPM_READ_AND_PUBLISH_TOKEN" ; then
               echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
             else
               yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
