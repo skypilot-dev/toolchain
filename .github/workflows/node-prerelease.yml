@@ -63,7 +63,7 @@ jobs:
               echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
             else
               yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
-              yarn run publish --access $(yarn --silent spqr-option prerelease.access) --non-interactive --tag $(git symbolic-ref --short HEAD)
+              yarn publish --access $(yarn --silent spqr-option prerelease.access) --non-interactive --tag $(git symbolic-ref --short HEAD)
             fi
           else
             echo "prerelease.publish = false. Skipping publication"
