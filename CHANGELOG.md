@@ -1,3 +1,11 @@
+## [3.2.1](https://github.com/skypilotcc/toolchain/compare/v3.2.1-next.0...v3.2.1) (2020-02-10)
+
+
+
+## [3.2.1-next.0](https://github.com/skypilotcc/toolchain/compare/v3.2.0...v3.2.1-next.0) (2020-02-10)
+
+
+
 # [3.2.0](https://github.com/skypilotcc/toolchain/compare/v3.1.0-next.2...v3.2.0) (2020-02-10)
 
 
@@ -11,11 +19,7 @@
 
 
 
-# [3.1.0](https://github.com/skypilotcc/toolchain/compare/v3.1.0-next.1...v3.1.0) (2020-02-10)
-
-
-
-# [3.1.0-next.1](https://github.com/skypilotcc/toolchain/compare/v3.0.1...v3.1.0-next.1) (2020-02-10)
+# [3.1.0](https://github.com/skypilotcc/toolchain/compare/v3.0.1...v3.1.0) (2020-02-10)
 
 
 ### Bug Fixes
@@ -29,15 +33,11 @@
 
 
 
-## [3.0.1](https://github.com/skypilotcc/toolchain/compare/v3.0.0-next.1...v3.0.1) (2020-02-09)
+## [3.0.1](https://github.com/skypilotcc/toolchain/compare/v3.0.0...v3.0.1) (2020-02-09)
 
 
 
-# [3.0.0-next.1](https://github.com/skypilotcc/toolchain/compare/v3.0.0-next.0...v3.0.0-next.1) (2020-02-09)
-
-
-
-# [3.0.0-next.0](https://github.com/skypilotcc/toolchain/compare/v3.0.0...v3.0.0-next.0) (2020-02-09)
+# [3.0.0](https://github.com/skypilotcc/toolchain/compare/v3.0.0-beta.1...v3.0.0) (2020-02-09)
 
 
 ### Bug Fixes
@@ -46,7 +46,7 @@
 
 
 
-# [3.0.0-beta.1](https://github.com/skypilotcc/toolchain/compare/v3.0.0-beta.0...v3.0.0-beta.1) (2020-02-09)
+# [3.0.0-beta.1](https://github.com/skypilotcc/toolchain/compare/v2.1.8...v3.0.0-beta.1) (2020-02-09)
 
 
 ### Bug Fixes
@@ -61,7 +61,7 @@
 
 
 
-## [2.1.8](https://github.com/skypilotcc/toolchain/compare/v2.1.7-next.0...v2.1.8) (2020-02-08)
+## [2.1.8](https://github.com/skypilotcc/toolchain/compare/v2.1.7...v2.1.8) (2020-02-08)
 
 
 ### Bug Fixes
@@ -70,19 +70,16 @@
 
 
 
-## [2.1.7-next.0](https://github.com/skypilotcc/toolchain/compare/v2.1.7...v2.1.7-next.0) (2020-02-07)
-
-
-
 ## [2.1.7](https://github.com/skypilotcc/toolchain/compare/v2.1.6...v2.1.7) (2020-02-07)
 
 
 
-## [2.1.6](https://github.com/skypilotcc/toolchain/compare/v2.2.0-beta.0...v2.1.6) (2020-02-07)
+## [2.1.6](https://github.com/skypilotcc/toolchain/compare/v2.1.5...v2.1.6) (2020-02-07)
 
 
+### Bug Fixes
 
-# [2.2.0-beta.0](https://github.com/skypilotcc/toolchain/compare/v2.1.5-next.1...v2.2.0-beta.0) (2020-02-07)
+* Husky installation fails ([e5ba935](https://github.com/skypilotcc/toolchain/commit/e5ba935348b53c2eab6611bdb1fa6fb506e5939f))
 
 
 ### Features
@@ -91,20 +88,7 @@
 
 
 
-## [2.1.6-beta.0](https://github.com/skypilotcc/toolchain/compare/v2.1.5...v2.1.6-beta.0) (2020-02-07)
-
-
-### Bug Fixes
-
-* Husky installation fails ([e5ba935](https://github.com/skypilotcc/toolchain/commit/e5ba935348b53c2eab6611bdb1fa6fb506e5939f))
-
-
-
-## [2.1.5](https://github.com/skypilotcc/toolchain/compare/v2.1.5-next.0...v2.1.5) (2020-02-07)
-
-
-
-## [2.1.5-next.0](https://github.com/skypilotcc/toolchain/compare/v2.1.4-next.0...v2.1.5-next.0) (2020-02-07)
+## [2.1.5](https://github.com/skypilotcc/toolchain/compare/v2.1.4...v2.1.5) (2020-02-07)
 
 
 ### Bug Fixes
@@ -113,7 +97,7 @@
 
 
 
-## [2.1.4-next.0](https://github.com/skypilotcc/toolchain/compare/v2.1.4...v2.1.4-next.0) (2020-02-07)
+## [2.1.4](https://github.com/skypilotcc/toolchain/compare/v2.1.3...v2.1.4) (2020-02-07)
 
 
 ### Features
@@ -122,7 +106,7 @@
 
 
 
-## [2.1.3-next.0](https://github.com/skypilotcc/toolchain/compare/v2.1.3...v2.1.3-next.0) (2020-02-06)
+## [2.1.3](https://github.com/skypilotcc/toolchain/compare/v2.1.2...v2.1.3) (2020-02-06)
 
 
 ### Bug Fixes
@@ -131,7 +115,7 @@
 
 
 
-## [2.1.2](https://github.com/skypilotcc/toolchain/compare/v2.1.1-next.0...v2.1.2) (2020-02-06)
+## [2.1.2](https://github.com/skypilotcc/toolchain/compare/v2.1.1...v2.1.2) (2020-02-06)
 
 
 ### Bug Fixes
@@ -140,7 +124,7 @@
 
 
 
-## [2.1.1-next.0](https://github.com/skypilotcc/toolchain/compare/v2.1.1...v2.1.1-next.0) (2020-02-06)
+## [2.1.1](https://github.com/skypilotcc/toolchain/compare/v2.0.4...v2.1.1) (2020-02-06)
 
 
 ### Bug Fixes
@@ -149,7 +133,7 @@
 
 
 
-## [2.0.4-next.0](https://github.com/skypilotcc/toolchain/compare/v2.0.4...v2.0.4-next.0) (2020-02-06)
+## [2.0.4](https://github.com/skypilotcc/toolchain/compare/v2.0.3...v2.0.4) (2020-02-06)
 
 
 ### Bug Fixes
@@ -158,19 +142,7 @@
 
 
 
-## [2.0.3](https://github.com/skypilotcc/toolchain/compare/v2.1.0-next.2...v2.0.3) (2020-02-06)
-
-
-
-# [2.1.0-next.2](https://github.com/skypilotcc/toolchain/compare/v2.1.0-next.1...v2.1.0-next.2) (2020-02-06)
-
-
-
-# [2.1.0-next.1](https://github.com/skypilotcc/toolchain/compare/v2.1.0-next.0...v2.1.0-next.1) (2020-02-06)
-
-
-
-# [2.1.0-next.0](https://github.com/skypilotcc/toolchain/compare/v2.0.2...v2.1.0-next.0) (2020-02-06)
+## [2.0.3](https://github.com/skypilotcc/toolchain/compare/v2.0.2...v2.0.3) (2020-02-06)
 
 
 ### Features
@@ -179,15 +151,15 @@
 
 
 
-## [2.0.2](https://github.com/skypilotcc/toolchain/compare/v2.0.1-next.0...v2.0.2) (2020-02-06)
+## [2.0.2](https://github.com/skypilotcc/toolchain/compare/v2.0.1...v2.0.2) (2020-02-06)
 
 
 
-## [2.0.1-next.0](https://github.com/skypilotcc/toolchain/compare/v2.0.1...v2.0.1-next.0) (2020-02-06)
+## [2.0.1](https://github.com/skypilotcc/toolchain/compare/v2.0.0...v2.0.1) (2020-02-06)
 
 
 
-# [2.0.0-next.1](https://github.com/skypilotcc/toolchain/compare/v2.0.0...v2.0.0-next.1) (2020-02-06)
+# [2.0.0](https://github.com/skypilotcc/toolchain/compare/v1.14.8...v2.0.0) (2020-02-06)
 
 
 ### Bug Fixes
@@ -196,11 +168,7 @@
 
 
 
-## [1.14.8](https://github.com/skypilotcc/toolchain/compare/v2.0.0-next.0...v1.14.8) (2020-02-06)
-
-
-
-# [2.0.0-next.0](https://github.com/skypilotcc/toolchain/compare/v1.15.0-next.1...v2.0.0-next.0) (2020-02-06)
+## [1.14.8](https://github.com/skypilotcc/toolchain/compare/v1.14.7...v1.14.8) (2020-02-06)
 
 
 ### Bug Fixes
@@ -214,11 +182,11 @@
 
 
 
-## [1.14.7](https://github.com/skypilotcc/toolchain/compare/v1.14.6-next.2...v1.14.7) (2020-02-05)
+## [1.14.7](https://github.com/skypilotcc/toolchain/compare/v1.14.6...v1.14.7) (2020-02-05)
 
 
 
-## [1.14.6-next.1](https://github.com/skypilotcc/toolchain/compare/v1.14.6...v1.14.6-next.1) (2020-02-05)
+## [1.14.6](https://github.com/skypilotcc/toolchain/compare/v1.14.5...v1.14.6) (2020-02-05)
 
 
 ### Bug Fixes
@@ -228,7 +196,7 @@
 
 
 
-## [1.14.5](https://github.com/skypilotcc/toolchain/compare/v1.15.0-next.0...v1.14.5) (2020-02-05)
+## [1.14.5](https://github.com/skypilotcc/toolchain/compare/v1.14.0...v1.14.5) (2020-02-05)
 
 
 ### Features
@@ -253,11 +221,7 @@
 
 
 
-# [1.12.0](https://github.com/skypilotcc/toolchain/compare/v1.12.0-next.0...v1.12.0) (2020-02-04)
-
-
-
-# [1.12.0-next.0](https://github.com/skypilotcc/toolchain/compare/v1.11.1-next.0...v1.12.0-next.0) (2020-02-04)
+# [1.12.0](https://github.com/skypilotcc/toolchain/compare/v1.11.0...v1.12.0) (2020-02-04)
 
 
 ### Bug Fixes
@@ -271,60 +235,27 @@
 
 
 
-# [1.11.0](https://github.com/skypilotcc/toolchain/compare/v1.11.0-next.1...v1.11.0) (2020-02-04)
-
-
-### Bug Fixes
-
-* Invalid line continuation in YAML script ([1b88ed9](https://github.com/skypilotcc/toolchain/commit/1b88ed9cc3a34244b9d62ec5e530131c108ecc97))
-* master branch can't be fetched into master branch ([3f7c9b4](https://github.com/skypilotcc/toolchain/commit/3f7c9b4c022923a3b4099185f7c2acf94dfa66ac))
-
-
-
-# [1.11.0-next.0](https://github.com/skypilotcc/toolchain/compare/v1.11.0-alpha.4...v1.11.0-next.0) (2020-02-03)
-
-
-### Features
-
-* Automatically lint config files ([7b73329](https://github.com/skypilotcc/toolchain/commit/7b73329df1d68a22313bc00960af216ce9e5c5ad))
-* Automatically publish stable releases ([d1caf69](https://github.com/skypilotcc/toolchain/commit/d1caf69ace2ac3e87a0ea3fb9454d6f094a885db))
-
-
-
-# [1.11.0-alpha.3](https://github.com/skypilotcc/toolchain/compare/v1.11.0-alpha.0...v1.11.0-alpha.3) (2020-02-03)
+# [1.11.0](https://github.com/skypilotcc/toolchain/compare/v1.10.0...v1.11.0) (2020-02-04)
 
 
 ### Bug Fixes
 
 * CI ignores tags on other branches when computing next version ([f46b91b](https://github.com/skypilotcc/toolchain/commit/f46b91b80a4dcff41f03fc3641bd3b176e598072))
-
-
-### Features
-
-* Push tag to repo upon prerelease ([1ac7616](https://github.com/skypilotcc/toolchain/commit/1ac7616ec5d6eb4c062ddba0311dca17472e5621))
-
-
-
-# [1.11.0-alpha.0](https://github.com/skypilotcc/toolchain/compare/v1.10.0...v1.11.0-alpha.0) (2020-02-03)
+* Invalid line continuation in YAML script ([1b88ed9](https://github.com/skypilotcc/toolchain/commit/1b88ed9cc3a34244b9d62ec5e530131c108ecc97))
+* master branch can't be fetched into master branch ([3f7c9b4](https://github.com/skypilotcc/toolchain/commit/3f7c9b4c022923a3b4099185f7c2acf94dfa66ac))
 
 
 ### Features
 
 * Automatically bump version number ([ae4db90](https://github.com/skypilotcc/toolchain/commit/ae4db9096f1cb0b8d739499b0f27456cedd938df))
+* Automatically lint config files ([7b73329](https://github.com/skypilotcc/toolchain/commit/7b73329df1d68a22313bc00960af216ce9e5c5ad))
 * Automatically publish prereleases ([07c844f](https://github.com/skypilotcc/toolchain/commit/07c844f7435ec34820dd6734daecc6fe9fc5535c))
+* Automatically publish stable releases ([d1caf69](https://github.com/skypilotcc/toolchain/commit/d1caf69ace2ac3e87a0ea3fb9454d6f094a885db))
+* Push tag to repo upon prerelease ([1ac7616](https://github.com/skypilotcc/toolchain/commit/1ac7616ec5d6eb4c062ddba0311dca17472e5621))
 
 
 
-# [1.10.0](https://github.com/skypilotcc/toolchain/compare/v1.9.1-next.1...v1.10.0) (2020-02-03)
-
-
-### Features
-
-* Allow JSON files to be read in tests  ([f14db15](https://github.com/skypilotcc/toolchain/commit/f14db152ee07b66f1825fefe679e75831dca161e))
-
-
-
-## [1.9.1-next.1](https://github.com/skypilotcc/toolchain/compare/v1.5.1...v1.9.1-next.1) (2020-02-01)
+# [1.10.0](https://github.com/skypilotcc/toolchain/compare/v1.5.1...v1.10.0) (2020-02-03)
 
 
 ### Bug Fixes
@@ -335,6 +266,7 @@
 
 ### Features
 
+* Allow JSON files to be read in tests  ([f14db15](https://github.com/skypilotcc/toolchain/commit/f14db152ee07b66f1825fefe679e75831dca161e))
 * Enable automated releases ([0f2ce55](https://github.com/skypilotcc/toolchain/commit/0f2ce5596bc52fe340eb0eb5cfd340351b0a8d84))
 * Optionally make full repo history available to CI workflow ([057add1](https://github.com/skypilotcc/toolchain/commit/057add1a2c25520b0d16bf5d457d34878461069d))
 * Revert change log & package file after publishing prerelease ([5e7881e](https://github.com/skypilotcc/toolchain/commit/5e7881e8973bb0335e9fb286272c3ca1d98fb960))
