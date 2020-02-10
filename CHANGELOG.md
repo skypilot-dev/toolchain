@@ -1,3 +1,25 @@
+# [3.1.0](https://github.com/skypilotcc/toolchain/compare/v3.1.0-next.1...v3.1.0) (2020-02-10)
+
+
+
+# [3.1.0-next.1](https://github.com/skypilotcc/toolchain/compare/v3.1.0-next.0...v3.1.0-next.1) (2020-02-10)
+
+
+### Bug Fixes
+
+* Workflow lacks enough history to determine change level ([8d48bb0](https://github.com/skypilotcc/toolchain/commit/8d48bb0b1fca5b359f8cbaef47e4aeb65b3b83a7))
+
+
+
+# [3.1.0-next.0](https://github.com/skypilotcc/toolchain/compare/v3.0.1...v3.1.0-next.0) (2020-02-10)
+
+
+### Features
+
+* Workflows support customizable behavior ([f0d17d0](https://github.com/skypilotcc/toolchain/commit/f0d17d02280d1153e6bd2f14bf1d3d2a343ab4a7))
+
+
+
 ## [3.0.1](https://github.com/skypilotcc/toolchain/compare/v3.0.0-next.1...v3.0.1) (2020-02-09)
 
 
