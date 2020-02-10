@@ -29,7 +29,7 @@ pre-configured.
 
 ## How to install
 ```
-$ yarn add @skypilot/toolchain
+$ yarn add --dev @skypilot/toolchain
 $ yarn toolchain init
 $ yarn toolchain-install-husky
 ```
