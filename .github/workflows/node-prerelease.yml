@@ -66,8 +66,12 @@ jobs:
             if test -z "$NPM_READ_AND_PUBLISH_TOKEN" ; then
               echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
             else
-              yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
-              yarn publish --access $(yarn --silent spqr-option prerelease.access) --non-interactive --tag $(git symbolic-ref --short HEAD)
+              if [[ $(yarn --silent is-published $(yarn --silent get-current-version)) == true ]]; then
+                echo "$(yarn --silent get-current-version) has already been published. Skipping publication."
+              else
+                yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
+                yarn publish --access $(yarn --silent spqr-option prerelease.access) --non-interactive --tag $(git symbolic-ref --short HEAD)
+              fi
             fi
           else
             echo "prerelease.publish = false. Skipping publication."
@@ -91,7 +95,11 @@ jobs:
       - name: Tag
         if: success()
         run: |
-          git tag -a v$(yarn --silent get-current-version) -m "Prerelease $(yarn --silent get-current-version)"
+          if [[ $(yarn --silent is-tagged $(yarn --silent get-current-version)) == true ]]; then
+            echo "$(yarn --silent get-current-version) has already been tagged. Skipping tagging."
+          else
+            git tag -a v$(yarn --silent get-current-version) -m "Prerelease $(yarn --silent get-current-version)"
+          fi
       - name: Push tag
         if: success()
         run: git push --tags
