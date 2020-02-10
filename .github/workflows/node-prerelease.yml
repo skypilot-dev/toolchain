@@ -40,8 +40,8 @@ jobs:
       - name: Fetch
         run: |
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-          git fetch origin 'master:master'
-          git fetch --prune --unshallow
+          git fetch --unshallow origin 'master:master'
+          git fetch origin $(git symbolic-ref --short HEAD)
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
