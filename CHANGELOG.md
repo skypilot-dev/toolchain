@@ -1,17 +1,26 @@
+# [3.2.0](https://github.com/skypilotcc/toolchain/compare/v3.1.0-next.2...v3.2.0) (2020-02-10)
+
+
+
+# [3.1.0-next.2](https://github.com/skypilotcc/toolchain/compare/v3.1.0...v3.1.0-next.2) (2020-02-10)
+
+
+### Features
+
+* Avoid attempts to tag or publish a version multiple times ([1d0cbdb](https://github.com/skypilotcc/toolchain/commit/1d0cbdb48f48a9e39936e9ecb52c7561bf07c89a))
+
+
+
 # [3.1.0](https://github.com/skypilotcc/toolchain/compare/v3.1.0-next.1...v3.1.0) (2020-02-10)
 
 
 
-# [3.1.0-next.1](https://github.com/skypilotcc/toolchain/compare/v3.1.0-next.0...v3.1.0-next.1) (2020-02-10)
+# [3.1.0-next.1](https://github.com/skypilotcc/toolchain/compare/v3.0.1...v3.1.0-next.1) (2020-02-10)
 
 
 ### Bug Fixes
 
 * Workflow lacks enough history to determine change level ([8d48bb0](https://github.com/skypilotcc/toolchain/commit/8d48bb0b1fca5b359f8cbaef47e4aeb65b3b83a7))
-
-
-
-# [3.1.0-next.0](https://github.com/skypilotcc/toolchain/compare/v3.0.1...v3.1.0-next.0) (2020-02-10)
 
 
 ### Features
