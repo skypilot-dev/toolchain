@@ -45,7 +45,7 @@ module.exports = {
     '@typescript-eslint/indent': ['warn', 2],
     '@typescript-eslint/member-delimiter-style': 'warn',
     'arrow-body-style': ['warn', 'as-needed'],
-    'arrow-parens': ['warn', 'always'],
+    'arrow-parens': ['warn', 'as-needed'],
     'comma-dangle': ['warn', {
       arrays: 'always-multiline',
       exports: 'always-multiline',
