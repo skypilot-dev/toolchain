@@ -1,3 +1,16 @@
+# [3.3.0](https://github.com/skypilotcc/toolchain/compare/v3.3.0-next.0...v3.3.0) (2020-02-11)
+
+
+
+# [3.3.0-next.0](https://github.com/skypilotcc/toolchain/compare/v3.3.0-beta.0...v3.3.0-next.0) (2020-02-11)
+
+
+### Features
+
+* Overrides the no-console lint rule in the scripts directory ([60410ac](https://github.com/skypilotcc/toolchain/commit/60410ac1f3458aa2ecbd437d7616cf37b7236cac))
+
+
+
 ## [3.2.1](https://github.com/skypilotcc/toolchain/compare/v3.2.1-next.0...v3.2.1) (2020-02-10)
 
 
@@ -6,11 +19,7 @@
 
 
 
-# [3.2.0](https://github.com/skypilotcc/toolchain/compare/v3.1.0-next.2...v3.2.0) (2020-02-10)
-
-
-
-# [3.1.0-next.2](https://github.com/skypilotcc/toolchain/compare/v3.1.0...v3.1.0-next.2) (2020-02-10)
+# [3.2.0](https://github.com/skypilotcc/toolchain/compare/v3.1.0...v3.2.0) (2020-02-10)
 
 
 ### Features
