@@ -10,6 +10,7 @@ export const COPIED_CONFIGS: string[] = [
   'jest.config.js',
   'jest.integration.config.js',
   'jest.standalone.config.js',
+  'src/scripts/.eslintrc.js',
 ];
 
 /* These configs are stored in the package (`node_modules/ORG/PACKAGE/lib`) and referenced by
