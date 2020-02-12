@@ -44,6 +44,7 @@ module.exports = {
     // Stylistic
     '@typescript-eslint/indent': ['warn', 2],
     '@typescript-eslint/member-delimiter-style': 'warn',
+    '@typescript-eslint/member-ordering': 'warn',
     'arrow-body-style': ['warn', 'as-needed'],
     'arrow-parens': ['warn', 'as-needed'],
     'comma-dangle': ['warn', {
@@ -58,7 +59,7 @@ module.exports = {
       { 'groups': ['builtin', 'external', 'internal', 'parent', 'sibling'] },
     ],
     'import/prefer-default-export': 'off',
-    'lines-between-class-members': ['warn', 'always'],
+    'lines-between-class-members': ['warn', 'always', { exceptAfterSingleLine: true }],
     'no-dupe-class-members': 'off',
     'no-trailing-spaces': 'warn',
     'no-underscore-dangle': ['warn', { allowAfterThis: true }],
