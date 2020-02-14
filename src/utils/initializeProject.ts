@@ -10,7 +10,6 @@ import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from './bulkReadTr
 import { COPIED_CONFIGS, CONFIG_TEMPLATES } from './constants';
 import { dirHasMatchingFile } from './dirHasMatchingFile';
 import { makeReplaceFn } from './makeReplaceFn';
-import { readPackageFile } from './readPackageFile';
 import { updatePackageFile, UpdatePackageFileOptions, UpdateStrategy } from './updatePackageFile';
 
 /* -- Typings -- */
@@ -177,9 +176,8 @@ export function injectPathAndCopyToProject({
     sourceFile: `${targetFile}-template`,
     targetFile,
   }));
-  const packageName = readPackageFile().name as string;
   const transformFn = makeReplaceFn([
-    { searchFor: '<PATH-TO-PACKAGE>', replaceWith: packageName },
+    { searchFor: '<PATH-TO-PACKAGE>', replaceWith: '@skypilot/toolchain' },
   ]);
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, transformFn, verbose })
 }
