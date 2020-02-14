@@ -70,17 +70,17 @@ The workflows are configured to automatically
 Toolchain performs the following steps when a release is created. If any step fails, the release is
 halted.
 
-- Runs all automated checks (typechecking, linting, and testing)
-- Builds the package and generates types
-- Determines the next version number (based on commit messages)
-- Creates a version tag
-- Publishes the package to NPM
+- Run all automated checks (typechecking, linting, and testing)
+- Build the package and generate types
+- Determine the next version number (based on commit messages)
+- Create a version tag
+- Publish the package to NPM (if publication is enabled)
 
-For stable releases, the workflow also:
+For stable releases, the workflow will also:
 
-- Bumps the version number in `package.json`
-- Updates `CHANGELOG.md`
-- Commits these changes to the current branch
+- Bump the version number in `package.json`
+- Generate an updated `CHANGELOG.md`
+- Commit these changes to the stable branch
 
 ### Convenience scripts
 
