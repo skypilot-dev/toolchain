@@ -1,32 +1,32 @@
-## [3.3.3](https://github.com/skypilotcc/toolchain/compare/v3.3.3-next.0...v3.3.3) (2020-02-14)
+## [3.3.4](https://github.com/skypilotcc/toolchain/compare/v3.3.4-next.1...v3.3.4) (2020-02-14)
 
 
 
-## [3.3.3-next.0](https://github.com/skypilotcc/toolchain/compare/v3.3.2...v3.3.3-next.0) (2020-02-14)
+## [3.3.4-next.1](https://github.com/skypilotcc/toolchain/compare/v3.3.4-beta.1...v3.3.4-next.1) (2020-02-14)
 
 
 
-## [3.3.2](https://github.com/skypilotcc/toolchain/compare/v3.3.2-next.0...v3.3.2) (2020-02-14)
+## [3.3.4-beta.1](https://github.com/skypilotcc/toolchain/compare/v3.3.4-next.0...v3.3.4-beta.1) (2020-02-14)
 
 
 
-## [3.3.2-next.0](https://github.com/skypilotcc/toolchain/compare/v3.3.1...v3.3.2-next.0) (2020-02-14)
+## [3.3.4-next.0](https://github.com/skypilotcc/toolchain/compare/v3.3.3...v3.3.4-next.0) (2020-02-14)
 
 
 
-## [3.3.1](https://github.com/skypilotcc/toolchain/compare/v3.3.1-next.0...v3.3.1) (2020-02-12)
+## [3.3.3](https://github.com/skypilotcc/toolchain/compare/v3.3.2...v3.3.3) (2020-02-14)
 
 
 
-## [3.3.1-next.0](https://github.com/skypilotcc/toolchain/compare/v3.3.0...v3.3.1-next.0) (2020-02-12)
+## [3.3.2](https://github.com/skypilotcc/toolchain/compare/v3.3.1...v3.3.2) (2020-02-14)
 
 
 
-# [3.3.0](https://github.com/skypilotcc/toolchain/compare/v3.3.0-next.0...v3.3.0) (2020-02-11)
+## [3.3.1](https://github.com/skypilotcc/toolchain/compare/v3.3.0...v3.3.1) (2020-02-12)
 
 
 
-# [3.3.0-next.0](https://github.com/skypilotcc/toolchain/compare/v3.3.0-beta.0...v3.3.0-next.0) (2020-02-11)
+# [3.3.0](https://github.com/skypilotcc/toolchain/compare/v3.2.1...v3.3.0) (2020-02-11)
 
 
 ### Features
