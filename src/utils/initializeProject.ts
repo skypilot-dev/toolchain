@@ -7,7 +7,7 @@ import path from 'path';
 import { JsonObject, JsonValue } from '../common/types';
 
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from './bulkReadTransformWrite';
-import { COPIED_CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from './constants';
+import { COPIED_CONFIGS, CONFIG_TEMPLATES } from './constants';
 import { dirHasMatchingFile } from './dirHasMatchingFile';
 import { makeReplaceFn } from './makeReplaceFn';
 import { parsePathToPackage } from './parsePathToPackage';
@@ -99,7 +99,7 @@ function addScripts(verbose = false): void {
 export function copyToProject({
   sourceDir = packageDir,
   targetDir = projectDir,
-  files = [...COPIED_CONFIGS, ...CONFIGURATOR_CONFIGS],
+  files = COPIED_CONFIGS,
   verbose = false,
 }): void {
   const sourcesAndTargets = makeSourcesAndTargetsArray(files);

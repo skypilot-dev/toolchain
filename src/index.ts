@@ -1,1 +1,1 @@
-export { huskyConfigurator } from './configurators/huskyConfigurator';
+export {};

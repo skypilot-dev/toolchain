@@ -1,9 +1,6 @@
 import * as actualExports from '../index';
 
-const intendedExports: string[] = [
-  /* Configurators */
-  'huskyConfigurator',
-];
+const intendedExports: string[] = [];
 
 describe('Export verification', () => {
 

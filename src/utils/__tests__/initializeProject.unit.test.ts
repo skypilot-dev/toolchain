@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { TMP_DIR } from '../../../test/config';
-import { COPIED_CONFIGS, CONFIG_TEMPLATES, CONFIGURATOR_CONFIGS } from '../constants';
+import { COPIED_CONFIGS, CONFIG_TEMPLATES } from '../constants';
 import { copyToProject, injectPathAndCopyToProject } from '../initializeProject';
 import { wipeAndCreateDir } from '../wipeAndCreateDir';
 
@@ -23,7 +23,7 @@ describe('copyToProject()', () => {
 
     /* TODO: This test depends on having the built project at `lib/`. Either break this dependency
        or make it explicit by renaming the test suffix to `app.test.ts` */
-    const files = [...COPIED_CONFIGS, ...CONFIGURATOR_CONFIGS];
+    const files = COPIED_CONFIGS;
     copyToProject({
       sourceDir: libDir,
       targetDir,

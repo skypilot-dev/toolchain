@@ -6,6 +6,7 @@ export const COPIED_CONFIGS: string[] = [
   '.editorconfig',
   '.eslintignore',
   '.gitignore',
+  '.huskyrc.js',
   '.lintstagedrc.js',
   '.nvmrc',
   'jest.config.js',
@@ -29,9 +30,4 @@ export const CONFIG_TEMPLATES: string[] = [
   '.eslintrc.js',
   'tsconfig.generate-typings.json',
   'tsconfig.json',
-];
-
-/* These configs use a configurator, which the consuming project must import from Toolchain. */
-export const CONFIGURATOR_CONFIGS: string[] = [
-  '.huskyrc.js',
 ];
