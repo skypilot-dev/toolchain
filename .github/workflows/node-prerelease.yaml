@@ -1,9 +1,11 @@
-name: Stable release
+name: Prerelease
 
 on:
   push:
     branches:
-      - 'master'
+      - 'alpha'
+      - 'beta'
+      - 'next'
     paths-ignore:
       - '**/*.md'
       - 'docs/**'
@@ -12,8 +14,8 @@ on:
       - 'package.json'
 
 jobs:
-  stable-release:
-    name: Create stable release
+  prerelease:
+    name: Create prerelease
 
     env:
       CI: true
@@ -38,7 +40,8 @@ jobs:
       - name: Fetch
         run: |
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-          git fetch --unshallow origin master
+          git fetch --unshallow origin 'master:master'
+          git fetch origin $(git symbolic-ref --short HEAD)
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -49,28 +52,30 @@ jobs:
           yarn install --frozen-lockfile --production=false
           yarn add @skypilot/quick-release conventional-changelog-cli@2 finepack@2
           git checkout -- .
-      - name: Lint config files
-        run: yarn --silent finepack
       - name: Gather published versions
         run: |
           mkdir -p local
           yarn info --silent . versions > local/published-versions.txt
       - name: Bump version
         if: success()
-        run: yarn --silent bump-version && yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
+        run: yarn --silent bump-version
       - name: Publish
         if: success()
         run: |
-          if [[ $(yarn --silent spqr-option release.publish) == 'true' ]] ; then
+          if [[ $(yarn --silent spqr-option prerelease.publish) == 'true' ]] ; then
             if test -z "$NPM_READ_AND_PUBLISH_TOKEN" ; then
               echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
             else
-              yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
-              yarn publish --access $(yarn --silent spqr-option release.access) --non-interactive
+              if [[ $(yarn --silent is-published $(yarn --silent get-current-version)) == true ]]; then
+                echo "$(yarn --silent get-current-version) has already been published. Skipping publication."
+              else
+                yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
+                yarn publish --access $(yarn --silent spqr-option prerelease.access) --non-interactive --tag $(git symbolic-ref --short HEAD)
+              fi
             fi
           else
-            echo "release.publish = false. Skipping publication."
-            echo "To publish, set \`release.publish: true\` in .skypilot/quick-release.yml."
+            echo "prerelease.publish = false. Skipping publication."
+            echo "To publish, set \`prerelease.publish: true\` in .skypilot/quick-release.yaml."
           fi
       - name: Configure identity
         if: success()
@@ -85,17 +90,16 @@ jobs:
             git config --global tag.gpgsign true
             git config --global user.signingkey $GPG_KEY_ID
           else
-            echo "GPG_KEY and/or GPG_KEY_ID is undefined in GitHub Secrets. The commit & tag will not be signed."
+            echo "GPG_KEY and/or GPG_KEY_ID is undefined in GitHub Secrets. The tag will not be signed."
           fi
-      - name: Commit files
-        if: success()
-        run: |
-          git add package.json CHANGELOG.md
-          git commit --message "Release $(yarn --silent get-current-version)"
       - name: Tag
         if: success()
         run: |
-          git tag -a v$(yarn --silent get-current-version) -m "Release $(yarn --silent get-current-version)"
-      - name: Push changes
+          if [[ $(yarn --silent is-tagged $(yarn --silent get-current-version)) == true ]]; then
+            echo "$(yarn --silent get-current-version) has already been tagged. Skipping tagging."
+          else
+            git tag -a v$(yarn --silent get-current-version) -m "Prerelease $(yarn --silent get-current-version)"
+          fi
+      - name: Push tag
         if: success()
-        run: git push --tags origin $(git symbolic-ref --short HEAD)
+        run: git push --tags
