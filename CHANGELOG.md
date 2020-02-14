@@ -1,3 +1,12 @@
+## [3.3.6](https://github.com/skypilotcc/toolchain/compare/v3.3.5...v3.3.6) (2020-02-14)
+
+
+### Bug Fixes
+
+* Some configs reference package name instead of Toolchain ([74a4e20](https://github.com/skypilotcc/toolchain/commit/74a4e20a633c3fbad33b1d7bfb879f088bfeb48c))
+
+
+
 ## [3.3.5](https://github.com/skypilotcc/toolchain/compare/v3.3.5-next.0...v3.3.5) (2020-02-14)
 
 
@@ -6,11 +15,7 @@
 
 
 
-## [3.3.4](https://github.com/skypilotcc/toolchain/compare/v3.3.4-next.1...v3.3.4) (2020-02-14)
-
-
-
-## [3.3.4-next.1](https://github.com/skypilotcc/toolchain/compare/v3.3.4-beta.1...v3.3.4-next.1) (2020-02-14)
+## [3.3.4](https://github.com/skypilotcc/toolchain/compare/v3.3.4-beta.1...v3.3.4) (2020-02-14)
 
 
 
