@@ -6,6 +6,7 @@ export const COPIED_CONFIGS: string[] = [
   '.editorconfig',
   '.eslintignore',
   '.gitignore',
+  '.lintstagedrc.js',
   '.nvmrc',
   'jest.config.js',
   'jest.integration.config.js',
@@ -33,5 +34,4 @@ export const CONFIG_TEMPLATES: string[] = [
 /* These configs use a configurator, which the consuming project must import from Toolchain. */
 export const CONFIGURATOR_CONFIGS: string[] = [
   '.huskyrc.js',
-  '.lintstagedrc.js',
 ];

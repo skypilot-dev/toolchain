@@ -3,7 +3,6 @@ import * as actualExports from '../index';
 const intendedExports: string[] = [
   /* Configurators */
   'huskyConfigurator',
-  'lintStagedConfigurator',
 ];
 
 describe('Export verification', () => {
