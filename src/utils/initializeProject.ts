@@ -10,7 +10,7 @@ import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from './bulkReadTr
 import { COPIED_CONFIGS, CONFIG_TEMPLATES } from './constants';
 import { dirHasMatchingFile } from './dirHasMatchingFile';
 import { makeReplaceFn } from './makeReplaceFn';
-import { parsePathToPackage } from './parsePathToPackage';
+import { readPackageFile } from './readPackageFile';
 import { updatePackageFile, UpdatePackageFileOptions, UpdateStrategy } from './updatePackageFile';
 
 /* -- Typings -- */
@@ -64,8 +64,6 @@ const scripts: ScriptEntry[] = [
 
 const packageDir = path.resolve(__dirname, '..');
 const projectDir = getProjectRootDir();
-const relativePathToPackage = parsePathToPackage(packageDir);
-
 
 /* -- Main subfunctions -- */
 
@@ -179,8 +177,9 @@ export function injectPathAndCopyToProject({
     sourceFile: `${targetFile}-template`,
     targetFile,
   }));
+  const packageName = readPackageFile().name as string;
   const transformFn = makeReplaceFn([
-    { searchFor: '<PATH-TO-PACKAGE>', replaceWith: relativePathToPackage },
+    { searchFor: '<PATH-TO-PACKAGE>', replaceWith: packageName },
   ]);
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, transformFn, verbose })
 }
