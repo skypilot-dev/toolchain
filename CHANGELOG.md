@@ -1,3 +1,11 @@
+## [3.3.2](https://github.com/skypilotcc/toolchain/compare/v3.3.2-next.0...v3.3.2) (2020-02-14)
+
+
+
+## [3.3.2-next.0](https://github.com/skypilotcc/toolchain/compare/v3.3.1...v3.3.2-next.0) (2020-02-14)
+
+
+
 ## [3.3.1](https://github.com/skypilotcc/toolchain/compare/v3.3.1-next.0...v3.3.1) (2020-02-12)
 
 
@@ -19,11 +27,7 @@
 
 
 
-## [3.2.1](https://github.com/skypilotcc/toolchain/compare/v3.2.1-next.0...v3.2.1) (2020-02-10)
-
-
-
-## [3.2.1-next.0](https://github.com/skypilotcc/toolchain/compare/v3.2.0...v3.2.1-next.0) (2020-02-10)
+## [3.2.1](https://github.com/skypilotcc/toolchain/compare/v3.2.0...v3.2.1) (2020-02-10)
 
 
 
@@ -54,21 +58,13 @@
 
 
 
-# [3.0.0](https://github.com/skypilotcc/toolchain/compare/v3.0.0-beta.1...v3.0.0) (2020-02-09)
-
-
-### Bug Fixes
-
-* Version-bump skips merged branch when calculating change level ([0aaf404](https://github.com/skypilotcc/toolchain/commit/0aaf404638c1caaef8d83482b8424f889df8686e))
-
-
-
-# [3.0.0-beta.1](https://github.com/skypilotcc/toolchain/compare/v2.1.8...v3.0.0-beta.1) (2020-02-09)
+# [3.0.0](https://github.com/skypilotcc/toolchain/compare/v2.1.8...v3.0.0) (2020-02-09)
 
 
 ### Bug Fixes
 
 * Tests fail when branch references aren't fetched ([a281bd6](https://github.com/skypilotcc/toolchain/commit/a281bd6edfcece715ab55c6b728f9fe4c3a5fe18))
+* Version-bump skips merged branch when calculating change level ([0aaf404](https://github.com/skypilotcc/toolchain/commit/0aaf404638c1caaef8d83482b8424f889df8686e))
 
 
 ### Features
