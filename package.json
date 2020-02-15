@@ -5,7 +5,8 @@
   "version": "3.3.9",
   "main": "lib/index.js",
   "bin": {
-    "toolchain": "./lib/scripts/init.js",
+    "toolchain": "./lib/scripts/toolchain.js",
+    "toolchain-init": "./lib/scripts/init.js",
     "toolchain-install-husky": "./lib/scripts/install-husky.sh"
   },
   "author": {
