@@ -1,19 +1,15 @@
 /* eslint-disable no-console */
 
-/* -- Imports -- */
+/* -- IMPORTS -- */
 import fs from 'fs';
 import path from 'path';
-
 import { JsonObject, JsonValue } from '../common/types';
-
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from './bulkReadTransformWrite';
 import { COPIED_CONFIGS, CONFIG_TEMPLATES } from './constants';
 import { dirHasMatchingFile } from './dirHasMatchingFile';
-import { makeReplaceFn } from './makeReplaceFn';
-import { parsePathToPackage } from './parsePathToPackage';
 import { updatePackageFile, UpdatePackageFileOptions, UpdateStrategy } from './updatePackageFile';
 
-/* -- Typings -- */
+/* -- TYPINGS -- */
 type PackageFileEntry = { key: string; value: JsonValue; options?: UpdatePackageFileOptions };
 
 type ScriptEntry = { [key: string]: string };
@@ -26,14 +22,7 @@ interface InitializeProjectOptions {
   verbose?: boolean;
 }
 
-
-/* -- Helper functions -- */
-export function getProjectRootDir(): string {
-  return path.resolve(__dirname).split('/node_modules')[0];
-}
-
-
-/* -- Constants -- */
+/* -- CONSTANTS -- */
 const packageFileEntries: PackageFileEntry[] = [
   /* TODO: Allow public projects to be created. */
   {
@@ -63,12 +52,9 @@ const scripts: ScriptEntry[] = [
 ];
 
 const packageDir = path.resolve(__dirname, '..');
-const projectDir = getProjectRootDir();
-const relativePathToPackage = parsePathToPackage(packageDir);
+const projectDir = path.resolve();
 
-
-/* -- Main subfunctions -- */
-
+/* -- MAIN SUBFUNCTIONS -- */
 /* Add package-file entries (other than scripts) */
 function addPackageFileEntries(verbose = false): void {
   /* Create a <key>:<value> object and pass it with `options` to the update function */
@@ -167,22 +153,18 @@ describe('index.ts', () => {
 }
 
 
-/* Remove the `-template` suffix from these files, replace `<PATH-TO-PACKAGE>` with the path to
-   this package (under `node_modules/`), then copy them to the project. */
-export function injectPathAndCopyToProject({
+/* Remove the `-template` suffix from these files, then copy them to the project. */
+export function removeTemplateSuffixAndCopyToProject({
   sourceDir = packageDir,
   targetDir = projectDir,
-  files = CONFIG_TEMPLATES,
+  files = [] as string[],
   verbose = false,
 }): void {
   const sourcesAndTargets = files.map((targetFile) => ({
     sourceFile: `${targetFile}-template`,
     targetFile,
   }));
-  const transformFn = makeReplaceFn([
-    { searchFor: '<PATH-TO-PACKAGE>', replaceWith: relativePathToPackage },
-  ]);
-  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, transformFn, verbose })
+  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, verbose })
 }
 
 /* -- Main function -- */
@@ -195,8 +177,8 @@ export function initializeProject(options: InitializeProjectOptions = {}): void 
   } = options;
 
   console.log('Toolchain > Creating configuration files...');
-  copyToProject({ sourceDir, targetDir, verbose });
-  injectPathAndCopyToProject({ sourceDir, targetDir, verbose });
+  copyToProject({ files: COPIED_CONFIGS, sourceDir, targetDir, verbose });
+  removeTemplateSuffixAndCopyToProject({ files: CONFIG_TEMPLATES, sourceDir, targetDir, verbose });
 
   console.log('Toolchain > Looking for source files...');
   ensureTsFileExists({ verbose: true });

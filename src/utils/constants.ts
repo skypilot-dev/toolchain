@@ -17,7 +17,7 @@ export const COPIED_CONFIGS: string[] = [
   'src/scripts/.eslintrc.js',
 ];
 
-/* These configs are stored in the package (`node_modules/ORG/PACKAGE/lib`) and referenced by
+/* These configs are stored in the package (`THIS_PACKAGE_NAME/lib`) and referenced by
    other configs. */
 export const REFERENCED_CONFIGS: string[] = [
   'configs/tsconfig.generate-typings.json',
