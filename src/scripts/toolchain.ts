@@ -3,6 +3,8 @@ import { exec } from 'child_process';
 import util from 'util';
 import { deindentTemplateLiteral } from '../common/string/deindentTemplateLiteral';
 
+type MaybeUndefined<T> = T | undefined;
+
 const args = process.argv.slice(2);
 const HELP_FLAGS = ['--help', '-h', '-?'];
 
@@ -46,8 +48,15 @@ if (args.length !== 1) {
 }
 
 type Command = 'init';
-function resolvePathToExecutable(executableName: Command): string {
-  return require.resolve(`.bin/toolchain-${executableName}`);
+
+function parsePackageManager(packageManager: MaybeUndefined<string>): string {
+  if (!packageManager) {
+    return ''
+  }
+  if (!packageManager.includes('/')) {
+    return packageManager;
+  }
+  return packageManager.split('/')[0];
 }
 
 const validCommands = ['init', 'install-husky'];
@@ -58,7 +67,17 @@ if (!validCommands.includes(command)) {
   showHelpAndExit({ exitCode: 1, message: `Unknown command '${command}'` });
 }
 
-const commandString = resolvePathToExecutable(command as Command);
+function getRunCmd(): string {
+  const packageManager = parsePackageManager(process.env.npm_config_user_agent);
+  if (packageManager === 'yarn') {
+    return 'yarn --silent'
+  }
+  return 'yarn --silent'
+}
+
+const runCmd = getRunCmd();
+
+const commandString = `${runCmd} toolchain-${(command as Command)}`;
 const execAsync = util.promisify(exec);
 (
   async () => {
