@@ -31,15 +31,15 @@ pre-configured.
 ```
 $ yarn add --dev @skypilot/toolchain
 $ yarn toolchain init
-$ yarn toolchain-install-husky
+$ yarn toolchain install-husky
 ```
 
 The `toolchain init` command creates a set of configuration files that include scripts & configs
 for distributing the project as a package. A planned change is to have `toolchain init` create only
 the core files & configs. A separate command would add the files & configs for creating a package.
 
-The `husky.js install` command is required because Yarn doesn't automatically run Husky's
-post-install script. A friendlier situation is in the works.
+The `toolchain install-husky` command is required because Yarn doesn't automatically run Husky's
+post-install script.
 
 ## How to use
 

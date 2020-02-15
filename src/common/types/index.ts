@@ -9,4 +9,6 @@ export type JsonValue = Literal | JsonObject | JsonArray | null
 
 export type Literal = boolean | number | string;
 
+export type MaybeNull<T> = T | null;
+
 export type SortComparison = -1 | 0 | 1;
