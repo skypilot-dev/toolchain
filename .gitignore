@@ -22,8 +22,6 @@
 .npm
 npm-debug.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # OS files
 .DS_Store
@@ -44,4 +42,15 @@ Thumbs.db
 /coverage/
 lib-cov/
 
+# Yarn
+yarn-debug.log*
+yarn-error.log*
+.yarn/cache
+.yarn/unplugged
+
+# Don't exclude these if Yarn Zero-Installs are being used
+.yarn/build-state.yml
+.pnp.*
+
+# Allow .gitkeep to prevent otherwise empty directories from being deleted
 !.gitkeep
