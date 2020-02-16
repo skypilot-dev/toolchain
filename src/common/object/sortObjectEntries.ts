@@ -1,5 +1,5 @@
-import { sortObject } from './sortObject';
 import { JsonObject, JsonValue } from '../types';
+import { sortObject } from './sortObject';
 
 export function sortObjectEntries(jsonObject: JsonObject, keysToSort: string[]): JsonObject {
   if (keysToSort.length > 0) {
@@ -7,7 +7,7 @@ export function sortObjectEntries(jsonObject: JsonObject, keysToSort: string[]):
       if (!Object.prototype.hasOwnProperty.call(jsonObject, key)) {
         return;
       }
-      const value: JsonValue = jsonObject[key];
+      const value: JsonValue = jsonObject[key] as JsonValue;
       if (Array.isArray(value)) {
         jsonObject[key] = value.sort();
         return;

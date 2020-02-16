@@ -29,3 +29,11 @@ export const CONFIG_TEMPLATES: string[] = [
   'tsconfig.generate-typings.json',
   'tsconfig.json',
 ];
+
+export const REQUIRED_DEPENDENCIES: string[] = [
+  '@babel/cli',
+  '@babel/core',
+  'eslint',
+  'jest',
+  'typescript',
+];
