@@ -49,7 +49,8 @@ yarn-error.log*
 .yarn/unplugged
 
 # Don't exclude these if Yarn Zero-Installs are being used
-.yarn/build-state.yml
+/.pnp/
+/.yarn/build-state.yml
 .pnp.*
 
 # Allow .gitkeep to prevent otherwise empty directories from being deleted
