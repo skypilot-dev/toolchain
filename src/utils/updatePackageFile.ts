@@ -9,7 +9,7 @@ import deepmerge from 'deepmerge';
 import { pickDifference } from '../common/object/pickDifference';
 import { sortObjectEntries } from '../common/object/sortObjectEntries';
 import { JsonObject } from '../common/types';
-import { readPackageFile } from './readPackageFile';
+import { PackageFile, readPackageFile } from './readPackageFile';
 
 /* -- Typings -- */
 export enum UpdateStrategy {
@@ -27,20 +27,20 @@ export interface UpdatePackageFileOptions {
 
 const mergeFns = {
   /* Create only those entries whose keys don't exist in the existing object. */
-  [UpdateStrategy.create]: (initialPkg: JsonObject, update: JsonObject): JsonObject => {
+  [UpdateStrategy.create]: (initialPkg: PackageFile, update: JsonObject): PackageFile => {
     const filteredPkgContent = pickDifference(update, initialPkg);
     if (Object.keys(filteredPkgContent).length === 0) {
       /* None of the entries have new keys, so simply return the initial pkg without alteration. */
       return initialPkg;
     }
     /* Merge the filtered keys into the existing content */
-    return deepmerge(initialPkg, filteredPkgContent);
+    return deepmerge(initialPkg, filteredPkgContent) as PackageFile;
   },
-  [UpdateStrategy.merge]: (initialPkg: JsonObject, update: JsonObject): JsonObject =>
-    deepmerge(initialPkg, update),
+  [UpdateStrategy.merge]: (initialPkg: PackageFile, update: JsonObject): PackageFile =>
+    deepmerge(initialPkg, update) as PackageFile,
 
   /* Add all new entries into the existing content, replacing any existing keys. */
-  [UpdateStrategy.replace]: (initialPkg: JsonObject, update: JsonObject): JsonObject => ({
+  [UpdateStrategy.replace]: (initialPkg: PackageFile, update: JsonObject): PackageFile => ({
     ...initialPkg,
     ...update,
   }),

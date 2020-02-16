@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { JsonObject, JsonValue } from '../common/types';
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from './bulkReadTransformWrite';
-import { COPIED_CONFIGS, CONFIG_TEMPLATES } from './constants';
+import { CONFIG_TEMPLATES, COPIED_CONFIGS } from './constants';
 import { dirHasMatchingFile } from './dirHasMatchingFile';
 import { updatePackageFile, UpdatePackageFileOptions, UpdateStrategy } from './updatePackageFile';
 
@@ -57,8 +57,21 @@ const projectDir = path.resolve();
 /* -- MAIN SUBFUNCTIONS -- */
 /* Add package-file entries (other than scripts) */
 function addPackageFileEntries(verbose = false): void {
+  const requiredDependencies = JSON.parse(
+    fs.readFileSync(require.resolve('@skypilot/toolchain/lib/required-dependencies.json'), { encoding: 'utf8'})
+  );
+
+  const allPackageFileEntries = [
+    ...packageFileEntries,
+    {
+      key: 'dependencies',
+      value: requiredDependencies.dependencies,
+      options: { updateStrategy: UpdateStrategy.merge },
+    },
+  ];
+
   /* Create a <key>:<value> object and pass it with `options` to the update function */
-  packageFileEntries.forEach((packageFileEntry) => {
+  allPackageFileEntries.forEach((packageFileEntry) => {
     const { key, value, options = {} } = packageFileEntry;
     const data: JsonObject = { [key]: value };
     updatePackageFile(data, options);
