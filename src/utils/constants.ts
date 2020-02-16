@@ -26,10 +26,15 @@ export const REFERENCED_CONFIGS: string[] = [
   '.skypilot/lib/tsconfig.main.json',
 ];
 
-export const REQUIRED_DEPENDENCIES: string[] = [
-  '@babel/cli',
-  '@babel/core',
-  'eslint',
-  'jest',
-  'typescript',
-];
+export const REQUIRED_DEPENDENCIES: { [key: string]: string[] } = {
+  dependencies: [],
+  devDependencies: [
+    '@babel/cli',
+    '@babel/core',
+    '@skypilot/babel-config-node-typescript',
+    '@skypilot/eslint-config-typescript',
+    'eslint',
+    'jest',
+    'typescript',
+  ],
+};

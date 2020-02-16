@@ -64,8 +64,8 @@ function addPackageFileEntries(verbose = false): void {
   const allPackageFileEntries = [
     ...packageFileEntries,
     {
-      key: 'dependencies',
-      value: requiredDependencies.dependencies,
+      key: 'devDependencies',
+      value: requiredDependencies.devDependencies,
       options: { updateStrategy: UpdateStrategy.merge },
     },
   ];
@@ -165,20 +165,6 @@ describe('index.ts', () => {
   }
 }
 
-
-/* Remove the `-template` suffix from these files, then copy them to the project. */
-export function removeTemplateSuffixAndCopyToProject({
-  sourceDir = packageDir,
-  targetDir = projectDir,
-  files = [] as string[],
-  verbose = false,
-}): void {
-  const sourcesAndTargets = files.map((targetFile) => ({
-    sourceFile: `${targetFile}-template`,
-    targetFile,
-  }));
-  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, verbose })
-}
 
 /* -- Main function -- */
 export function initializeProject(options: InitializeProjectOptions = {}): void {
