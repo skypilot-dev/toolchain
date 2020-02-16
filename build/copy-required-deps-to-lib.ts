@@ -1,15 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import { REQUIRED_DEPENDENCIES } from '../src/utils/constants';
-import { getDependenciesByNames } from '../src/utils/getDependenciesByNames';
+import { readPackageFile } from '../src/utils/readPackageFile';
 
-const requiredDependencies = {
-  dependencies: {
-    ...getDependenciesByNames(REQUIRED_DEPENDENCIES),
-  },
-};
+/* This script copies all entries from `dependencies` in Toolchain's package file to a JSON
+ * file that will be read by Toolchain init. The dependencies will become dev dependencies in
+ * the consuming project. */
+const dependencies = readPackageFile().dependencies;
 
 fs.writeFileSync(
   path.resolve('lib', 'required-dependencies.json'),
-  JSON.stringify(requiredDependencies, undefined, 2),
+  JSON.stringify({ devDependencies: dependencies }, undefined, 2),
 );
