@@ -3,6 +3,7 @@ export const COPIED_CONFIGS: string[] = [
   '.github/workflows/node-check-code.yaml',
   '.github/workflows/node-prerelease.yaml',
   '.github/workflows/node-stable-release.yaml',
+  'src/scripts/.eslintrc.js',
   '.editorconfig',
   '.eslintignore',
   '.eslintrc.js',
@@ -14,20 +15,15 @@ export const COPIED_CONFIGS: string[] = [
   'jest.config.js',
   'jest.integration.config.js',
   'jest.standalone.config.js',
-  'src/scripts/.eslintrc.js',
+  'tsconfig.generate-typings.json',
+  'tsconfig.json',
 ];
 
 /* These configs are stored in the package (`THIS_PACKAGE_NAME/lib`) and referenced by
    other configs. */
 export const REFERENCED_CONFIGS: string[] = [
-  'configs/tsconfig.generate-typings.json',
-  'configs/tsconfig.main.json',
-];
-
-/* These configs contain variables that need replacement with values supplied by the consuming project. */
-export const CONFIG_TEMPLATES: string[] = [
-  'tsconfig.generate-typings.json',
-  'tsconfig.json',
+  '.skypilot/lib/tsconfig.generate-typings.json',
+  '.skypilot/lib/tsconfig.main.json',
 ];
 
 export const REQUIRED_DEPENDENCIES: string[] = [

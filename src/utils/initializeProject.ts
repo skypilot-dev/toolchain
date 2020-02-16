@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { JsonObject, JsonValue } from '../common/types';
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from './bulkReadTransformWrite';
-import { CONFIG_TEMPLATES, COPIED_CONFIGS } from './constants';
+import { COPIED_CONFIGS } from './constants';
 import { dirHasMatchingFile } from './dirHasMatchingFile';
 import { updatePackageFile, UpdatePackageFileOptions, UpdateStrategy } from './updatePackageFile';
 
@@ -191,7 +191,6 @@ export function initializeProject(options: InitializeProjectOptions = {}): void 
 
   console.log('Toolchain > Creating configuration files...');
   copyToProject({ files: COPIED_CONFIGS, sourceDir, targetDir, verbose });
-  removeTemplateSuffixAndCopyToProject({ files: CONFIG_TEMPLATES, sourceDir, targetDir, verbose });
 
   console.log('Toolchain > Looking for source files...');
   ensureTsFileExists({ verbose: true });

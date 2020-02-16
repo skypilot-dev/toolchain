@@ -1,5 +1,5 @@
 {
-  "extends": "./configs/tsconfig.main.json",
+  "extends": "./.skypilot/lib/tsconfig.main.json",
   "include": [
     "src"
   ],

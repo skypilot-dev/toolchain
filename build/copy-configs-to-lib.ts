@@ -2,9 +2,7 @@
 
 import path from 'path';
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from '../src/utils/bulkReadTransformWrite';
-import { makeReplaceFn } from '../src/utils/makeReplaceFn';
-import { COPIED_CONFIGS, REFERENCED_CONFIGS, CONFIG_TEMPLATES } from '../src/utils/constants';
-import { readPackageFile } from '../src/utils/readPackageFile';
+import { COPIED_CONFIGS, REFERENCED_CONFIGS } from '../src/utils/constants';
 
 /* -- Helper functions -- */
 /* Resolve a path relative to the project root */
@@ -22,19 +20,4 @@ function copyToLib(): void {
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets })
 }
 
-/* Copy these files to `lib/` after replacing `./configs/` (the path in this package) with
- * `THIS_PACKAGE_NAME/configs/`. Mark the files with a `-template` suffix to indicate that they
- * are not ready to use. */
-function insertPathVarAndCopyToLib(): void {
-  const packageName = readPackageFile().name as string;
-  const sourceDir = resolvePath('.');
-  const targetDir = resolvePath('lib');
-  const sourcesAndTargets = CONFIG_TEMPLATES.map((sourceFile) => ({ sourceFile, targetFile: `${sourceFile}-template`}));
-  const transformFn = makeReplaceFn([
-    { searchFor: './configs/', replaceWith: `${packageName}/configs/` },
-  ]);
-  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, transformFn })
-}
-
 copyToLib();
-insertPathVarAndCopyToLib();
