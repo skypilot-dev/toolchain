@@ -38,12 +38,15 @@
     // Enable strictest settings like strictNullChecks & noImplicitAny
     "strict": true,
 
-    // Target latest version of ECMAScript
-    "target": "esnext",
+    // Target ECMAScript 2017, which is widely supported by browsers & Node
+    // See https://node.green/#ES2019, https://kangax.github.io/compat-table/es2016plus/
+    "target": "ES2017",
     "lib": [
-      "dom",
-      "es2017",
-      "esnext.asynciterable"
+      "DOM",
+      "ES2018",
+      "ES2019",
+      "ES2020",
+      "ESNext.asyncIterable"
     ]
   }
 }
