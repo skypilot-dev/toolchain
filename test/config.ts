@@ -7,4 +7,3 @@ const safePackageName = thisPackageName
   .replace('@', '')
   .replace('/', '-');
 export const TMP_DIR = path.resolve(os.tmpdir(), `${safePackageName}`);
-
