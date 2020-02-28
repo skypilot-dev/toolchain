@@ -1,22 +1,44 @@
-# [3.4.0](https://github.com/skypilotcc/toolchain/compare/v3.4.0-next.1...v3.4.0) (2020-02-15)
+# [3.5.0](https://github.com/skypilotcc/toolchain/compare/v3.5.0-next.0...v3.5.0) (2020-02-28)
 
 
 
-# [3.4.0-next.1](https://github.com/skypilotcc/toolchain/compare/v3.4.0-next.0...v3.4.0-next.1) (2020-02-15)
+# [3.5.0-next.0](https://github.com/skypilotcc/toolchain/compare/v3.5.0-beta.0...v3.5.0-next.0) (2020-02-28)
+
+
+
+# [3.5.0-beta.0](https://github.com/skypilotcc/toolchain/compare/v3.4.1-next.0...v3.5.0-beta.0) (2020-02-26)
 
 
 ### Features
 
-* Support Yarn PnP by removing use of `node_modules` ([c42ba2d](https://github.com/skypilotcc/toolchain/commit/c42ba2dd21c80699965891f8d388917158006840))
+* Allow finer control over CI workflows ([1fd8ad3](https://github.com/skypilotcc/toolchain/commit/1fd8ad3446173a7ef82a1dcb6e0ee688d035c01d))
 
 
 
-# [3.4.0-next.0](https://github.com/skypilotcc/toolchain/compare/v3.3.10-beta.1...v3.4.0-next.0) (2020-02-15)
+## [3.4.1-next.0](https://github.com/skypilotcc/toolchain/compare/v3.4.1-beta.1...v3.4.1-next.0) (2020-02-18)
+
+
+
+## [3.4.1-beta.0](https://github.com/skypilotcc/toolchain/compare/v3.4.0...v3.4.1-beta.0) (2020-02-16)
+
+
+### Bug Fixes
+
+* Path to package file can't be resolved under Yarn PnP ([9a77451](https://github.com/skypilotcc/toolchain/commit/9a77451fdd1a238092627e4ff916de3db82fcd5b))
+
+
+
+# [3.4.0](https://github.com/skypilotcc/toolchain/compare/v3.4.0-next.1...v3.4.0) (2020-02-15)
+
+
+
+# [3.4.0-next.1](https://github.com/skypilotcc/toolchain/compare/v3.3.9...v3.4.0-next.1) (2020-02-15)
 
 
 ### Features
 
 * Modify .gitignore to support Yarn 2 ([d4a8249](https://github.com/skypilotcc/toolchain/commit/d4a8249e78442192039ec8e8ef5d35856f028c21))
+* Support Yarn PnP by removing use of `node_modules` ([c42ba2d](https://github.com/skypilotcc/toolchain/commit/c42ba2dd21c80699965891f8d388917158006840))
 
 
 
