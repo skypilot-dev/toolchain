@@ -48,6 +48,6 @@ jobs:
         run: yarn test
       - name: Build
         run: |
-          if [[ $(yarn --silent spqr-option 'code-check.build') == 'true' ]] ; then
+          if [[ $(yarn --silent spqr-option 'code-check.build') != 'false' ]] ; then
             yarn run build
           fi
