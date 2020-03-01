@@ -8,15 +8,7 @@ bot:
 release:
   # access = 'public' or 'restricted'
   access: 'public'
-  build: false
-  check-code: false
-  deploy: false
   publish: true
 prerelease:
   access: 'public'
-  build: false
-  check-code: false
-  deploy: false
   publish: true
-code-check:
-  build: true
