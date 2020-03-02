@@ -1,11 +1,12 @@
 # @skypilot/toolchain
 
 [![npm stable](https://img.shields.io/npm/v/@skypilot/toolchain?label=stable)](https://www.npmjs.com/package/@skypilot/toolchain)
-[![stable build](https://img.shields.io/github/workflow/status/skypilotcc/toolchain/Stable%20release?label=stable%20build)]()
+[![stable build](https://img.shields.io/github/workflow/status/skypilotcc/toolchain/Stable%20release?label=stable%20build)]()  
 [![npm next](https://img.shields.io/npm/v/@skypilot/toolchain/next?label=next)](https://www.npmjs.com/package/@skypilot/toolchain)
-[![next build](https://img.shields.io/github/workflow/status/skypilotcc/toolchain/Prerelease?branch=next&label=next%20build)]()
-[![license: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+[![next build](https://img.shields.io/github/workflow/status/skypilotcc/toolchain/Prerelease?branch=next&label=next%20build)]()  
 [![downloads](https://img.shields.io/npm/dm/@skypilot/toolchain)]()
+[![Greenkeeper badge](https://badges.greenkeeper.io/skypilotcc/toolchain.svg)](https://greenkeeper.io/)
+[![license: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
 An opinionated toolchain for developing Node packages.
 
