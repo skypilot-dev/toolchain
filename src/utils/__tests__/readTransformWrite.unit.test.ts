@@ -1,4 +1,4 @@
-import fs  from 'fs';
+import fs from 'fs';
 import path from 'path';
 
 import { TMP_DIR } from '../../../test/config';
@@ -11,6 +11,8 @@ function transformFn(rawTemplate: string): string {
 }
 
 function createSource(sourcePath: string, content: string): void {
+  const dirName = path.dirname(sourcePath);
+  fs.mkdirSync(dirName, { recursive: true });
   fs.writeFileSync(sourcePath, content, 'utf-8');
 }
 
