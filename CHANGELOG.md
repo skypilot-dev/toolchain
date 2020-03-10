@@ -1,3 +1,16 @@
+## [3.5.2](https://github.com/skypilotcc/toolchain/compare/v3.5.2-next.0...v3.5.2) (2020-03-10)
+
+
+
+## [3.5.2-next.0](https://github.com/skypilotcc/toolchain/compare/v3.5.1...v3.5.2-next.0) (2020-03-10)
+
+
+### Bug Fixes
+
+* Test of file-copy function sometimes fails in CI workflow ([0224873](https://github.com/skypilotcc/toolchain/commit/02248730cd51ad9b95a204ef82e03f23e980bf4d))
+
+
+
 ## [3.5.1](https://github.com/skypilotcc/toolchain/compare/v3.5.1-next.0...v3.5.1) (2020-03-01)
 
 
@@ -23,7 +36,7 @@
 
 
 
-## [3.4.1-next.0](https://github.com/skypilotcc/toolchain/compare/v3.4.1-beta.1...v3.4.1-next.0) (2020-02-18)
+## [3.4.1-next.0](https://github.com/skypilotcc/toolchain/compare/v3.4.1-beta.0...v3.4.1-next.0) (2020-02-18)
 
 
 
