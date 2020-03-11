@@ -1,4 +1,5 @@
 # Compiled & transpiled files
+/dist/
 /lib/
 
 # Editor directories and files
