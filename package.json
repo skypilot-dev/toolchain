@@ -56,6 +56,9 @@
   "devDependencies": {
     "@babel/register": "^7.8.6",
     "@types/tmp": "^0.1.0",
+    "remark-cli": "^7.0.1",
+    "remark-lint": "^6.0.5",
+    "remark-preset-lint-recommended": "^3.0.3",
     "tmp": "^0.1.0"
   },
   "files": [
