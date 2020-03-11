@@ -1,5 +1,6 @@
 # @skypilot/toolchain
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5664426d72f34ae0aef2353ba5308a7e)](https://app.codacy.com/gh/skypilotcc/toolchain?utm_source=github.com&utm_medium=referral&utm_content=skypilotcc/toolchain&utm_campaign=Badge_Grade_Dashboard)
 [![npm stable](https://img.shields.io/npm/v/@skypilot/toolchain?label=stable)](https://www.npmjs.com/package/@skypilot/toolchain)
 [![stable build](https://img.shields.io/github/workflow/status/skypilotcc/toolchain/Stable%20release?label=stable%20build)](<>)  
 [![npm next](https://img.shields.io/npm/v/@skypilot/toolchain/next?label=next)](https://www.npmjs.com/package/@skypilot/toolchain)
