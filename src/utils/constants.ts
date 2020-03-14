@@ -1,4 +1,6 @@
 /* These configs are direct copies of the configs used in Toolchain itself. */
+import { SourceAndTarget } from './bulkReadTransformWrite';
+
 export const COPIED_CONFIGS: string[] = [
   '.github/workflows/node-check-code.yaml',
   '.github/workflows/node-prerelease.yaml',
@@ -16,6 +18,8 @@ export const COPIED_CONFIGS: string[] = [
   'jest.standalone.config.js',
   'src/scripts/.eslintrc.js',
 ];
+
+export const MOVED_CONFIGS: SourceAndTarget[] = [];
 
 /* These configs are stored in the package (`THIS_PACKAGE_NAME/lib`) and referenced by
    other configs. */

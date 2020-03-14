@@ -25,8 +25,18 @@ export interface SourceAndTarget {
 /* -- Functions -- */
 /* Given an array of filenames, return an array of `SourceAndTarget` objects in which each filename
  * becomes a `sourceFile` value. */
-export function makeSourcesAndTargetsArray(sourceFiles: string[]): SourceAndTarget[] {
-  return sourceFiles.map((sourceFile) => ({ sourceFile }));
+export function makeSourcesAndTargetsArray(sources: Array<string | SourceAndTarget>): SourceAndTarget[] {
+  return sources
+    .map((source) => {
+      if (typeof source === 'string') {
+        return {
+          sourceFile: source,
+          targetFile: source,
+        }
+      }
+      const { sourceFile, targetFile = sourceFile } = source;
+      return { sourceFile, targetFile };
+    });
 }
 
 /* Copy files from sourcePath to destination, optionally applying a transform function */

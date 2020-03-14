@@ -3,7 +3,7 @@
 import path from 'path';
 import { bulkReadTransformWrite, makeSourcesAndTargetsArray } from '../src/utils/bulkReadTransformWrite';
 import { makeReplaceFn } from '../src/utils/makeReplaceFn';
-import { COPIED_CONFIGS, REFERENCED_CONFIGS, CONFIG_TEMPLATES } from '../src/utils/constants';
+import { COPIED_CONFIGS, MOVED_CONFIGS, REFERENCED_CONFIGS, CONFIG_TEMPLATES } from '../src/utils/constants';
 import { readPackageFile } from '../src/utils/readPackageFile';
 
 /* -- Helper functions -- */
@@ -18,7 +18,9 @@ function resolvePath(relativePath = ''): string {
 function copyToLib(): void {
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
-  const sourcesAndTargets = makeSourcesAndTargetsArray([...COPIED_CONFIGS, ...REFERENCED_CONFIGS]);
+  const sourcesAndTargets = makeSourcesAndTargetsArray([
+    ...COPIED_CONFIGS, ...MOVED_CONFIGS, ...REFERENCED_CONFIGS,
+  ]);
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets })
 }
 
