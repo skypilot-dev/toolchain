@@ -1025,10 +1025,10 @@
   dependencies:
     type-detect "4.0.8"
 
-"@skypilot/babel-config-node-typescript@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@skypilot/babel-config-node-typescript/-/babel-config-node-typescript-0.1.3.tgz#aeb39a44aedff72c5115fc2c091e6cde3d7feec5"
-  integrity sha512-O09RLCZtoOHjdhOjNYkZO0qPZ6JCXrIV4qG2bTu4/1kWJdpCc35hK3GVuw0BGxvo64Ix0GtYDs60fU4BMgxKSA==
+"@skypilot/babel-config-node-typescript@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@skypilot/babel-config-node-typescript/-/babel-config-node-typescript-1.0.0.tgz#528c3f17a24dd1a36fac46262f8cb594c8a52dea"
+  integrity sha512-4Q4DJl60aBul9H8b3//5eIrDN7NLLi2BffL6gi9GvoDCcLe92toN49iLUGnkoFzAffaOrRv0fED9lGoGYcNxEw==
 
 "@skypilot/eslint-config-typescript@^1.0.3":
   version "1.0.3"
