@@ -1,3 +1,20 @@
+## [3.5.4](https://github.com/skypilotcc/toolchain/compare/v3.5.4-next.1...v3.5.4) (2020-03-14)
+
+
+
+## [3.5.4-next.1](https://github.com/skypilotcc/toolchain/compare/v3.5.4-next.0...v3.5.4-next.1) (2020-03-14)
+
+
+
+## [3.5.4-next.0](https://github.com/skypilotcc/toolchain/compare/v3.5.3...v3.5.4-next.0) (2020-03-14)
+
+
+### Bug Fixes
+
+* Patch security vulnerabilities in acorn package ([c3e1460](https://github.com/skypilotcc/toolchain/commit/c3e1460915d97e0a79594524d87a72127b3b0c07))
+
+
+
 ## [3.5.3](https://github.com/skypilotcc/toolchain/compare/v3.5.2...v3.5.3) (2020-03-12)
 
 

@@ -2,7 +2,7 @@
   "name": "@skypilot/toolchain",
   "description": "Toolchain for Node projects",
   "homepage": "https://github.com/skypilotcc/toolchain#readme",
-  "version": "3.5.3",
+  "version": "3.5.4",
   "main": "lib/index.js",
   "bin": {
     "toolchain": "./lib/scripts/toolchain.js",
@@ -88,8 +88,8 @@
     "access": "public"
   },
   "resolutions": {
-    "**/jsdom/acorn": "^7.1.1",
     "**/acorn-globals/acorn": "^6.4.1",
+    "**/jsdom/acorn": "^7.1.1",
     "eslint/**/acorn": "^7.1.1"
   },
   "types": "lib/index.d.ts"
