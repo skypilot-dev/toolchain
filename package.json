@@ -28,20 +28,20 @@
   ],
   "dependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
+    "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-numeric-separator": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
-    "@babel/preset-env": "^7.8.7",
-    "@babel/preset-typescript": "^7.8.3",
-    "@babel/runtime": "^7.8.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@babel/runtime": "^7.9.2",
     "@skypilot/babel-config-node-typescript": "^1.0.1",
     "@skypilot/eslint-config-typescript": "^1.0.7",
     "@types/jest": "^25.1.4",
-    "@types/node": "^13.9.1",
-    "@typescript-eslint/eslint-plugin": "^2.24.0",
-    "@typescript-eslint/parser": "^2.24.0",
+    "@types/node": "^13.9.3",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
     "babel-jest": "^25.1.0",
     "deepmerge": "^4.2.2",
     "eslint": "^6.8.0",
@@ -50,11 +50,11 @@
     "git-branch-is": "^3.1.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "lint-staged": "^10.0.8",
+    "lint-staged": "^10.0.9",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "@babel/register": "^7.8.6",
+    "@babel/register": "^7.9.0",
     "@types/tmp": "^0.1.0",
     "tmp": "^0.1.0"
   },
@@ -86,15 +86,6 @@
   "peerDependencies": {},
   "publishConfig": {
     "access": "public"
-  },
-  "resolutions": {
-    "**/acorn-globals/acorn": "^6.4.1",
-    "**/chokidar": "^3.3.1",
-    "**/jsdom/acorn": "^7.1.1",
-    "**/json5": "^2.1.2",
-    "**/minimist": "^1.2.5",
-    "**/mkdirp": "^1.0.3",
-    "eslint/**/acorn": "^7.1.1"
   },
   "types": "lib/index.d.ts"
 }
