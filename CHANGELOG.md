@@ -1,3 +1,11 @@
+## [3.5.10](https://github.com/skypilotcc/toolchain/compare/v3.5.10-next.0...v3.5.10) (2020-03-24)
+
+
+
+## [3.5.10-next.0](https://github.com/skypilotcc/toolchain/compare/v3.5.9...v3.5.10-next.0) (2020-03-24)
+
+
+
 ## [3.5.9](https://github.com/skypilotcc/toolchain/compare/v3.5.9-next.2...v3.5.9) (2020-03-18)
 
 
