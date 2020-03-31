@@ -108,7 +108,7 @@ export function ensureTsFileExists({
   }
   const target = path.join(targetDir, targetFile);
   /* This is the minimal content needed to create a valid module in TypeScript. */
-  const minimalTsModule = 'export {}\n';
+  const minimalTsModule = 'export {};\n';
   fs.writeFileSync(target, minimalTsModule, { encoding: 'utf8' });
   if (verbose) {
     console.log(`  Created a TypeScript file at 'src/${targetFile}' to prevent type-checking from failing`);
