@@ -1,31 +1,57 @@
 {
   "name": "@skypilot/toolchain",
-  "description": "Toolchain for Node projects",
-  "homepage": "https://github.com/skypilotcc/toolchain#readme",
   "version": "3.5.13",
-  "main": "lib/index.js",
-  "bin": {
-    "toolchain": "./lib/scripts/toolchain.js",
-    "toolchain-init": "./lib/scripts/init.js",
-    "toolchain-install-husky": "./lib/scripts/install-husky.sh"
-  },
-  "author": {
-    "email": "william@thorsen.dev",
-    "name": "William Thorsen"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/skypilotcc/toolchain.git"
-  },
-  "bugs": {
-    "url": "https://github.com/skypilotcc/toolchain/issues"
-  },
+  "description": "Toolchain for Node projects",
   "keywords": [
     "eslint",
     "eslintconfig",
     "jest",
     "typescript"
   ],
+  "homepage": "https://github.com/skypilotcc/toolchain#readme",
+  "bugs": {
+    "url": "https://github.com/skypilotcc/toolchain/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skypilotcc/toolchain.git"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "William Thorsen",
+    "email": "wthorsen@skypilot.dev"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "bin": {
+    "toolchain": "./lib/scripts/toolchain.js",
+    "toolchain-init": "./lib/scripts/init.js",
+    "toolchain-install-husky": "./lib/scripts/install-husky.sh"
+  },
+  "files": [
+    "/configs",
+    "/lib",
+    "jest.config.js",
+    "jest.integration.config.js",
+    "jest.standalone.config.js"
+  ],
+  "scripts": {
+    "all-ci-checks": "yarn run typecheck && yarn run lint --quiet && yarn run build && yarn test",
+    "all-cq-checks": "yarn run typecheck && yarn run lint --quiet && yarn test",
+    "build": "rm -rf lib && yarn run copy-configs-to-lib && yarn run copy-scripts-to-lib && yarn run compile-ts",
+    "ci": "yarn run all-ci-checks",
+    "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/__tests__/*' --ignore '**/*.d.ts' && yarn run generate-typings",
+    "copy-configs-to-lib": "babel-node --extensions .ts build/copy-configs-to-lib.ts",
+    "copy-scripts-to-lib": "babel-node --extensions .ts build/copy-scripts-to-lib.ts",
+    "cq": "yarn run all-cq-checks",
+    "generate-typings": "tsc --project tsconfig.generate-typings.json",
+    "lint": "eslint --cache '**/*.{js,ts}'",
+    "prepublishOnly": "yarn run typecheck && yarn run lint --quiet && yarn run build && yarn test",
+    "publish:default": "yarn publish --non-interactive",
+    "tc": "yarn run typecheck",
+    "test": "jest --config jest.standalone.config.js",
+    "typecheck": "tsc"
+  },
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -58,34 +84,8 @@
     "@types/tmp": "^0.1.0",
     "tmp": "^0.1.0"
   },
-  "files": [
-    "/configs",
-    "/lib",
-    "jest.config.js",
-    "jest.integration.config.js",
-    "jest.standalone.config.js"
-  ],
-  "scripts": {
-    "all-ci-checks": "yarn run typecheck && yarn run lint --quiet && yarn run build && yarn test",
-    "all-cq-checks": "yarn run typecheck && yarn run lint --quiet && yarn test",
-    "build": "rm -rf lib && yarn run copy-configs-to-lib && yarn run copy-scripts-to-lib && yarn run compile-ts",
-    "ci": "yarn run all-ci-checks",
-    "compile-ts": "babel ./src --out-dir ./lib --extensions .ts --ignore '**/__tests__/*' --ignore '**/*.d.ts' && yarn run generate-typings",
-    "copy-configs-to-lib": "babel-node --extensions .ts build/copy-configs-to-lib.ts",
-    "copy-scripts-to-lib": "babel-node --extensions .ts build/copy-scripts-to-lib.ts",
-    "cq": "yarn run all-cq-checks",
-    "generate-typings": "tsc --project tsconfig.generate-typings.json",
-    "lint": "eslint --cache '**/*.{js,ts}'",
-    "prepublishOnly": "yarn run typecheck && yarn run lint --quiet && yarn run build && yarn test",
-    "publish:default": "yarn publish --non-interactive",
-    "tc": "yarn run typecheck",
-    "test": "jest --config jest.standalone.config.js",
-    "typecheck": "tsc"
-  },
-  "license": "ISC",
   "peerDependencies": {},
   "publishConfig": {
     "access": "public"
-  },
-  "types": "lib/index.d.ts"
+  }
 }
