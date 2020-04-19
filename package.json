@@ -36,7 +36,7 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-typescript": "^7.9.0",
     "@babel/runtime": "^7.9.2",
-    "@skypilot/babel-config-node-typescript": "^1.0.1",
+    "@skypilot/babel-config-node-typescript": "^1.1.0",
     "@skypilot/eslint-config-typescript": "^1.0.10",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.13.0",

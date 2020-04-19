@@ -1080,10 +1080,12 @@
   dependencies:
     type-detect "4.0.8"
 
-"@skypilot/babel-config-node-typescript@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@skypilot/babel-config-node-typescript/-/babel-config-node-typescript-1.0.1.tgz#ba9e3285b6e51a505dfb436b157b2b6c194fdbcf"
-  integrity sha512-NjYG3QgR6kaKdHl5/Anmw5KND3WH7mUV1vaEeioKM8yNr1X4sVyr82/TjbPmsmjDrVyBTZJHI4w63sg9emwgNg==
+"@skypilot/babel-config-node-typescript@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@skypilot/babel-config-node-typescript/-/babel-config-node-typescript-1.1.0.tgz#b4ebcb69f0b09c350379b612e391df5f1d247944"
+  integrity sha512-pLC+qXaohBzas87qd9qFGq9HLyR4udZM4xSZQq852wtuCKp/njflHYOEndc0cmhYOF0WidC6b3qOxdU0M8xjNg==
+  dependencies:
+    babel-plugin-root-import "^6.5.0"
 
 "@skypilot/eslint-config-typescript@^1.0.10":
   version "1.0.10"
@@ -1518,6 +1520,13 @@ babel-plugin-jest-hoist@^25.2.6:
   integrity sha512-qE2xjMathybYxjiGFJg0mLFrz0qNp83aNZycWDY/SuHiZNq+vQfRQtuINqyXyue1ELd8Rd+1OhFSLjms8msMbw==
   dependencies:
     "@types/babel__traverse" "^7.0.6"
+
+babel-plugin-root-import@^6.5.0:
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-root-import/-/babel-plugin-root-import-6.5.0.tgz#ac4016426b5d36c48127c73ad199fa72c9ff8817"
+  integrity sha512-PTD8fPl4v1kwn01u9d4rgRavDs5Z+jv4qa4/y6iYtoSgM4/xmjwMqo66j5A/BTZQEMA6OV5iFgyZ1PIhroJqqg==
+  dependencies:
+    slash "^3.0.0"
 
 babel-preset-current-node-syntax@^0.1.2:
   version "0.1.2"

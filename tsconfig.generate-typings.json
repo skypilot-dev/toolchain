@@ -1,7 +1,12 @@
 {
   "extends": "./configs/tsconfig.generate-typings.json",
   "compilerOptions": {
+    "baseUrl": "./src",
     "outDir": "lib",
+    "paths": {
+      "root/*": ["../*"],
+      "src/*": ["./*"]
+    },
     "rootDir": "src"
   },
   "include": [
