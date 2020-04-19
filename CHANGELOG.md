@@ -1,3 +1,16 @@
+# [3.6.0](https://github.com/skypilotcc/toolchain/compare/v3.6.0-next.0...v3.6.0) (2020-04-19)
+
+
+
+# [3.6.0-next.0](https://github.com/skypilotcc/toolchain/compare/v3.5.14...v3.6.0-next.0) (2020-04-19)
+
+
+### Features
+
+* Support `src` & `root` path aliases ([9e843f9](https://github.com/skypilotcc/toolchain/commit/9e843f919dc9f7a01be3416872937420a23ab7e7))
+
+
+
 ## [3.5.14](https://github.com/skypilotcc/toolchain/compare/v3.5.14-next.0...v3.5.14) (2020-04-08)
 
 
