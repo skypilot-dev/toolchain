@@ -49,13 +49,13 @@
     "eslint-plugin-jest": "^23.8.2",
     "git-branch-is": "^3.1.0",
     "husky": "^4.2.5",
-    "jest": "^25.5.2",
-    "lint-staged": "^10.2.1",
+    "jest": "^25.5.3",
+    "lint-staged": "^10.2.2",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
     "@babel/register": "^7.9.0",
-    "@types/tmp": "^0.1.0",
+    "@types/tmp": "^0.2.0",
     "tmp": "^0.2.1"
   },
   "files": [
