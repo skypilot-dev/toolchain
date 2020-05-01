@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@babel/register": "^7.9.0",
-    "@types/tmp": "^0.1.0",
+    "@types/tmp": "^0.2.0",
     "tmp": "^0.2.1"
   },
   "files": [
