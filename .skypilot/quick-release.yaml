@@ -1,5 +1,5 @@
 # These values override the settings in
-# https://github.com/skypilotcc/quick-release/blob/master/src/scripts/quick-release.defaults.yaml
+# https://github.com/skypilot-dev/quick-release/blob/master/src/scripts/quick-release.defaults.yaml
 version: 1
 bot:
   # These values are used to sign commits & tags in GitHub Actions workflows

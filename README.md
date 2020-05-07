@@ -1,9 +1,9 @@
 # @skypilot/toolchain
 
 [![npm stable](https://img.shields.io/npm/v/@skypilot/toolchain?label=stable)](https://www.npmjs.com/package/@skypilot/toolchain)
-![stable build](https://img.shields.io/github/workflow/status/skypilotcc/toolchain/Stable%20release?label=stable%20build)
+![stable build](https://img.shields.io/github/workflow/status/skypilot-dev/toolchain/Stable%20release?label=stable%20build)
 [![npm next](https://img.shields.io/npm/v/@skypilot/toolchain/next?label=next)](https://www.npmjs.com/package/@skypilot/toolchain)
-![next build](https://img.shields.io/github/workflow/status/skypilotcc/toolchain/Prerelease?branch=next&label=next%20build)
+![next build](https://img.shields.io/github/workflow/status/skypilot-dev/toolchain/Prerelease?branch=next&label=next%20build)
 ![Codacy grade](https://img.shields.io/codacy/grade/f9af94586e474be9b9307217098884c9)
 ![downloads](https://img.shields.io/npm/dm/@skypilot/toolchain)
 [![license: ISC](https://img.shields.io/badge/license-ISC-blue.svg)](https://opensource.org/licenses/ISC)
