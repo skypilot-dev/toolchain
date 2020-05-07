@@ -1,3 +1,21 @@
+# [4.0.0](https://github.com/skypilotcc/toolchain/compare/v4.0.0-next.0...v4.0.0) (2020-05-07)
+
+
+
+# [4.0.0-next.0](https://github.com/skypilotcc/toolchain/compare/v3.6.4...v4.0.0-next.0) (2020-05-07)
+
+
+### MAJOR
+
+* Upgrade Jest to v26 ([3020df4](https://github.com/skypilotcc/toolchain/commit/3020df4e5b65d6544d9201a9db514d4baa73994a))
+
+
+### BREAKING CHANGES
+
+* Jest v26.0.1 includes breaking changes
+
+
+
 ## [3.6.4](https://github.com/skypilotcc/toolchain/compare/v3.6.4-next.0...v3.6.4) (2020-05-07)
 
 
