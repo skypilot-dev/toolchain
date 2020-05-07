@@ -1174,17 +1174,17 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@skypilot/babel-config-node-typescript@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@skypilot/babel-config-node-typescript/-/babel-config-node-typescript-1.1.2.tgz#e8ff48b23e6c331ae47c5678619101ef29aaf2ef"
-  integrity sha512-JucA8UN6bL13VReMhx1W9L36MzGpoKiHxcNcLR2+QhA2+BNy5jKBCFf07oJGfUn0efxpa9dLQRMbNz+ucdrn+A==
+"@skypilot/babel-config-node-typescript@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@skypilot/babel-config-node-typescript/-/babel-config-node-typescript-1.1.3.tgz#096dc2bd34d3665642c3d5ccc3dde346b1ec0f19"
+  integrity sha512-rNV9o9nWnThTUtmsmtJquw8BDERZvOaiklx6eZpxlYGuOJSax1Vkgw/8VRoFqzhMgAo41QWgZvDDhT08qn75Qg==
   dependencies:
     babel-plugin-root-import "^6.5.0"
 
-"@skypilot/eslint-config-typescript@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@skypilot/eslint-config-typescript/-/eslint-config-typescript-1.2.0.tgz#1db14f9ba143c5186a2121e38f798d9f8d0d92b0"
-  integrity sha512-T/0XlGqdAF+RGdDxL9FvHPtnMyTipRmlCw0b2AkKEeZU8JKmoI1lBcyjjbImlSaj+i3sxvy10Ukk2Q+mzGcfkA==
+"@skypilot/eslint-config-typescript@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@skypilot/eslint-config-typescript/-/eslint-config-typescript-1.2.1.tgz#c103c79ffefe66ff2b3ed9e00d5609d9db6ddab0"
+  integrity sha512-PMZ3DMeJw/wyMCAHltA+3tmiGLZd5YPxnLzCN0i8YiDgeByTIYKorsv1EdrjXSkruD7AUr4NHY4GcWS+RbkANQ==
 
 "@types/babel__core@^7.1.7":
   version "7.1.7"
