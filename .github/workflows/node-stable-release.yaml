@@ -47,10 +47,10 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_READ_TOKEN" > .npmrc
           yarn install --frozen-lockfile --production=false
-          yarn add @skypilot/quick-release conventional-changelog-cli@2 finepack@2 --production=false
+          yarn add @skypilot/quick-release sort-package-json conventional-changelog-cli@2 --production=false
           git checkout -- .
       - name: Lint config files
-        run: yarn --silent finepack
+        run: yarn sort-package-json
       - name: Check types
         if: success()
         run: |
