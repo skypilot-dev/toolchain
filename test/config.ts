@@ -2,8 +2,8 @@
 import os from 'os';
 import path from 'path';
 
-const thisPackageName = require('../package.json').name;
-const safePackageName = thisPackageName
+import { name } from '../package.json';
+const safePackageName = name
   .replace('@', '')
   .replace('/', '-');
 export const TMP_DIR = path.resolve(os.tmpdir(), `${safePackageName}`);
