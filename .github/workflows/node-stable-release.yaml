@@ -73,7 +73,7 @@ jobs:
         if: success()
         run: |
           if [[ $(yarn --silent spqr-option 'release.build') == 'true' ]] ; then
-            yarn build
+            yarn run build
           fi
       - name: Gather published versions
         run: |
