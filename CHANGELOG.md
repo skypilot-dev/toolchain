@@ -1,3 +1,11 @@
+## [4.0.6](https://github.com/skypilot-dev/toolchain/compare/v4.0.6-next.0...v4.0.6) (2020-06-25)
+
+
+
+## [4.0.6-next.0](https://github.com/skypilot-dev/toolchain/compare/v4.0.5...v4.0.6-next.0) (2020-06-23)
+
+
+
 ## [4.0.5](https://github.com/skypilot-dev/toolchain/compare/v4.0.5-next.1...v4.0.5) (2020-06-16)
 
 
