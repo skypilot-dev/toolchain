@@ -81,7 +81,11 @@ jobs:
           yarn info --silent . versions > local/published-versions.txt
       - name: Bump version
         if: success()
-        run: yarn --silent bump-version && yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
+        run: |
+          yarn --silent bump-version && yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
+          echo "::set-env name=VERSION::$(yarn --silent get-current-version)"
+          echo "::set-env name=VERSION_TAG::v$(yarn --silent get-current-version)"
+          echo "::set-env name=VERSION_STAGE::$(git symbolic-ref --short HEAD)"
       - name: Publish
         if: success()
         run: |
@@ -115,14 +119,14 @@ jobs:
         if: success()
         run: |
           git add package.json CHANGELOG.md
-          git commit --message "Release $(yarn --silent get-current-version)"
+          git commit --message "Release $VERSION"
       - name: Tag
         if: success()
         run: |
-          git tag -a v$(yarn --silent get-current-version) -m "Release $(yarn --silent get-current-version)"
+          git tag -a $VERSION_TAG -m "Release $VERSION"
       - name: Push changes
         if: success()
-        run: git push --tags origin $(git symbolic-ref --short HEAD)
+        run: git push --tags origin $VERSION_STAGE
       - name: Update next branch
         if: success()
         run: git fetch origin next && git checkout next && git merge --ff-only master && git push origin next

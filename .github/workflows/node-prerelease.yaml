@@ -82,7 +82,11 @@ jobs:
           yarn info --silent . versions > local/published-versions.txt
       - name: Bump version
         if: success()
-        run: yarn --silent bump-version
+        run: |
+          yarn --silent bump-version
+          echo "::set-env name=VERSION::$(yarn --silent get-current-version)"
+          echo "::set-env name=VERSION_TAG::v$(yarn --silent get-current-version)"
+          echo "::set-env name=VERSION_STAGE::$(git symbolic-ref --short HEAD)"
       - name: Publish
         if: success()
         run: |
@@ -91,10 +95,10 @@ jobs:
               echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
             else
               if [[ $(yarn --silent is-published $(yarn --silent get-current-version)) == true ]]; then
-                echo "$(yarn --silent get-current-version) has already been published. Skipping publication."
+                echo "$VERSION_TAG has already been published. Skipping publication."
               else
                 yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
-                yarn publish --access $(yarn --silent spqr-option prerelease.access) --non-interactive --tag $(git symbolic-ref --short HEAD)
+                yarn publish --access $(yarn --silent spqr-option prerelease.access) --non-interactive --tag $VERSION_STAGE
               fi
             fi
           else
@@ -120,9 +124,9 @@ jobs:
         if: success()
         run: |
           if [[ $(yarn --silent is-tagged $(yarn --silent get-current-version)) == true ]]; then
-            echo "$(yarn --silent get-current-version) has already been tagged. Skipping tagging."
+            echo "$VERSION_TAG has already been tagged. Skipping tagging."
           else
-            git tag -a v$(yarn --silent get-current-version) -m "Prerelease $(yarn --silent get-current-version)"
+            git tag -a $VERSION_TAG -m "Prerelease $VERSION"
           fi
       - name: Push tag
         if: success()
