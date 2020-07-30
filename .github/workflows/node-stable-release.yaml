@@ -123,3 +123,6 @@ jobs:
       - name: Push changes
         if: success()
         run: git push --tags origin $(git symbolic-ref --short HEAD)
+      - name: Update next branch
+        if: success()
+        run: git fetch origin next && git checkout next && git merge --ff-only master && git push origin next
