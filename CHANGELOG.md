@@ -1,3 +1,24 @@
+# [4.1.0](https://github.com/skypilot-dev/toolchain/compare/v4.1.0-next.1...v4.1.0) (2020-07-31)
+
+
+
+# [4.1.0-next.1](https://github.com/skypilot-dev/toolchain/compare/v4.1.0-next.0...v4.1.0-next.1) (2020-07-31)
+
+
+
+# [4.1.0-next.0](https://github.com/skypilot-dev/toolchain/compare/v4.0.7-next.1...v4.1.0-next.0) (2020-07-30)
+
+
+### Features
+
+* Automatically update `next` to `master` after stable release ([4e30745](https://github.com/skypilot-dev/toolchain/commit/4e307457ffe691adfd8493b20a3a4b2a8b236858))
+
+
+
+## [4.0.7-next.0](https://github.com/skypilot-dev/toolchain/compare/v4.0.6...v4.0.7-next.0) (2020-06-29)
+
+
+
 ## [4.0.6](https://github.com/skypilot-dev/toolchain/compare/v4.0.6-next.0...v4.0.6) (2020-06-25)
 
 
