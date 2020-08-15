@@ -1,3 +1,16 @@
+## [4.1.3](https://github.com/skypilot-dev/toolchain/compare/v4.1.3-next.0...v4.1.3) (2020-08-15)
+
+
+
+## [4.1.3-next.0](https://github.com/skypilot-dev/toolchain/compare/v4.1.2...v4.1.3-next.0) (2020-08-15)
+
+
+### Bug Fixes
+
+* EditorConfig & linter config have differ max line length ([4e35247](https://github.com/skypilot-dev/toolchain/commit/4e35247ee30e7cb705b9bb6057db1bc993bcccdd))
+
+
+
 ## [4.1.2](https://github.com/skypilot-dev/toolchain/compare/v4.1.2-next.0...v4.1.2) (2020-08-15)
 
 
