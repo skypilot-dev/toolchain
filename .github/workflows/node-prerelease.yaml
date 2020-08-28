@@ -70,12 +70,6 @@ jobs:
           if [[ $(yarn --silent spqr-option 'prerelease.check-code') == 'true' ]] ; then
             yarn test
           fi
-      - name: Build
-        if: success()
-        run: |
-          if [[ $(yarn --silent spqr-option 'prerelease.build') == 'true' ]] ; then
-            yarn run build
-          fi
       - name: Gather published versions
         run: |
           mkdir -p local
@@ -87,6 +81,12 @@ jobs:
           echo "::set-env name=VERSION::$(yarn --silent get-current-version)"
           echo "::set-env name=VERSION_TAG::v$(yarn --silent get-current-version)"
           echo "::set-env name=VERSION_STAGE::$(git symbolic-ref --short HEAD)"
+      - name: Build
+        if: success()
+        run: |
+          if [[ $(yarn --silent spqr-option 'prerelease.build') == 'true' ]] ; then
+            yarn run build
+          fi
       - name: Publish
         if: success()
         run: |
@@ -123,7 +123,7 @@ jobs:
       - name: Tag
         if: success()
         run: |
-          if [[ $(yarn --silent is-tagged $(yarn --silent get-current-version)) == true ]]; then
+          if [[ $(yarn --silent is-tagged $VERSION) == true ]]; then
             echo "$VERSION_TAG has already been tagged. Skipping tagging."
           else
             git tag -a $VERSION_TAG -m "Prerelease $VERSION"

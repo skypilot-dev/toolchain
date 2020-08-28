@@ -69,12 +69,6 @@ jobs:
           if [[ $(yarn --silent spqr-option 'release.check-code') == 'true' ]] ; then
             yarn test
           fi
-      - name: Build
-        if: success()
-        run: |
-          if [[ $(yarn --silent spqr-option 'release.build') == 'true' ]] ; then
-            yarn run build
-          fi
       - name: Gather published versions
         run: |
           mkdir -p local
@@ -86,6 +80,12 @@ jobs:
           echo "::set-env name=VERSION::$(yarn --silent get-current-version)"
           echo "::set-env name=VERSION_TAG::v$(yarn --silent get-current-version)"
           echo "::set-env name=VERSION_STAGE::$(git symbolic-ref --short HEAD)"
+      - name: Build
+        if: success()
+        run: |
+          if [[ $(yarn --silent spqr-option 'release.build') == 'true' ]] ; then
+            yarn run build
+          fi
       - name: Publish
         if: success()
         run: |
