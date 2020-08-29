@@ -1,3 +1,16 @@
+## [4.1.4](https://github.com/skypilot-dev/toolchain/compare/v4.1.4-next.0...v4.1.4) (2020-08-29)
+
+
+
+## [4.1.4-next.0](https://github.com/skypilot-dev/toolchain/compare/v4.1.3...v4.1.4-next.0) (2020-08-28)
+
+
+### Bug Fixes
+
+* CI workflow-step order results in wrong version in build ([d980f9e](https://github.com/skypilot-dev/toolchain/commit/d980f9e1559ef997d394ef0083057281c9705a60))
+
+
+
 ## [4.1.3](https://github.com/skypilot-dev/toolchain/compare/v4.1.3-next.0...v4.1.3) (2020-08-15)
 
 
