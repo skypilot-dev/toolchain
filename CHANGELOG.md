@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/skypilot-dev/toolchain/compare/v5.0.0-next.0...v5.0.0) (2020-08-29)
+
+
+* MAJOR!: Upgrade all dependencies, including TypeScript to v4 ([7e0f8b6](https://github.com/skypilot-dev/toolchain/commit/7e0f8b631b3b57b2efe7f9bcd20fa86235c51735))
+
+
+### BREAKING CHANGES
+
+* Upgrades Typescript to v4.0.2, which may introduce breaking changes into projects that use TypeScript
+
+
+
 ## [4.1.4](https://github.com/skypilot-dev/toolchain/compare/v4.1.4-next.0...v4.1.4) (2020-08-29)
 
 
