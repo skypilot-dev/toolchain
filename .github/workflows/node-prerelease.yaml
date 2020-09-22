@@ -94,7 +94,7 @@ jobs:
             if test -z "$NPM_READ_AND_PUBLISH_TOKEN" ; then
               echo "No NPM_READ_AND_PUBLISH_TOKEN found. Skipping publication"
             else
-              if [[ $(yarn --silent is-published $(yarn --silent get-current-version)) == true ]]; then
+              if [[ $(yarn --silent is-published $VERSION) == true ]]; then
                 echo "$VERSION_TAG has already been published. Skipping publication."
               else
                 yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
