@@ -1,6 +1,6 @@
 {
   "name": "@skypilot/toolchain",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Toolchain for Node projects",
   "keywords": [
     "eslint",
