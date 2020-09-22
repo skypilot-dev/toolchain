@@ -1,3 +1,6 @@
+# Cached files
+.cache/
+
 # Compiled & transpiled files
 /dist/
 /lib/
