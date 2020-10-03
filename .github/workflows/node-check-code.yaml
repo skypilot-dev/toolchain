@@ -5,7 +5,7 @@ on:
     branches-ignore:
       - 'wip-**'
       - '**-wip'
-      - 'master'
+      - 'main'
       - 'alpha'
       - 'beta'
       - 'next'
@@ -17,6 +17,7 @@ jobs:
     env:
       CI: true
       NPM_READ_TOKEN: ${{ secrets.NPM_READ_AND_PUBLISH_TOKEN || secrets.NPM_READ_TOKEN }}
+      STABLE_RELEASE_BRANCH: 'main'
 
     runs-on: ubuntu-latest
 
@@ -30,7 +31,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Fetch
-        run: git fetch --prune --unshallow && git fetch origin 'master:master'
+        run: git fetch --prune --unshallow && git fetch origin "$STABLE_RELEASE_BRANCH:$STABLE_RELEASE_BRANCH"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:

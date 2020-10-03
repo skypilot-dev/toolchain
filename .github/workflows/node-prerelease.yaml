@@ -23,6 +23,7 @@ jobs:
       GPG_KEY_ID: ${{ secrets.SPQR_BOT_GPG_KEY_ID }}
       NPM_READ_TOKEN: ${{ secrets.NPM_READ_AND_PUBLISH_TOKEN || secrets.NPM_READ_TOKEN }}
       NPM_READ_AND_PUBLISH_TOKEN: ${{ secrets.NPM_READ_AND_PUBLISH_TOKEN }}
+      STABLE_RELEASE_BRANCH: 'main'
 
     runs-on: ubuntu-latest
 
@@ -40,7 +41,7 @@ jobs:
       - name: Fetch
         run: |
           git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-          git fetch --unshallow origin 'master:master'
+          git fetch --unshallow origin "$STABLE_RELEASE_BRANCH:$STABLE_RELEASE_BRANCH"
           git fetch origin $(git symbolic-ref --short HEAD)
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
