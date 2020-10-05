@@ -66,7 +66,7 @@ NPM packages. Two different types of automated releases are supported:
 
 The workflows are configured to automatically
 
--   publish a stable release on every push to `master`
+-   publish a stable release on every push to `main`
 -   publish a prerelease on every push to `alpha`, `beta`, or `next` branch
 
 Toolchain performs the following steps when a release is created. If any step fails, the release is
@@ -77,12 +77,24 @@ halted.
 -   Determine the next version number (based on commit messages)
 -   Create a version tag
 -   Publish the package to NPM (if publication is enabled)
+-   If the version stage is designated as the `latest` stage, tag the package as `latest`
 
 For stable releases, the workflow will also:
 
 -   Bump the version number in `package.json`
 -   Generate an updated `CHANGELOG.md`
 -   Commit these changes to the stable branch
+-   Tag the package as `latest`
+
+To designate a stage other than the stable-release branch as the `latest`
+stage, add the stage name to `.skypilot/quick-release.yaml`.
+
+Example: This setting designates the `beta` stage as the latest stage.
+
+```yaml
+prerelease:
+  latestStage: 'beta'
+```
 
 ### Convenience scripts
 
