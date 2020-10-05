@@ -1,3 +1,12 @@
+# [5.1.0](https://github.com/skypilot-dev/toolchain/compare/v5.1.0-next.0...v5.1.0) (2020-10-05)
+
+
+### Features
+
+* A prerelease branch can be designated as 'latest' ([93fa1da](https://github.com/skypilot-dev/toolchain/commit/93fa1da37be767cc9c2ce81afbea8f8bdc4b5e94))
+
+
+
 ## [5.0.3](https://github.com/skypilot-dev/toolchain/compare/v5.0.3-next.1...v5.0.3) (2020-10-03)
 
 
