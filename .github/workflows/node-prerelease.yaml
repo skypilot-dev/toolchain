@@ -98,8 +98,17 @@ jobs:
               if [[ $(yarn --silent is-published $VERSION) == true ]]; then
                 echo "$VERSION_TAG has already been published. Skipping publication."
               else
+                ACCESS=$(yarn --silent spqr-option prerelease.access)
                 yarn config set //registry.yarnpkg.com/:_authToken=$NPM_READ_AND_PUBLISH_TOKEN
-                yarn publish --access $(yarn --silent spqr-option prerelease.access) --non-interactive --tag $VERSION_STAGE
+                yarn publish --access $ACCESS --non-interactive --tag $VERSION_STAGE
+
+                # If this stage is designated as the latest stage, tag it as 'latest' in NPM
+                # (typically used with alpha or beta prereleases prior to the publication of the first release)
+                LATEST_STAGE=$(yarn --silent spqr-option prerelease.latestStage)
+                if test -n $LATEST_STAGE && [[ $LATEST_STAGE == $VERSION_STAGE ]]; then
+                  # Yarn (as at v1.22.5) throws an error when adding a tag, but the operation does succeed
+                  yarn tag add "$(yarn info --silent . name)@$VERSION" latest || true
+                fi
               fi
             fi
           else
