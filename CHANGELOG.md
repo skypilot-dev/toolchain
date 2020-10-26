@@ -1,3 +1,7 @@
+## [5.1.1](https://github.com/skypilot-dev/toolchain/compare/v5.1.1-next.0...v5.1.1) (2020-10-26)
+
+
+
 # [5.1.0](https://github.com/skypilot-dev/toolchain/compare/v5.1.0-next.0...v5.1.0) (2020-10-05)
 
 
