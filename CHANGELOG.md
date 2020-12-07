@@ -1,4 +1,13 @@
-## [5.1.1](https://github.com/skypilot-dev/toolchain/compare/v5.1.1-next.0...v5.1.1) (2020-10-26)
+## [5.1.2](https://github.com/skypilot-dev/toolchain/compare/v5.1.2-next.0...v5.1.2) (2020-12-07)
+
+
+### Bug Fixes
+
+* GitHub Actions workflows fail when `set-env` is used ([2ad69d1](https://github.com/skypilot-dev/toolchain/commit/2ad69d1013e264b00c57619e64d55e7f83e36aac))
+
+
+
+## [5.1.1](https://github.com/skypilot-dev/toolchain/compare/v5.1.1-next.1...v5.1.1) (2020-10-26)
 
 
 
