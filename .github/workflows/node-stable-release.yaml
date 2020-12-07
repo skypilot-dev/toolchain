@@ -78,9 +78,9 @@ jobs:
         if: success()
         run: |
           yarn --silent bump-version && yarn --silent conventional-changelog -p angular -r 0 > CHANGELOG.md
-          echo "::set-env name=VERSION::$(yarn --silent get-current-version)"
-          echo "::set-env name=VERSION_TAG::v$(yarn --silent get-current-version)"
-          echo "::set-env name=VERSION_STAGE::$(git symbolic-ref --short HEAD)"
+          echo "VERSION=$(yarn --silent get-current-version)" >> $GITHUB_ENV
+          echo "VERSION_TAG=v$(yarn --silent get-current-version)" >> $GITHUB_ENV
+          echo "VERSION_STAGE=$(git symbolic-ref --short HEAD)" >> $GITHUB_ENV
       - name: Build
         if: success()
         run: |
