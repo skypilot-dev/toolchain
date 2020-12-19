@@ -14,6 +14,19 @@ type PackageFileEntry = { key: string; value: JsonValue; options?: UpdatePackage
 
 type ScriptEntry = { [key: string]: string };
 
+interface CopyToProjectParams {
+  sourceDir: string;
+  targetDir: string;
+  files: string[];
+  verbose?: boolean;
+}
+
+interface EnsureFileExistsParams {
+  targetDir?: string;
+  targetFile?: string;
+  verbose?: boolean;
+}
+
 /* These options are used in testing. */
 interface InitializeProjectOptions {
   sourceDir?: string;
@@ -87,7 +100,7 @@ export function copyToProject({
   targetDir = projectDir,
   files = COPIED_CONFIGS,
   verbose = false,
-}): void {
+}: CopyToProjectParams): void {
   const sourcesAndTargets = makeSourcesAndTargetsArray(files);
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, verbose });
 }
@@ -98,7 +111,7 @@ export function ensureTsFileExists({
   targetDir = path.join(projectDir, 'src'),
   targetFile = 'index.ts',
   verbose = false,
-}): void {
+}: EnsureFileExistsParams): void {
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync((targetDir));
   } else {
@@ -122,7 +135,7 @@ export function ensureTestExists({
   targetDir = path.join(projectDir, 'src'),
   targetFile = 'index.app.test.ts',
   verbose = false,
-}): void {
+}: EnsureFileExistsParams): void {
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync((targetDir));
   } else {
@@ -157,9 +170,9 @@ describe('index.ts', () => {
 export function removeTemplateSuffixAndCopyToProject({
   sourceDir = packageDir,
   targetDir = projectDir,
-  files = [] as string[],
+  files = [],
   verbose = false,
-}): void {
+}: CopyToProjectParams): void {
   const sourcesAndTargets = files.map((targetFile) => ({
     sourceFile: `${targetFile}-template`,
     targetFile,
