@@ -34,4 +34,3 @@ export function deindentTemplateLiteral(template: TemplateStringsArray, ...args:
     .map(line => line.slice(minIndentSize))
     .join('\n');
 }
-

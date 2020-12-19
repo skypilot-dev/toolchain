@@ -32,7 +32,7 @@ export function makeSourcesAndTargetsArray(sources: Array<string | SourceAndTarg
         return {
           sourceFile: source,
           targetFile: source,
-        }
+        };
       }
       const { sourceFile, targetFile = sourceFile } = source;
       return { sourceFile, targetFile };
@@ -60,7 +60,7 @@ export function bulkReadTransformWrite(options: BulkRtwOptions): void {
     readTransformWrite(sourcePath, targetPath, transformFn);
     if (verbose) {
       /* eslint-disable-next-line no-console */
-      console.log(`  Created ${targetFile}`)
+      console.log(`  Created ${targetFile}`);
     }
   });
 }

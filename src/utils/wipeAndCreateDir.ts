@@ -18,7 +18,7 @@ function rmdirSyncRecursive(dir: string): void {
 
 /* Given a directory, delete the directory if it exists and create it again. */
 export function wipeAndCreateDir(dir: string): void {
-  if(fs.existsSync(dir)) {
+  if (fs.existsSync(dir)) {
     rmdirSyncRecursive(dir);
   }
   fs.mkdirSync(dir, { recursive: true });

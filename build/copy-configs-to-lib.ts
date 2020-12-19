@@ -21,7 +21,7 @@ function copyToLib(): void {
   const sourcesAndTargets = makeSourcesAndTargetsArray([
     ...COPIED_CONFIGS, ...MOVED_CONFIGS, ...REFERENCED_CONFIGS,
   ]);
-  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets })
+  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets });
 }
 
 /* Copy these files to `lib/` after replacing `./configs/` (the path in this package) with
@@ -31,11 +31,11 @@ function insertPathVarAndCopyToLib(): void {
   const packageName = readPackageFile().name as string;
   const sourceDir = resolvePath('.');
   const targetDir = resolvePath('lib');
-  const sourcesAndTargets = CONFIG_TEMPLATES.map((sourceFile) => ({ sourceFile, targetFile: `${sourceFile}-template`}));
+  const sourcesAndTargets = CONFIG_TEMPLATES.map((sourceFile) => ({ sourceFile, targetFile: `${sourceFile}-template` }));
   const transformFn = makeReplaceFn([
     { searchFor: './configs/', replaceWith: `${packageName}/configs/` },
   ]);
-  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, transformFn })
+  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, transformFn });
 }
 
 copyToLib();
