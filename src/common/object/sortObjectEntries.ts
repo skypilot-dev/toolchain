@@ -1,5 +1,5 @@
-import { sortObject } from './sortObject';
 import { JsonObject, JsonValue } from '../types';
+import { sortObject } from './sortObject';
 
 export function sortObjectEntries(jsonObject: JsonObject, keysToSort: string[]): JsonObject {
   if (keysToSort.length > 0) {

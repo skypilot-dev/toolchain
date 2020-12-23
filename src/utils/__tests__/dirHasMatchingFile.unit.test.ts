@@ -21,7 +21,7 @@ describe('dirHasMatchingFile(:dir, :extension)', () => {
 
     /* Create a `.ts` file in the directory. */
     const tsFile = path.join(targetDir, 'file.ts');
-    fs.writeFileSync(tsFile, 'export {}', { encoding: 'utf8'});
+    fs.writeFileSync(tsFile, 'export {}', { encoding: 'utf8' });
 
     const hasTsFile = dirHasMatchingFile(targetDir, /\.ts$/);
     expect(hasTsFile).toBe(true);
@@ -38,11 +38,11 @@ describe('dirHasMatchingFile(:dir, :extension)', () => {
 
     /* Create a non `.ts` file in the sub-sub-directory. */
     const nonTsFile = path.join(subDir, 'file.js');
-    fs.writeFileSync(nonTsFile, 'export {}', { encoding: 'utf8'});
+    fs.writeFileSync(nonTsFile, 'export {}', { encoding: 'utf8' });
 
     /* Create a `.ts` file in the sub-sub-directory. */
     const tsFile = path.join(subDir, 'file.ts');
-    fs.writeFileSync(tsFile, 'export {}', { encoding: 'utf8'});
+    fs.writeFileSync(tsFile, 'export {}', { encoding: 'utf8' });
 
     const hasTsFile = dirHasMatchingFile(targetDir, /\.ts$/);
     expect(hasTsFile).toBe(true);

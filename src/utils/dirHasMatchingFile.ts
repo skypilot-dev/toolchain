@@ -7,7 +7,7 @@ export function dirHasMatchingFile(dir: string, pattern: RegExp): boolean {
   /* Get all entries in the directory. */
   const dirEntries = fs.readdirSync(dir, { withFileTypes: true });
   if (dirEntries.some((dirent) => dirent.isFile() && dirent.name.match(pattern))) {
-    return true
+    return true;
   }
 
   /* Recursively check in subdirectories. */

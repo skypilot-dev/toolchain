@@ -51,7 +51,7 @@ type Command = 'init';
 
 function parsePackageManager(packageManager: MaybeUndefined<string>): string {
   if (!packageManager) {
-    return ''
+    return '';
   }
   if (!packageManager.includes('/')) {
     return packageManager;

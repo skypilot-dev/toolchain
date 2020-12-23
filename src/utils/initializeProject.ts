@@ -14,6 +14,19 @@ type PackageFileEntry = { key: string; value: JsonValue; options?: UpdatePackage
 
 type ScriptEntry = { [key: string]: string };
 
+interface CopyToProjectParams {
+  sourceDir: string;
+  targetDir: string;
+  files: string[];
+  verbose?: boolean;
+}
+
+interface EnsureFileExistsParams {
+  targetDir?: string;
+  targetFile?: string;
+  verbose?: boolean;
+}
+
 /* These options are used in testing. */
 interface InitializeProjectOptions {
   sourceDir?: string;
@@ -30,9 +43,9 @@ const packageFileEntries: PackageFileEntry[] = [
     value: { access: 'restricted' },
     options: { updateStrategy: UpdateStrategy.create },
   },
-  { key: 'files', value: ['/lib'], options: { updateStrategy: UpdateStrategy.create }},
-  { key: 'main', value: 'lib/index.js', options: { updateStrategy: UpdateStrategy.replace }},
-  { key: 'types', value: 'lib/index.d.ts', options: { updateStrategy: UpdateStrategy.replace }},
+  { key: 'files', value: ['/lib'], options: { updateStrategy: UpdateStrategy.create } },
+  { key: 'main', value: 'lib/index.js', options: { updateStrategy: UpdateStrategy.replace } },
+  { key: 'types', value: 'lib/index.d.ts', options: { updateStrategy: UpdateStrategy.replace } },
 ];
 
 const scripts: ScriptEntry[] = [
@@ -40,7 +53,7 @@ const scripts: ScriptEntry[] = [
   { key: 'all-cq-checks', value: 'yarn run typecheck && yarn run lint --quiet && yarn test' },
   { key: 'build', value: 'rm -rf lib && yarn run compile-ts' },
   { key: 'ci', value: 'yarn run all-ci-checks' },
-  { key: 'compile-ts', value: "babel ./src --out-dir ./lib --extensions .ts --ignore '**/__tests__/*' --ignore '**/*.d.ts' && yarn run generate-typings"},
+  { key: 'compile-ts', value: "babel ./src --out-dir ./lib --extensions .ts --ignore '**/__tests__/*' --ignore '**/*.d.ts' && yarn run generate-typings" },
   { key: 'cq', value: 'yarn run all-cq-checks' },
   { key: 'generate-typings', value: 'tsc --project tsconfig.generate-typings.json' },
   { key: 'lint', value: "eslint --cache '**/*.{js,ts}'" },
@@ -87,7 +100,7 @@ export function copyToProject({
   targetDir = projectDir,
   files = COPIED_CONFIGS,
   verbose = false,
-}): void {
+}: CopyToProjectParams): void {
   const sourcesAndTargets = makeSourcesAndTargetsArray(files);
   bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, verbose });
 }
@@ -98,7 +111,7 @@ export function ensureTsFileExists({
   targetDir = path.join(projectDir, 'src'),
   targetFile = 'index.ts',
   verbose = false,
-}): void {
+}: EnsureFileExistsParams): void {
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync((targetDir));
   } else {
@@ -122,7 +135,7 @@ export function ensureTestExists({
   targetDir = path.join(projectDir, 'src'),
   targetFile = 'index.app.test.ts',
   verbose = false,
-}): void {
+}: EnsureFileExistsParams): void {
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync((targetDir));
   } else {
@@ -157,14 +170,14 @@ describe('index.ts', () => {
 export function removeTemplateSuffixAndCopyToProject({
   sourceDir = packageDir,
   targetDir = projectDir,
-  files = [] as string[],
+  files = [],
   verbose = false,
-}): void {
+}: CopyToProjectParams): void {
   const sourcesAndTargets = files.map((targetFile) => ({
     sourceFile: `${targetFile}-template`,
     targetFile,
   }));
-  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, verbose })
+  bulkReadTransformWrite({ sourceDir, targetDir, sourcesAndTargets, verbose });
 }
 
 /* -- Main function -- */
