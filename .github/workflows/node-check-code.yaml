@@ -16,7 +16,7 @@ jobs:
 
     env:
       CI: true
-      NPM_READ_TOKEN: ${{ secrets.NPM_READ_AND_PUBLISH_TOKEN || secrets.NPM_READ_TOKEN }}
+      NPM_READ_TOKEN: ${{ secrets.NPM_AUTOMATION_TOKEN || secrets.NPM_READ_AND_PUBLISH_TOKEN || secrets.NPM_READ_TOKEN }}
       STABLE_RELEASE_BRANCH: 'main'
 
     runs-on: ubuntu-latest
