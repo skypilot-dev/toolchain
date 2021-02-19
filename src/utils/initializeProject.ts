@@ -60,7 +60,9 @@ const scripts: ScriptEntry[] = [
   { key: 'prepublishOnly', value: 'yarn run typecheck && yarn run lint --quiet && yarn test && yarn run build' },
   { key: 'publish:default', value: 'yarn publish --non-interactive' },
   { key: 'tc', value: 'yarn run typecheck' },
-  { key: 'test', value: 'jest' },
+  { key: 'test', value: 'jest --config jest.standalone.config.js' },
+  { key: 'test:all', value: 'jest --config jest.config.js' },
+  { key: 'test:int', value: 'jest --config jest.integration.config.js' },
   { key: 'typecheck', value: 'tsc' },
 ];
 
