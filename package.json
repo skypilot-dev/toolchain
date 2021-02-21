@@ -51,7 +51,9 @@
     "publish:default": "yarn publish --non-interactive",
     "tc": "yarn run typecheck",
     "test": "jest --config jest.standalone.config.js",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "postinstall": "husky install",
+    "postpublish": "pinst --enable"
   },
   "dependencies": {
     "@babel/cli": "^7.12.17",
@@ -83,6 +85,7 @@
   "devDependencies": {
     "@babel/register": "^7.12.13",
     "@types/tmp": "^0.2.0",
+    "pinst": "^2.1.4",
     "tmp": "^0.2.1"
   },
   "peerDependencies": {},
