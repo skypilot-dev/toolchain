@@ -70,14 +70,14 @@ if (!validCommands.includes(command)) {
 function getRunCmd(): string {
   const packageManager = parsePackageManager(process.env.npm_config_user_agent);
   switch (packageManager) {
-    case 'yarn':
-      return 'yarn --silent';
-    case 'npm':
-      return 'npx --no-install';
-    case 'pnpm':
-      return 'pnpx --no-install';
-    default:
-      throw new Error(`Unknown package manager: ${packageManager}`);
+  case 'yarn':
+    return 'yarn --silent';
+  case 'npm':
+    return 'npx --no-install';
+  case 'pnpm':
+    return 'pnpx --no-install';
+  default:
+    throw new Error(`Unknown package manager: ${packageManager}`);
   }
 }
 
