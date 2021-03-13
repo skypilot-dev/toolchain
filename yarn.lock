@@ -1570,17 +1570,17 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@skypilot/babel-config-node-typescript@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@skypilot/babel-config-node-typescript/-/babel-config-node-typescript-1.1.5.tgz#ed01968d63a6fe81f6f30613e282b89054c39255"
-  integrity sha512-8AEjcWBxti1NmIkV0w/6/yt5It7kgxHegAx2SzZaECTeRttDsMtWVB+1I3DOWbngwLH7GYYbQ3dxpnYRTKnRDg==
+"@skypilot/babel-config-node-typescript@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@skypilot/babel-config-node-typescript/-/babel-config-node-typescript-1.1.6.tgz#d38e1744edcaa87d181878005a28525b9ee6e2ac"
+  integrity sha512-LXuLbzQNkw6OxozAFfxgLZQxMHQpsSqdIyoLtvkoKU8oHLf1brOneEaqnmR9HV0P52539vUNd1lEMud4EMFlcg==
   dependencies:
-    babel-plugin-root-import "^6.5.0"
+    babel-plugin-root-import "^6.6.0"
 
-"@skypilot/eslint-config-typescript@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@skypilot/eslint-config-typescript/-/eslint-config-typescript-1.6.0.tgz#3b1ad773aae15523b29b774af93bdc9f58fda683"
-  integrity sha512-Zv8LnBl3l2lRhrzIlN/y3eJxbWAGq95TqZmmzc6jY9QdgyMuXxkD8vQgVQwudsVmo0XRqP+Hp5IB9B2JYu82OA==
+"@skypilot/eslint-config-typescript@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@skypilot/eslint-config-typescript/-/eslint-config-typescript-1.7.0.tgz#66c1996fa8a1083e6895dac347322e8e40ac0102"
+  integrity sha512-IKY2XjOyErasndv5+BoE3lMnXXXeAjF/GUL7C/gFhO7QEuOcUpsVoLENVgGZ0wmHmgeYsLejeUboqWWszFMUpg==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.1.9"
@@ -2116,10 +2116,10 @@ babel-plugin-polyfill-regenerator@^0.1.2:
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.1.2"
 
-babel-plugin-root-import@^6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-root-import/-/babel-plugin-root-import-6.5.0.tgz#ac4016426b5d36c48127c73ad199fa72c9ff8817"
-  integrity sha512-PTD8fPl4v1kwn01u9d4rgRavDs5Z+jv4qa4/y6iYtoSgM4/xmjwMqo66j5A/BTZQEMA6OV5iFgyZ1PIhroJqqg==
+babel-plugin-root-import@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-root-import/-/babel-plugin-root-import-6.6.0.tgz#85940840f308a8c292f66ca0b5bdd314046273ed"
+  integrity sha512-SPzVOHd7nDh5loZwZBxtX/oOu1MXeKjTkz+1VnnzLWC0dk8sJIGC2IDQ2uWIBjE5mUtXlQ35MTHSqN0Xn7qHrg==
   dependencies:
     slash "^3.0.0"
 
@@ -2853,10 +2853,10 @@ eslint-plugin-import@^2.22.1:
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
 
-eslint-plugin-jest@^24.2.1:
-  version "24.2.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.2.1.tgz#7e84f16a3ca6589b86be9732a93d71367a4ed627"
-  integrity sha512-s24ve8WUu3DLVidvlSzaqlOpTZre9lTkZTAO+a7X0WMtj8HraWTiTEkW3pbDT1xVxqEHMWSv+Kx7MyqR50nhBw==
+eslint-plugin-jest@^24.3.1:
+  version "24.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-24.3.1.tgz#c8df037847b83397940bef7fbc2cc168ab466bcc"
+  integrity sha512-RQt59rfMSHyvedImT72iaf8JcvCcR4P7Uq499dALtjY8mrCjbwWrFi1UceG4sid2wVIeDi+0tjxXZ8CZEVO7Zw==
   dependencies:
     "@typescript-eslint/experimental-utils" "^4.0.1"
 
