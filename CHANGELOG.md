@@ -1,4 +1,21 @@
-## [5.1.4](https://github.com/skypilot-dev/toolchain/compare/v5.1.4-next.1...v5.1.4) (2021-01-28)
+# [5.2.0](https://github.com/skypilot-dev/toolchain/compare/v5.2.0-next.0...v5.2.0) (2021-03-13)
+
+
+### Bug Fixes
+
+* Husky post-install script fails ([d7fba69](https://github.com/skypilot-dev/toolchain/commit/d7fba6949414a0ab24d672874521c434d8192295))
+* Husky post-install script fails ([e9cc1d0](https://github.com/skypilot-dev/toolchain/commit/e9cc1d0d4e4b002bbcb06878da62754a2ff58074))
+* Husky pre-commit hook fails after upgrade from v4 to v5 ([d386ff6](https://github.com/skypilot-dev/toolchain/commit/d386ff6b2337c7e5d8567723260f589888ed2ce9))
+
+
+### Features
+
+* Add package-file scripts for subsets of test suites ([15465a4](https://github.com/skypilot-dev/toolchain/commit/15465a4119fe74ae5572f007337639a574e8f7dc))
+* Support NPM automation tokens ([7fccbac](https://github.com/skypilot-dev/toolchain/commit/7fccbace0ac9e1b512cde28b49f719b50f8d6c8b))
+
+
+
+## [5.1.4-alpha.0](https://github.com/skypilot-dev/toolchain/compare/v5.1.4...v5.1.4-alpha.0) (2021-01-28)
 
 
 
