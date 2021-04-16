@@ -106,8 +106,8 @@ jobs:
                 # (typically used with alpha or beta prereleases prior to the publication of the first release)
                 LATEST_STAGE=$(yarn --silent spqr-option prerelease.latestStage)
                 if test -n $LATEST_STAGE && [[ $LATEST_STAGE == $VERSION_STAGE ]]; then
-                  # Yarn (as at v1.22.5) throws an error when adding a tag, but the operation does succeed
-                  yarn tag add "$(yarn info --silent . name)@$VERSION" latest || true
+                  # Yarn (as at v1.22.5) throws an error when adding a tag; `npm dist-tag` is used instead
+                  npm dist-tag add "$(yarn info --silent . name)@$VERSION" latest || true
                 fi
               fi
             fi
