@@ -52,7 +52,7 @@ Once Toolchain is installed and initialized:
 
 GitHub Actions workflows will
 
--   run code-quality checks on every push to GitHub (except `wip-` and `-wip` branches)
+-   run code-quality checks on every push to GitHub (except `wip/`, `wip-` and `-wip` branches)
 -   publish an NPM package on every push to GitHub on the stable or prerelease branches
 
 ### How to publish releases
